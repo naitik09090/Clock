@@ -1,0 +1,155 @@
+.timers {
+    height: 700px;
+    width: 1730px !important;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 2px;
+    font-size: 2rem;
+}
+.BTN_Timer{
+    height: auto;
+    width: 930px !important;
+    font-size: 2rem;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.BTN_Timer32{
+    height: auto;
+    width: 930px !important;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.BTN_Timer23{
+    height: auto;
+    width: 920px !important;
+    font-size: 2rem;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  .BTN_Timer24{
+      height: auto;
+      width: 920px !important;
+      font-size: 2rem;
+      margin-bottom: 20px;
+  }
+.BTN_Timer_5{
+    height: 450px;
+    width: 930px !important;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+.BTN_Timer2{
+    height: auto;
+    width: 1880px !important;
+    letter-spacing: 2px;
+    font-size: 2rem;
+}
+.Set_Alarm{
+    font-size: 20px;
+    background-color: rgb(55, 243, 127);
+    color: white;
+    border: none;
+    height: 50px;
+    width: 200px;
+}
+/* a{
+  color: transparent !important;
+} */
+.time_Set{
+    font-size: 25px;
+    font-weight: 100;
+    height: 50px;
+    width: 200px;
+}
+.Row_Bottom{
+    border-bottom: 1px solid rgb(61, 61, 61);
+    width: 100%;
+    margin-bottom: 15px;
+}
+button{
+    font-size: 15px !important;
+    background-color: rgb(6, 111, 231);
+    color: white;
+    padding: 10px;
+    border: none;
+    height: 50px;
+    width: 100px;
+    position: relative;
+    top: 20px;
+}
+.Home_Main h1{
+    font-weight: 100;
+    margin-bottom: 15px;
+}
+.Home_Main p{
+    font-weight: 200;
+    font-size: 15px;
+}
+
+
+/* Alarm Modal Styling */
+.modal-content {
+  border-radius: 6px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header{
+  background-color: #0099dd;
+  color: white;
+  border-bottom: none;
+  padding: 15px 20px;
+}
+
+.modal-title {
+  font-weight: bold;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  border-top: none;
+  padding: 15px 20px;
+  justify-content: flex-end;
+}
+
+.btn {
+  min-width: 80px;
+  border-radius: 4px;
+}
+
+.btn-success {
+  background-color: #2d8659;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: #5a6268;
+  border: none;
+}
+
+.btn-light {
+  background-color: #f0f0f0;
+  color: black;
+  border: none;
+}
+
+.Set_Alarm {
+  font-weight: bold;
+  border-radius: 4px;
+}
+.Close_Icon{
+    position: absolute;
+    right: 20px;
+    top: 25px;
+    cursor: pointer;
+    color: white;
+    font-size: 30px;
+}
+.Dot_Btn{
+    height: 37px !important;
+    position: relative;
+    left: 5px;
+    top: -1px;
+    cursor: pointer;
+}

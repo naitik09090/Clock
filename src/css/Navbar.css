@@ -1,0 +1,119 @@
+body {
+    overflow-x: hidden;
+    margin: 0;
+    font-family: "Lato", sans-serif;
+}
+
+div.content {
+    margin-left: 200px;
+    padding: 1px 16px;
+    height: 1000px;
+}
+
+@media screen and (max-width: 700px) {
+    div.content {
+        margin-left: 0;
+    }
+}
+
+.setting {
+    height: 25px;
+    width: 25px;
+    background-color: transparent;
+    color: white;
+    position: relative;
+    right: 20px;
+}
+
+.TogglE_Btn {
+    background-color: transparent;
+    color: white;
+    height: 25px;
+    width: 25px;
+}
+
+.navbar {
+    background-color: #555;
+    margin-bottom: 20px;
+}
+
+.timer_Clock_Icon {
+    height: 40px;
+    width: 40px;
+    padding: 5px;
+}
+
+.BtN_Mood {
+    border: 1px solid transparent !important;
+    background-color: transparent !important;
+    color: white !important;
+}
+
+.BTn_Sun {
+    height: 25px !important;
+    width: 25px !important;
+    position: relative;
+    bottom: 20px;
+    left: 10px;
+}
+
+.BTn_Moon {
+    height: 25px !important;
+    width: 25px !important;
+    position: relative;
+    bottom: 20px;
+    left: 10px;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #222;
+    color: #e0e0e0;
+}
+
+.dark-mode .navbar {
+    background-color: #0099dd !important;
+}
+
+.dark-mode .sidebar {
+    background-color: #222 !important;
+}
+
+.dark-mode .sidebar a {
+    color: #e0e0e0 !important;
+}
+
+.sidebar{
+    padding: 10px;
+}
+
+
+.back-to-top-btn{
+    background-color: transparent !important;
+    border: none !important;
+    position: relative;
+    top: 800px;
+    left: 1800px;
+}
+.top_To-Bottom{
+    height: 40px;
+    width: 40px;
+}
+.navbar-toggler{
+    position: relative;
+    bottom: 40px !important;
+}
+.thrEE_BTn Button{
+    margin:10px;
+}
+.dropdown-item{
+    color: black !important;
+}
+.Country_Data{
+    color: black !important;
+}
+.navbar-brand{
+    font-size: 25px !important;
+    color: white !important;
+}
+
