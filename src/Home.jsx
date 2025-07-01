@@ -285,8 +285,8 @@ function App() {
 
   return (
     <>
-      <BackToTopButton />
       <Router>
+      <BackToTopButton />
         <Navbar />
         <Routes>
           <Route path="/" element={<AlarmClock />} />

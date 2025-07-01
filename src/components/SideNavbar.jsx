@@ -17,8 +17,8 @@ const SideNavbar = () => {
                         `text-center flex-grow-1 ${isActive ? "bg-secondary" : ""}`
                     }
                 >
-                    <TfiAlarmClock className="fs-4" style={{ fontSize: "15px", position: "relative", top: "-2px", color: "white" }} />
-                    <div style={{ fontSize: "15px", color: "white" }}>Alarm</div>
+                    <TfiAlarmClock className="fs-4" style={{ fontSize: "15px", position: "relative", top: "7px", color: "white" }} />
+                    <div style={{ fontSize: "15px", color: "white", position: "relative", top: "10px" }}>Alarm</div>
                 </NavLink>
 
                 <NavLink
