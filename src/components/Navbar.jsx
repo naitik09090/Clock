@@ -21,7 +21,7 @@ const Navbar = () => {
         <>
             <nav className="d-block navbar navbar-expand-sm navbar-dark bg-dark p-3 fixed-top">
                 <div className="container-fluid">
-                    <h3><a href='#' className='navbar-brand'>Logo</a></h3>
+                    <h3><a href='/' className='navbar-brand'>Logo</a></h3>
 
                     {/* Toggle Button */}
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">

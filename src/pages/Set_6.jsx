@@ -40,7 +40,6 @@ const Set_4 = () => {
         <div className='container-fluid'>
             <div className="row Home_Main flex flex-column justify-content-center align-items-center vh-100 bg-traslate mb-3">
                 <div className="col-md-12 col-sm-12 col-xs-12 Time_NOw text-center">
-                    <h1>Set Alarm for 6 AM</h1>
                     <h1
                         style={{
                             fontFamily: "'Digital-7 Mono', monospace",
@@ -139,32 +138,78 @@ const Set_4 = () => {
                         <a href='/Set-6'>
                             <button>6:00 AM</button>{' '}
                         </a>
-                        <button>6:01 AM</button>{' '}
-                        <button>6:02 AM</button>{' '}
-                        <button>6:03 AM</button>{' '}
-                        <button>6:04 AM</button>{' '}
-                        <button>6:05 AM</button>{' '}
-                        <button>6:06 AM</button>{' '}
-                        <button>6:07 AM</button>{' '}
-                        <button>6:08 AM</button>{' '}
-                        <button>6:09 AM</button>{' '}
-                        <button>6:10 AM</button>{' '}
-                        <button>6:11 AM</button>{' '}
+                        <a href='/Set-6-1-1'>
+                            <button>6:01 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-2'>
+                            <button>6:02 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-3'>
+                            <button>6:03 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-4'>
+                            <button>6:04 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-6'>
+                            <button>6:05 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-6'>
+                            <button>6:06 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-7'>
+                            <button>6:07 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-8'>
+                            <button>6:08 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-9'>
+                            <button>6:09 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-10'>
+                            <button>6:10 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-11'>
+                            <button>6:11 AM</button>{' '}
+                        </a>
                         <br />
                         <br />
                         <p className='Row_Bottom'></p>
-                        <button>6:00 AM</button>{' '}
-                        <button>6:05 AM</button>{' '}
-                        <button>6:10 AM</button>{' '}
-                        <button>6:15 AM</button>{' '}
-                        <button>6:20 AM</button>{' '}
-                        <button>6:25 AM</button>{' '}
-                        <button>6:30 AM</button>{' '}
-                        <button>6:35 AM</button>{' '}
-                        <button>6:40 AM</button>{' '}
-                        <button>6:45 AM</button>{' '}
-                        <button>6:50 AM</button>{' '}
-                        <button>6:55 AM</button>{' '}
+                        <a href='/Set-6'>
+                            <button>6:00 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-5'>
+                            <button>6:05 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-10'>
+                            <button>6:10 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-15'>
+                            <button>6:15 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-20'>
+                            <button>6:20 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-25'>
+                            <button>6:25 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-30'>
+                            <button>6:30 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-35'>
+                            <button>6:35 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-40'>
+                            <button>6:40 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-45'>
+                            <button>6:45 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-50'>
+                            <button>6:50 AM</button>{' '}
+                        </a>
+                        <a href='/Set-6-1-55'>
+                            <button>6:55 AM</button>{' '}
+                        </a>
                         <br />
                         <br />
                         <p className='Row_Bottom'></p>

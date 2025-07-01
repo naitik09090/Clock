@@ -175,18 +175,42 @@ const Set_4 = () => {
                         <br />
                         <br />
                         <p className='Row_Bottom'></p>
-                        <button>4:00 AM</button>{' '}
-                        <button>4:05 AM</button>{' '}
-                        <button>4:10 AM</button>{' '}
-                        <button>4:15 AM</button>{' '}
-                        <button>4:20 AM</button>{' '}
-                        <button>4:25 AM</button>{' '}
-                        <button>4:30 AM</button>{' '}
-                        <button>4:35 AM</button>{' '}
-                        <button>4:40 AM</button>{' '}
-                        <button>4:45 AM</button>{' '}
-                        <button>4:50 AM</button>{' '}
-                        <button>4:55 AM</button>{' '}
+                        <a href='/Set-4'>
+                            <button>4:00 AM</button>{' '}
+                        </a>
+                        <a href='/Set-4-1-5'>
+                            <button>4:05 AM</button>{' '}
+                        </a>
+                        <a href='/Set-4-1-10'>
+                            <button>4:10 AM</button>{' '}
+                        </a>
+                        <a href='/Set-4-1-15'>
+                            <button>4:15 AM</button>{' '}
+                        </a>
+                        <a href='/Set-4-1-20'>
+                            <button>4:20 AM</button>{' '}
+                        </a>
+                        <a href='/Set-4-1-25'>
+                            <button>4:25 AM</button>{' '}
+                        </a>
+                        <a href='/Set-4-1-30'>
+                            <button>4:30 AM</button>{' '}
+                        </a>
+                        <a href='/Set-4-1-35'>
+                            <button>4:35 AM</button>{' '}
+                        </a>
+                        <a href='/Set-4-1-40'>
+                            <button>4:40 AM</button>{' '}
+                        </a>
+                        <a href='/Set-4-1-45'>
+                            <button>4:45 AM</button>{' '}
+                        </a>
+                        <a href='/Set-4-1-50'>
+                            <button>4:50 AM</button>{' '}
+                        </a>
+                        <a href='/Set-4-1-55'>
+                            <button>4:55 AM</button>{' '}
+                        </a>
                         <br />
                         <br />
                         <p className='Row_Bottom'></p>
