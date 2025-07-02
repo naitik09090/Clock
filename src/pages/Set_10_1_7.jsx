@@ -40,7 +40,7 @@ const Set_4 = () => {
         <div className='container-fluid'>
             <div className="row Home_Main flex flex-column justify-content-center align-items-center vh-100 bg-traslate mb-3">
                 <div className="col-md-12 col-sm-12 col-xs-12 Time_NOw text-center">
-                    <h1>Set Alarm for 10 AM</h1>
+                    <h1>Set Alarm for 10:07 AM</h1>
                     <h1
                         style={{
                             fontFamily: "'Digital-7 Mono', monospace",
@@ -136,24 +136,6 @@ const Set_4 = () => {
                         <span className='time_Set'>Set the alarm for the specified time</span>
                         <br />
                         <p className='Row_Bottom'></p>
-                        <a href='/Set-10'>
-                            <button>10:00 AM</button>{' '}
-                        </a>
-                        <a href='/Set-10-1-1'>
-                            <button>10:01 AM</button>{' '}
-                        </a>
-                        <a href='/Set-10-1-2'>
-                            <button>10:02 AM</button>{' '}
-                        </a>
-                        <a href='/Set-10-1-3'>
-                            <button>10:03 AM</button>{' '}
-                        </a>
-                        <a href='/Set-10-1-4'>
-                            <button>10:04 AM</button>{' '}
-                        </a>
-                        <a href='/Set-10-1-6'>
-                            <button>10:05 AM</button>{' '}
-                        </a>
                         <a href='/Set-10-1-6'>
                             <button>10:06 AM</button>{' '}
                         </a>
@@ -171,6 +153,24 @@ const Set_4 = () => {
                         </a>
                         <a href='/Set-10-1-11'>
                             <button>10:11 AM</button>{' '}
+                        </a>
+                        <a href='/Set-10-1-12'>
+                            <button>10:12 AM</button>{' '}
+                        </a>
+                        <a href='/Set-10-1-13'>
+                            <button>10:13 AM</button>{' '}
+                        </a>
+                        <a href='/Set-10-1-14'>
+                            <button>10:14 AM</button>{' '}
+                        </a>
+                        <a href='/Set-10-1-15'>
+                            <button>10:15 AM</button>{' '}
+                        </a>
+                        <a href='/Set-10-1-16'>
+                            <button>10:16 AM</button>{' '}
+                        </a>
+                        <a href='/Set-10-1-17'>
+                            <button>10:17 AM</button>{' '}
                         </a>
                         <br />
                         <br />
@@ -249,9 +249,9 @@ const Set_4 = () => {
             <div className='container-fluid'>
                 <div className='row Home_Main'>
                     <div className='col-md-12 BTN_Timer2 text-start bg-traslate border'>
-                        <h1>Wake me up at 10:00 AM</h1>
+                        <h1>Wake me up at 10:07 AM</h1>
                         <div className='Row_Bottom'></div>
-                        <p>Set the alarm for 10:00 AM. Set my alarm for 10:00 AM. This free alarm clock will wake you up in time.</p>
+                        <p>Set the alarm for 10:07 AM. Set my alarm for 10:07 AM. This free alarm clock will wake you up in time.</p>
                         <p>Set the hour and minute for the online alarm clock. The alarm message will appear, and the preselected sound will be played at the set time.</p>
                         <p>When setting the alarm, you can click the "Test" button to preview the alert and check the sound volume.</p>
                     </div>

@@ -40,7 +40,7 @@ const Set_4 = () => {
         <div className='container-fluid'>
             <div className="row Home_Main flex flex-column justify-content-center align-items-center vh-100 bg-traslate mb-3">
                 <div className="col-md-12 col-sm-12 col-xs-12 Time_NOw text-center">
-                    <h1>Set Alarm for 10 AM</h1>
+                    <h1>Set Alarm for 10:01 AM</h1>
                     <h1
                         style={{
                             fontFamily: "'Digital-7 Mono', monospace",
@@ -249,9 +249,9 @@ const Set_4 = () => {
             <div className='container-fluid'>
                 <div className='row Home_Main'>
                     <div className='col-md-12 BTN_Timer2 text-start bg-traslate border'>
-                        <h1>Wake me up at 10:00 AM</h1>
+                        <h1>Wake me up at 10:01 AM</h1>
                         <div className='Row_Bottom'></div>
-                        <p>Set the alarm for 10:00 AM. Set my alarm for 10:00 AM. This free alarm clock will wake you up in time.</p>
+                        <p>Set the alarm for 10:01 AM. Set my alarm for 10:01 AM. This free alarm clock will wake you up in time.</p>
                         <p>Set the hour and minute for the online alarm clock. The alarm message will appear, and the preselected sound will be played at the set time.</p>
                         <p>When setting the alarm, you can click the "Test" button to preview the alert and check the sound volume.</p>
                     </div>
