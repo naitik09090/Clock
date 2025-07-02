@@ -264,7 +264,125 @@ import Set_8_1 from './pages/Set_8_1.jsx'
 import Set_8_2 from './pages/Set_8_2.jsx'
 import Set_8_3 from './pages/Set_8_3.jsx'
 import Set_8 from './pages/Set_8.jsx'
+import Set_8_1_1 from './pages/Set_8_1_1.jsx'
+import Set_8_1_2 from './pages/Set_8_1_2.jsx'
+import Set_8_1_3 from './pages/Set_8_1_3.jsx'
+import Set_8_1_4 from './pages/Set_8_1_4.jsx'
+import Set_8_1_5 from './pages/Set_8_1_5.jsx'
+import Set_8_1_6 from './pages/Set_8_1_6.jsx'
+import Set_8_1_7 from './pages/Set_8_1_7.jsx'
+import Set_8_1_8 from './pages/Set_8_1_8.jsx'
+import Set_8_1_9 from './pages/Set_8_1_9.jsx'
+import Set_8_1_10 from './pages/Set_8_1_10.jsx'
+import Set_8_1_11 from './pages/Set_8_1_11.jsx'
+import Set_8_1_12 from './pages/Set_8_1_12.jsx'
+import Set_8_1_13 from './pages/Set_8_1_13.jsx'
+import Set_8_1_14 from './pages/Set_8_1_14.jsx'
+import Set_8_1_15 from './pages/Set_8_1_15.jsx'
+import Set_8_1_16 from './pages/Set_8_1_16.jsx'
+import Set_8_1_17 from './pages/Set_8_1_17.jsx'
+import Set_8_1_18 from './pages/Set_8_1_18.jsx'
+import Set_8_1_19 from './pages/Set_8_1_19.jsx'
+import Set_8_1_20 from './pages/Set_8_1_20.jsx'
+import Set_8_1_21 from './pages/Set_8_1_21.jsx'
+import Set_8_1_22 from './pages/Set_8_1_22.jsx'
+import Set_8_1_23 from './pages/Set_8_1_23.jsx'
+import Set_8_1_24 from './pages/Set_8_1_24.jsx'
+import Set_8_1_25 from './pages/Set_8_1_25.jsx'
+import Set_8_1_26 from './pages/Set_8_1_26.jsx'
+import Set_8_1_27 from './pages/Set_8_1_27.jsx'
+import Set_8_1_28 from './pages/Set_8_1_28.jsx'
+import Set_8_1_29 from './pages/Set_8_1_29.jsx'
+import Set_8_1_30 from './pages/Set_8_1_30.jsx'
+import Set_8_1_31 from './pages/Set_8_1_31.jsx'
+import Set_8_1_32 from './pages/Set_8_1_32.jsx'
+import Set_8_1_33 from './pages/Set_8_1_33.jsx'
+import Set_8_1_34 from './pages/Set_8_1_34.jsx'
+import Set_8_1_35 from './pages/Set_8_1_35.jsx'
+import Set_8_1_36 from './pages/Set_8_1_36.jsx'
+import Set_8_1_37 from './pages/Set_8_1_37.jsx'
+import Set_8_1_38 from './pages/Set_8_1_38.jsx'
+import Set_8_1_39 from './pages/Set_8_1_39.jsx'
+import Set_8_1_40 from './pages/Set_8_1_40.jsx'
+import Set_8_1_41 from './pages/Set_8_1_41.jsx'
+import Set_8_1_42 from './pages/Set_8_1_42.jsx'
+import Set_8_1_43 from './pages/Set_8_1_43.jsx'
+import Set_8_1_44 from './pages/Set_8_1_44.jsx'
+import Set_8_1_45 from './pages/Set_8_1_45.jsx'
+import Set_8_1_46 from './pages/Set_8_1_46.jsx'
+import Set_8_1_47 from './pages/Set_8_1_47.jsx'
+import Set_8_1_48 from './pages/Set_8_1_48.jsx'
+import Set_8_1_49 from './pages/Set_8_1_49.jsx'
+import Set_8_1_50 from './pages/Set_8_1_50.jsx'
+import Set_8_1_51 from './pages/Set_8_1_51.jsx'
+import Set_8_1_52 from './pages/Set_8_1_52.jsx'
+import Set_8_1_53 from './pages/Set_8_1_53.jsx'
+import Set_8_1_54 from './pages/Set_8_1_54.jsx'
+import Set_8_1_55 from './pages/Set_8_1_55.jsx'
+import Set_8_1_56 from './pages/Set_8_1_56.jsx'
+import Set_8_1_57 from './pages/Set_8_1_57.jsx'
+import Set_8_1_58 from './pages/Set_8_1_58.jsx'
+import Set_8_1_59 from './pages/Set_8_1_59.jsx'
 import Set_9 from './pages/Set_9.jsx'
+import Set_9_1_1 from './pages/Set_9_1_1.jsx'
+import Set_9_1_2 from './pages/Set_9_1_2.jsx'
+import Set_9_1_3 from './pages/Set_9_1_3.jsx'
+import Set_9_1_4 from './pages/Set_9_1_4.jsx'
+import Set_9_1_5 from './pages/Set_9_1_5.jsx'
+import Set_9_1_6 from './pages/Set_9_1_6.jsx'
+import Set_9_1_7 from './pages/Set_9_1_7.jsx'
+import Set_9_1_8 from './pages/Set_9_1_8.jsx'
+import Set_9_1_9 from './pages/Set_9_1_9.jsx'
+import Set_9_1_10 from './pages/Set_9_1_10.jsx'
+import Set_9_1_11 from './pages/Set_9_1_11.jsx'
+import Set_9_1_12 from './pages/Set_9_1_12.jsx'
+import Set_9_1_13 from './pages/Set_9_1_13.jsx'
+import Set_9_1_14 from './pages/Set_9_1_14.jsx'
+import Set_9_1_15 from './pages/Set_9_1_15.jsx'
+import Set_9_1_16 from './pages/Set_9_1_16.jsx'
+import Set_9_1_17 from './pages/Set_9_1_17.jsx'
+import Set_9_1_18 from './pages/Set_9_1_18.jsx'
+import Set_9_1_19 from './pages/Set_9_1_19.jsx'
+import Set_9_1_20 from './pages/Set_9_1_20.jsx'
+import Set_9_1_21 from './pages/Set_9_1_21.jsx'
+import Set_9_1_22 from './pages/Set_9_1_22.jsx'
+import Set_9_1_23 from './pages/Set_9_1_23.jsx'
+import Set_9_1_24 from './pages/Set_9_1_24.jsx'
+import Set_9_1_25 from './pages/Set_9_1_25.jsx'
+import Set_9_1_26 from './pages/Set_9_1_26.jsx'
+import Set_9_1_27 from './pages/Set_9_1_27.jsx'
+import Set_9_1_28 from './pages/Set_9_1_28.jsx'
+import Set_9_1_29 from './pages/Set_9_1_29.jsx'
+import Set_9_1_30 from './pages/Set_9_1_30.jsx'
+import Set_9_1_31 from './pages/Set_9_1_31.jsx'
+import Set_9_1_32 from './pages/Set_9_1_32.jsx'
+import Set_9_1_33 from './pages/Set_9_1_33.jsx'
+import Set_9_1_34 from './pages/Set_9_1_34.jsx'
+import Set_9_1_35 from './pages/Set_9_1_35.jsx'
+import Set_9_1_36 from './pages/Set_9_1_36.jsx'
+import Set_9_1_37 from './pages/Set_9_1_37.jsx'
+import Set_9_1_38 from './pages/Set_9_1_38.jsx'
+import Set_9_1_39 from './pages/Set_9_1_39.jsx'
+import Set_9_1_40 from './pages/Set_9_1_40.jsx'
+import Set_9_1_41 from './pages/Set_9_1_41.jsx'
+import Set_9_1_42 from './pages/Set_9_1_42.jsx'
+import Set_9_1_43 from './pages/Set_9_1_43.jsx'
+import Set_9_1_44 from './pages/Set_9_1_44.jsx'
+import Set_9_1_45 from './pages/Set_9_1_45.jsx'
+import Set_9_1_46 from './pages/Set_9_1_46.jsx'
+import Set_9_1_47 from './pages/Set_9_1_47.jsx'
+import Set_9_1_48 from './pages/Set_9_1_48.jsx'
+import Set_9_1_49 from './pages/Set_9_1_49.jsx'
+import Set_9_1_50 from './pages/Set_9_1_50.jsx'
+import Set_9_1_51 from './pages/Set_9_1_51.jsx'
+import Set_9_1_52 from './pages/Set_9_1_52.jsx'
+import Set_9_1_53 from './pages/Set_9_1_53.jsx'
+import Set_9_1_54 from './pages/Set_9_1_54.jsx'
+import Set_9_1_55 from './pages/Set_9_1_55.jsx'
+import Set_9_1_56 from './pages/Set_9_1_56.jsx'
+import Set_9_1_57 from './pages/Set_9_1_57.jsx'
+import Set_9_1_58 from './pages/Set_9_1_58.jsx'
+import Set_9_1_59 from './pages/Set_9_1_59.jsx'
 import Set_10 from './pages/Set_10.jsx'
 import Set_11 from './pages/Set_11.jsx'
 import Set_12 from './pages/Set_12.jsx'
@@ -544,7 +662,125 @@ function App() {
           <Route path="/Set-8-2" element={<Set_8_2 />} />
           <Route path="/Set-8-3" element={<Set_8_3 />} />
           <Route path="/Set-8" element={<Set_8 />} />
+          <Route path="/Set-8-1-1" element={<Set_8_1_1 />} />
+          <Route path="/Set-8-1-2" element={<Set_8_1_2 />} />
+          <Route path="/Set-8-1-3" element={<Set_8_1_3 />} />
+          <Route path="/Set-8-1-4" element={<Set_8_1_4 />} />
+          <Route path="/Set-8-1-5" element={<Set_8_1_5 />} />
+          <Route path="/Set-8-1-6" element={<Set_8_1_6 />} />
+          <Route path="/Set-8-1-7" element={<Set_8_1_7 />} />
+          <Route path="/Set-8-1-8" element={<Set_8_1_8 />} />
+          <Route path="/Set-8-1-9" element={<Set_8_1_9 />} />
+          <Route path="/Set-8-1-10" element={<Set_8_1_10 />} />
+          <Route path="/Set-8-1-11" element={<Set_8_1_11 />} />
+          <Route path="/Set-8-1-12" element={<Set_8_1_12 />} />
+          <Route path="/Set-8-1-13" element={<Set_8_1_13 />} />
+          <Route path="/Set-8-1-14" element={<Set_8_1_14 />} />
+          <Route path="/Set-8-1-15" element={<Set_8_1_15 />} />
+          <Route path="/Set-8-1-16" element={<Set_8_1_16 />} />
+          <Route path="/Set-8-1-17" element={<Set_8_1_17 />} />
+          <Route path="/Set-8-1-18" element={<Set_8_1_18 />} />
+          <Route path="/Set-8-1-19" element={<Set_8_1_19 />} />
+          <Route path="/Set-8-1-20" element={<Set_8_1_20 />} />
+          <Route path="/Set-8-1-21" element={<Set_8_1_21 />} />
+          <Route path="/Set-8-1-22" element={<Set_8_1_22 />} />
+          <Route path="/Set-8-1-23" element={<Set_8_1_23 />} />
+          <Route path="/Set-8-1-24" element={<Set_8_1_24 />} />
+          <Route path="/Set-8-1-25" element={<Set_8_1_25 />} />
+          <Route path="/Set-8-1-26" element={<Set_8_1_26 />} />
+          <Route path="/Set-8-1-27" element={<Set_8_1_27 />} />
+          <Route path="/Set-8-1-28" element={<Set_8_1_28 />} />
+          <Route path="/Set-8-1-29" element={<Set_8_1_29 />} />
+          <Route path="/Set-8-1-30" element={<Set_8_1_30 />} />
+          <Route path="/Set-8-1-31" element={<Set_8_1_31 />} />
+          <Route path="/Set-8-1-32" element={<Set_8_1_32 />} />
+          <Route path="/Set-8-1-33" element={<Set_8_1_33 />} />
+          <Route path="/Set-8-1-34" element={<Set_8_1_34 />} />
+          <Route path="/Set-8-1-35" element={<Set_8_1_35 />} />
+          <Route path="/Set-8-1-36" element={<Set_8_1_36 />} />
+          <Route path="/Set-8-1-37" element={<Set_8_1_37 />} />
+          <Route path="/Set-8-1-38" element={<Set_8_1_38 />} />
+          <Route path="/Set-8-1-39" element={<Set_8_1_39 />} />
+          <Route path="/Set-8-1-40" element={<Set_8_1_40 />} />
+          <Route path="/Set-8-1-41" element={<Set_8_1_41 />} />
+          <Route path="/Set-8-1-42" element={<Set_8_1_42 />} />
+          <Route path="/Set-8-1-43" element={<Set_8_1_43 />} />
+          <Route path="/Set-8-1-44" element={<Set_8_1_44 />} />
+          <Route path="/Set-8-1-45" element={<Set_8_1_45 />} />
+          <Route path="/Set-8-1-46" element={<Set_8_1_46 />} />
+          <Route path="/Set-8-1-47" element={<Set_8_1_47 />} />
+          <Route path="/Set-8-1-48" element={<Set_8_1_48 />} />
+          <Route path="/Set-8-1-49" element={<Set_8_1_49 />} />
+          <Route path="/Set-8-1-50" element={<Set_8_1_50 />} />
+          <Route path="/Set-8-1-51" element={<Set_8_1_51 />} />
+          <Route path="/Set-8-1-52" element={<Set_8_1_52 />} />
+          <Route path="/Set-8-1-53" element={<Set_8_1_53 />} />
+          <Route path="/Set-8-1-54" element={<Set_8_1_54 />} />
+          <Route path="/Set-8-1-55" element={<Set_8_1_55 />} />
+          <Route path="/Set-8-1-56" element={<Set_8_1_56 />} />
+          <Route path="/Set-8-1-57" element={<Set_8_1_57 />} />
+          <Route path="/Set-8-1-58" element={<Set_8_1_58 />} />
+          <Route path="/Set-8-1-59" element={<Set_8_1_59 />} />
           <Route path="/Set-9" element={<Set_9 />} />
+          <Route path="/Set-9-1-1" element={<Set_9_1_1 />} />
+          <Route path="/Set-9-1-2" element={<Set_9_1_2 />} />
+          <Route path="/Set-9-1-3" element={<Set_9_1_3 />} />
+          <Route path="/Set-9-1-4" element={<Set_9_1_4 />} />
+          <Route path="/Set-9-1-5" element={<Set_9_1_5 />} />
+          <Route path="/Set-9-1-6" element={<Set_9_1_6 />} />
+          <Route path="/Set-9-1-7" element={<Set_9_1_7 />} />
+          <Route path="/Set-9-1-8" element={<Set_9_1_8 />} />
+          <Route path="/Set-9-1-9" element={<Set_9_1_9 />} />
+          <Route path="/Set-9-1-10" element={<Set_9_1_10 />} />
+          <Route path="/Set-9-1-11" element={<Set_9_1_11 />} />
+          <Route path="/Set-9-1-12" element={<Set_9_1_12 />} />
+          <Route path="/Set-9-1-13" element={<Set_9_1_13 />} />
+          <Route path="/Set-9-1-14" element={<Set_9_1_14 />} />
+          <Route path="/Set-9-1-15" element={<Set_9_1_15 />} />
+          <Route path="/Set-9-1-16" element={<Set_9_1_16 />} />
+          <Route path="/Set-9-1-17" element={<Set_9_1_17 />} />
+          <Route path="/Set-9-1-18" element={<Set_9_1_18 />} />
+          <Route path="/Set-9-1-19" element={<Set_9_1_19 />} />
+          <Route path="/Set-9-1-20" element={<Set_9_1_20 />} />
+          <Route path="/Set-9-1-21" element={<Set_9_1_21 />} />
+          <Route path="/Set-9-1-22" element={<Set_9_1_22 />} />
+          <Route path="/Set-9-1-23" element={<Set_9_1_23 />} />
+          <Route path="/Set-9-1-24" element={<Set_9_1_24 />} />
+          <Route path="/Set-9-1-25" element={<Set_9_1_25 />} />
+          <Route path="/Set-9-1-26" element={<Set_9_1_26 />} />
+          <Route path="/Set-9-1-27" element={<Set_9_1_27 />} />
+          <Route path="/Set-9-1-28" element={<Set_9_1_28 />} />
+          <Route path="/Set-9-1-29" element={<Set_9_1_29 />} />
+          <Route path="/Set-9-1-30" element={<Set_9_1_30 />} />
+          <Route path="/Set-9-1-31" element={<Set_9_1_31 />} />
+          <Route path="/Set-9-1-32" element={<Set_9_1_32 />} />
+          <Route path="/Set-9-1-33" element={<Set_9_1_33 />} />
+          <Route path="/Set-9-1-34" element={<Set_9_1_34 />} />
+          <Route path="/Set-9-1-35" element={<Set_9_1_35 />} />
+          <Route path="/Set-9-1-36" element={<Set_9_1_36 />} />
+          <Route path="/Set-9-1-37" element={<Set_9_1_37 />} />
+          <Route path="/Set-9-1-38" element={<Set_9_1_38 />} />
+          <Route path="/Set-9-1-39" element={<Set_9_1_39 />} />
+          <Route path="/Set-9-1-40" element={<Set_9_1_40 />} />
+          <Route path="/Set-9-1-41" element={<Set_9_1_41 />} />
+          <Route path="/Set-9-1-42" element={<Set_9_1_42 />} />
+          <Route path="/Set-9-1-43" element={<Set_9_1_43 />} />
+          <Route path="/Set-9-1-44" element={<Set_9_1_44 />} />
+          <Route path="/Set-9-1-45" element={<Set_9_1_45 />} />
+          <Route path="/Set-9-1-46" element={<Set_9_1_46 />} />
+          <Route path="/Set-9-1-47" element={<Set_9_1_47 />} />
+          <Route path="/Set-9-1-48" element={<Set_9_1_48 />} />
+          <Route path="/Set-9-1-49" element={<Set_9_1_49 />} />
+          <Route path="/Set-9-1-50" element={<Set_9_1_50 />} />
+          <Route path="/Set-9-1-51" element={<Set_9_1_51 />} />
+          <Route path="/Set-9-1-52" element={<Set_9_1_52 />} />
+          <Route path="/Set-9-1-53" element={<Set_9_1_53 />} />
+          <Route path="/Set-9-1-54" element={<Set_9_1_54 />} />
+          <Route path="/Set-9-1-55" element={<Set_9_1_55 />} />
+          <Route path="/Set-9-1-56" element={<Set_9_1_56 />} />
+          <Route path="/Set-9-1-57" element={<Set_9_1_57 />} />
+          <Route path="/Set-9-1-58" element={<Set_9_1_58 />} />
+          <Route path="/Set-9-1-59" element={<Set_9_1_59 />} />
           <Route path="/Set-10" element={<Set_10 />} />
           <Route path="/Set-11" element={<Set_11 />} />
           <Route path="/Set-12" element={<Set_12 />} />
