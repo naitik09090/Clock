@@ -150,3 +150,57 @@ button{
     top: -1px;
     cursor: pointer;
 }
+.clock {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: #111;
+    margin: 20px auto;
+}
+.dot {
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+}
+.center {
+    width: 10px;
+    height: 10px;
+    background: white;
+    transform: translate(-50%, -50%);
+}
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom;
+    background: white;
+    border-radius: 2px;
+}
+.hour {
+    width: 4px;
+    height: 60px;
+}
+.minute {
+    width: 3px;
+    height: 80px;
+}
+.second {
+    width: 2px;
+    height: 90px;
+    background: #00bfff;
+}
+.clock-mode {
+    cursor: pointer;
+    padding: 5px 10px;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+}
+.clock-mode.active {
+    border-bottom: 2px solid white;
+}

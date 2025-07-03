@@ -5,16 +5,12 @@ import { Link } from 'react-router-dom';
 
 
 const Home = () => {
-    const [currentTime, setCurrentTime] = useState(new Date());
-    const [showModal, setShowModal] = useState(false);
-    const [hour, setHour] = useState('6 AM');
-    const [minute, setMinute] = useState('00');
-    const [sound, setSound] = useState('Childhood');
-    const [repeat, setRepeat] = useState(true);
-    const [title, setTitle] = useState('Alarm 6:00 AM');
+    const [time, setTime] = useState(new Date());
+    const [is24Hour, setIs24Hour] = useState(false);
+    const [clockType, setClockType] = useState('watch');
 
     useEffect(() => {
-        const interval = setInterval(() => setCurrentTime(new Date()), 1000);
+        const interval = setInterval(() => setTime(new Date()), 1000);
         return () => clearInterval(interval);
     }, []);
 
@@ -23,7 +19,7 @@ const Home = () => {
             hour: '2-digit',
             minute: '2-digit',
             second: '2-digit',
-            hour12: true
+            hour12: !is24Hour,
         });
     };
 
@@ -32,108 +28,86 @@ const Home = () => {
             weekday: 'short',
             month: 'short',
             day: '2-digit',
-            year: 'numeric'
+            year: 'numeric',
         }).toUpperCase();
     };
 
-    const handleShow = () => setShowModal(true);
-    const handleClose = () => setShowModal(false);
+    // Clock calculations
+    const hours = time.getHours() % (is24Hour ? 24 : 12);
+    const minutes = time.getMinutes();
+    const seconds = time.getSeconds();
 
+    const hourDeg = (hours + minutes / 60) * 30;
+    const minuteDeg = (minutes + seconds / 60) * 6;
+    const secondDeg = seconds * 6;
     return (
         <>
             <div className='container-fluid'>
-                <div className='container-fluid'>
-                    <div className="row flex flex-column justify-content-center align-items-center vh-100 bg-traslate mb-3">
-                        <div className="col-md-12 col-sm-12 col-xs-12 Time_NOw justify-content-center text-center">
-                            <h1
-                                style={{
-                                    fontFamily: "'Digital-7 Mono', monospace",
-                                    fontSize: "60px",
-                                }}
-                            >
-                                {formatTime(currentTime)}
-                            </h1>
+                <div className="container-fluid" style={{ minHeight: '100vh' }}>
+                    <div className="row flex-column justify-content-center align-items-center vh-100">
+                        <div className="col-md-12 text-center mb-4">
+                            {clockType === 'watch' ? (
+                                <div className="clock">
+                                    <div className="dot center"></div>
+                                    <div className="hand hour" style={{ transform: `rotate(${hourDeg}deg)` }}></div>
+                                    <div className="hand minute" style={{ transform: `rotate(${minuteDeg}deg)` }}></div>
+                                    <div className="hand second" style={{ transform: `rotate(${secondDeg}deg)` }}></div>
+                                    {[...Array(12)].map((_, i) => (
+                                        <div
+                                            className="dot mb-4"
+                                            key={i}
+                                            style={{ transform: `rotate(${i * 30}deg) translateY(-100px)` }}
+                                        ></div>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div>
+                                    <h1 style={{ fontSize: '60px' }}>
+                                        {formatTime(time)}
+                                    </h1>
+                                </div>
+                            )}
                             <p
                                 className="mb-4"
                                 style={{
-                                    fontFamily: "'Digital-7 Mono', monospace",
-                                    fontSize: "20px",
-                                    letterSpacing: "2px"
+                                    fontSize: '20px',
+                                    letterSpacing: '2px',
                                 }}
                             >
-                                {formatDate(currentTime)}
+                                {formatDate(time)}
                             </p>
-                        </div>
-                        <div className='row flex flex-column justify-content-center align-items-center text-center'>
-                            <div className="col-md-12">
-                                <button type="button" className="Set_Alarm" onClick={() => setShowModal(true)}>
-                                    Set Alarm
+
+                            <div className="d-flex justify-content-center align-items-center gap-3 mb-5">
+                                <button
+                                    className={`btn-sm ${clockType === 'watch'}`}
+                                    onClick={() => setClockType('watch')}
+                                >
+                                    watch
+                                </button>
+                                <button
+                                    className={`btn-sm ${clockType === 'digital'}`}
+                                    onClick={() => setClockType('digital')}
+                                >
+                                    Digital
                                 </button>
                             </div>
+
+                            {/* 12H/24H Toggle */}
+                            <div className="d-flex justify-content-center align-items-center gap-2">
+                                <span
+                                    onClick={() => setIs24Hour(false)}
+                                    className={`clock-mode ${!is24Hour ? 'active' : ''}`}
+                                >
+                                    12H
+                                </span>
+                                <span
+                                    onClick={() => setIs24Hour(true)}
+                                    className={`clock-mode ${is24Hour ? 'active' : ''}`}
+                                >
+                                    24H
+                                </span>
+                            </div>
                         </div>
-
-                        <Modal show={showModal} onHide={() => setShowModal(false)} centered>
-                            <Modal.Header style={{ backgroundColor: '#0099dd', color: 'white', paddingTop: '20px' }}>
-                                <Modal.Title>Edit Alarm</Modal.Title>
-                                <IoCloseSharp className='Close_Icon' onClick={handleClose} />
-                            </Modal.Header>
-                            <Modal.Body>
-                                <Form>
-                                    <div className="d-flex mb-3">
-                                        <div className="me-3 w-50">
-                                            <Form.Label>Hours</Form.Label>
-                                            <Form.Select value={hour} onChange={e => setHour(e.target.value)}>
-                                                <option>6 AM</option>
-                                                <option>7 AM</option>
-                                                <option>8 AM</option>
-                                                <option>9 AM</option>
-                                            </Form.Select>
-                                        </div>
-                                        <div className="w-50">
-                                            <Form.Label>Minutes</Form.Label>
-                                            <Form.Select value={minute} onChange={e => setMinute(e.target.value)}>
-                                                <option>00</option>
-                                                <option>15</option>
-                                                <option>30</option>
-                                                <option>45</option>
-                                            </Form.Select>
-                                        </div>
-                                    </div>
-
-                                    <Form.Group className="mb-3">
-                                        <Form.Label>Sound</Form.Label>
-                                        <div className="d-flex align-items-center">
-                                            <Form.Select className="me-2" value={sound} onChange={e => setSound(e.target.value)}>
-                                                <option>Childhood</option>
-                                                <option>Birdsong</option>
-                                            </Form.Select>
-                                            <Button variant="outline-secondary" className='Dot_Btn' size="sm">...</Button><br />
-                                            <Form.Check
-                                                type="checkbox"
-                                                label="Repeat sound"
-                                                className="ms-3"
-                                                checked={repeat}
-                                                onChange={e => setRepeat(e.target.checked)}
-                                            />
-                                        </div>
-                                    </Form.Group>
-
-                                    <Form.Group>
-                                        <Form.Label>Title</Form.Label>
-                                        <Form.Control
-                                            type="text"
-                                            value={title}
-                                            onChange={e => setTitle(e.target.value)}
-                                        />
-                                    </Form.Group>
-                                </Form>
-                            </Modal.Body>
-                            <Modal.Footer>
-                                <Button variant="light">Test</Button>
-                                <Button variant="secondary" onClick={() => setShowModal(false)}>Cancel</Button>
-                                <Button variant="success" onClick={() => setShowModal(false)}>Start</Button>
-                            </Modal.Footer>
-                        </Modal>
                     </div>
                 </div>
                 <div className='container-fluid'>

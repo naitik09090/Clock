@@ -525,10 +525,10 @@ function App() {
       <BackToTopButton />
         <Navbar />
         <Routes>
-          <Route path="/" element={<AlarmClock />} />
+          <Route path="/" element={<Clock />} />
           <Route path="/timer" element={<Timer />} />
           <Route path="/stopwatch" element={<StopWatch />} />
-          <Route path="/clock" element={<Clock />} />
+          <Route path="/clock" element={<AlarmClock />} />
           <Route path="/holidays" element={<Holidays />} />
           <Route path="/Set-4" element={<Set_4 />} />
           <Route path="/Set-4-1-1" element={<Set_4_1_1 />} />

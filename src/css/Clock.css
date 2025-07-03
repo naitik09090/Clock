@@ -5,3 +5,58 @@
 .ColcK_Data_3{
     width: auto;
 }
+.analog-clock {
+  position: relative;
+  border-radius: 50%;
+  background: #111;
+  margin: 0 auto;
+}
+
+.dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  transform-origin: center;
+}
+.center {
+  width: 10px;
+  height: 10px;
+  transform: translate(-50%, -50%);
+}
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom;
+  background: white;
+  border-radius: 2px;
+}
+.hour {
+  width: 4px;
+  height: 30%;
+}
+.minute {
+  width: 3px;
+  height: 40%;
+}
+.second {
+  width: 2px;
+  height: 44%;
+  background: #00bfff;
+}
+.txt_New_York{
+    position: relative;
+    bottom: 80px;
+}
+.txt_New_Yor2{
+    position: relative;
+    top: 100px;
+}
+.clock_analog{
+    height: 300px !important;
+    width: 90px;
+}

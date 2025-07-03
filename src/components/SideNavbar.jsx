@@ -12,6 +12,15 @@ const SideNavbar = () => {
             <div className="sidebar bg-dark text-light fixed-bottom d-flex justify-content-around" >
                 <NavLink
                     to="/"
+                    className={({ isActive }) =>
+                        `text-center py-2 flex-grow-1 ${isActive ? "bg-secondary" : ""}`
+                    }
+                >
+                    <WiTime9 className="fs-4" style={{ fontSize: "15px", position: "relative", top: "-2px", color: "white" }} />
+                    <div style={{ fontSize: "15px", color: "white" }}>Clock</div>
+                </NavLink>
+                <NavLink
+                    to="/clock"
                     end
                     className={({ isActive }) =>
                         `text-center flex-grow-1 ${isActive ? "bg-secondary" : ""}`
@@ -39,16 +48,6 @@ const SideNavbar = () => {
                 >
                     <RxStopwatch className="fs-4" style={{ fontSize: "15px", position: "relative", top: "-2px", color: "white" }} />
                     <div style={{ fontSize: "15px", color: "white" }}>Stopwatch</div>
-                </NavLink>
-
-                <NavLink
-                    to="/clock"
-                    className={({ isActive }) =>
-                        `text-center py-2 flex-grow-1 ${isActive ? "bg-secondary" : ""}`
-                    }
-                >
-                    <WiTime9 className="fs-4" style={{ fontSize: "15px", position: "relative", top: "-2px", color: "white" }} />
-                    <div style={{ fontSize: "15px", color: "white" }}>Clock</div>
                 </NavLink>
             </div >
         </>
