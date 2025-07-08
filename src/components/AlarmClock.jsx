@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Button } from "react-bootstrap";
 
 const Home = () => {
     const [time, setTime] = useState(new Date());
@@ -74,18 +75,18 @@ const Home = () => {
                             </p>
 
                             <div className="d-flex justify-content-center align-items-center gap-3 mb-5">
-                                <button
+                                <Button
                                     className={`btn-sm ${clockType === 'watch'}`}
                                     onClick={() => setClockType('watch')}
                                 >
                                     watch
-                                </button>
-                                <button
+                                </Button>
+                                <Button
                                     className={`btn-sm ${clockType === 'digital'}`}
                                     onClick={() => setClockType('digital')}
                                 >
                                     Digital
-                                </button>
+                                </Button>
                             </div>
 
                             {/* 12H/24H Toggle */}
