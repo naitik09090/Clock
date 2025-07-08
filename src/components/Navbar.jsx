@@ -39,10 +39,10 @@ const Navbar = () => {
                                     Tools
                                 </Link>
                                 <ul className="dropdown-menu">
-                                    <li><Link className="dropdown-item" to="/">Alarm Clock</Link></li>
+                                    <li><Link className="dropdown-item" to="/">Clock</Link></li>
+                                    <li><Link className="dropdown-item" to="/clock">Alarm Clock</Link></li>
                                     <li><Link className="dropdown-item" to="/timer">Timer</Link></li>
                                     <li><Link className="dropdown-item" to="/stopwatch">Stopwatch</Link></li>
-                                    <li><Link className="dropdown-item" to="/clock">Clock</Link></li>
                                 </ul>
                             </li>
                             <li className="nav-item">

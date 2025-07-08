@@ -1,8 +1,4 @@
 import { useEffect, useState } from 'react'
-import { Modal, Button, Form, ModalHeader } from 'react-bootstrap';
-import { IoCloseSharp } from "react-icons/io5";
-import { Link } from 'react-router-dom';
-
 
 const Home = () => {
     const [time, setTime] = useState(new Date());
