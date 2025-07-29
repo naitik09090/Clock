@@ -21,17 +21,20 @@ const Clock = () => {
     }, []);
 
 
+    const [time1111, setTime1111] = useState(new Date());
+
     const fetchTimezones = async () => {
         try {
-            const response = await fetch('https://timeapi.io/api/time/current/zone?timeZone=Europe/Amsterdam');
+            const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+
+            const response = await fetch(`https://timeapi.io/api/time/current/zone?timeZone=${encodeURIComponent(timeZone)}`);
             const data = await response.json();
 
-            // Parse time string into a JavaScript Date object
             const [hours, minutes, seconds] = data.time.split(':').map(Number);
             const now = new Date();
             now.setHours(hours, minutes, seconds);
 
-            setTime1(now); // assuming setTime1 is used to show current time
+            setTime1111(new Date(now)); // update state with local time from API
         } catch (error) {
             console.error('Error fetching time:', error);
         }
@@ -39,10 +42,13 @@ const Clock = () => {
 
     useEffect(() => {
         fetchTimezones();
+        const timer = setInterval(() => {
+            setTime1111(new Date());
+        }, 1000); // updates every second
 
-        const interval = setInterval(fetchTimezones, 10000); // update every 10s
-        return () => clearInterval(interval);
+        return () => clearInterval(timer); // cleanup on unmount
     }, []);
+
 
 
     const time = moment(now).tz(zone);
@@ -207,7 +213,7 @@ const Clock = () => {
                         ) : (
                             <div>
                                 <h1 style={{ fontFamily: "'Digital-7 Mono', monospace", fontSize: '60px' }}>
-                                    {formatTime(time1)}
+                                    {time1111.toLocaleTimeString()}
                                 </h1>
                             </div>
                         )}
