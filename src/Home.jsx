@@ -691,6 +691,7 @@ import Footer from './components/Footer.jsx';
 import Contacts from './components/Contacts.jsx'
 import Holidays from './components/Holidays.jsx';
 import SideNavbar from './components/SideNavbar.jsx'
+// import SettingsSidebar from './components/SettingsSidebar.jsx';
 // import Nav from '../src/components/Nav.jsx'
 
 function App() {
@@ -699,8 +700,8 @@ function App() {
   return (
     <>
       <Router>
-      <BackToTopButton />
         <Navbar />
+        <BackToTopButton />
         <Routes>
           <Route path="/" element={<Clock />} />
           <Route path="/timer" element={<Timer />} />

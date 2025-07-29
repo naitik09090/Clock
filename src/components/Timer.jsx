@@ -1,24 +1,30 @@
-import React, { useRef, useState } from 'react'
-import { Link } from 'react-router-dom';
+import { useRef, useState } from 'react';
 
 const Timer = () => {
-    const [seconds, setSeconds] = useState(0); // total seconds
+    const [seconds, setSeconds] = useState(0);
     const [running, setRunning] = useState(false);
+    const [recentTimers, setRecentTimers] = useState([]);
     const intervalRef = useRef(null);
 
-    // Format seconds to MM:SS
-    const formatTime = (secs) => {
-        const min = String(Math.floor(secs / 60)).padStart(2, '0');
-        const sec = String(secs % 60).padStart(2, '0');
-        return `${min}:${sec}`;
+    const FetchData = async () => {
+        try {
+            const res = await fetch('https://worldtimeapi.org/api/timezone/Asia/Kolkata');
+            const data = await res.json();
+            const now = new Date(data.datetime);
+            const target = new Date("2025-07-28T16:00:00+05:30");
+
+            const diffInSeconds = Math.floor((target - now) / 1000);
+            setSeconds(diffInSeconds > 0 ? diffInSeconds : 0);
+        } catch (err) {
+            console.error(err);
+        }
     };
 
-    // Start Timer
     const handleStart = () => {
         if (!running && seconds > 0) {
             setRunning(true);
             intervalRef.current = setInterval(() => {
-                setSeconds((prev) => {
+                setSeconds(prev => {
                     if (prev <= 1) {
                         clearInterval(intervalRef.current);
                         setRunning(false);
@@ -30,14 +36,26 @@ const Timer = () => {
         }
     };
 
-    // Reset Timer
+    const formatTime = (secs) => {
+        const hrs = String(Math.floor(secs / 3600)).padStart(2, '0');
+        const min = String(Math.floor((secs % 3600) / 60)).padStart(2, '0');
+        const sec = String(secs % 60).padStart(2, '0');
+        return `${hrs}:${min}:${sec}`;
+    };
+
     const handleReset = () => {
         clearInterval(intervalRef.current);
         setRunning(false);
+        if (seconds > 0) {
+            const formatted = formatTime(seconds);
+            setRecentTimers(prev => {
+                const updated = [formatted, ...prev.filter(t => t !== formatted)];
+                return updated.slice(0, 10);
+            });
+        }
         setSeconds(0);
     };
 
-    // Edit Timer
     const handleEdit = () => {
         const input = prompt("Enter timer in seconds:", "60");
         const num = parseInt(input);
@@ -47,101 +65,94 @@ const Timer = () => {
     };
 
     return (
-        <>
-            <div className='container-fluid'>
-                <div className="container-fluid">
-                    {/* Digital Display */}
-                    <div className='row Home_Main d-flex justify-content-center align-items-center vh-100 bg-traslate mb-3'>
-                        <div className="col-md-12 Time_NOw timers justify-content-center text-center align-items-center d-flex flex-column"
-                            style={{
-                                fontFamily: "'Digital-7 Mono', monospace",
-                                fontSize: "60px",
-                            }}>{formatTime(seconds)}
-
-                            {/* Buttons */}
-                            <div className="col-md-12 d-flex justify-content-center gap-3">
-                                <button className="btn btn-primary" style={{
-                                    width: "110px",
-                                }} onClick={handleEdit}>Edit Timer</button>
-                                <button className="btn btn-warning" onClick={handleReset}>Reset</button>
-                                <button className="btn btn-success" onClick={handleStart} disabled={running || seconds === 0}>
-                                    Start
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="container-fluid mb-4">
-
-                    {/* Top Row: Predefined Timers + Recently Used */}
-                    <div className="row Home_Main mb-1">
-                        {/* Left: Timer Links */}
-                        <div className="col-md-6 BTN_Timer23 bg-traslate p-3 border">
-                            <h6 className="fw-bold">Set the timer for the specified time</h6>
-                            <p className='Row_Bottom'></p>
-                            <div className="row">
-                                <div className="col-md-3"></div>
-                                <div className="col-md-4">
-                                    <p>1 Minute Timer</p>
-                                    <p>3 Minute Timer</p>
-                                    <p>5 Minute Timer</p>
-                                    <p>10 Minute Timer</p>
-                                    <p>15 Minute Timer</p>
-                                    <p>20 Minute Timer</p>
-                                    <p>30 Minute Timer</p>
-                                    <p>40 Minute Timer</p>
-                                    <p>45 Minute Timer</p>
-                                    <p>60 Minute Timer</p>
-                                </div>
-                                <div className="col-md-4">
-                                    <p>10 Second Timer</p>
-                                    <p>20 Second Timer</p>
-                                    <p>30 Second Timer</p>
-                                    <p>45 Second Timer</p>
-                                    <p>60 Second Timer</p>
-                                    <p>90 Second Timer</p>
-                                    <p>1 Hour Timer</p>
-                                    <p>2 Hour Timer</p>
-                                    <p>4 Hour Timer</p>
-                                    <p>8 Hour Timer</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Right: Recently Used */}
-                        <div className="col-md-6 BTN_Timer24 bg-traslate p-3 border">
-                            <h6 className="fw-bold">Recently used</h6>
-                            <p className='Row_Bottom'></p>
-                        </div>
-                    </div>
-
-                    {/* Bottom Row: How to Use + Holidays */}
-                    <div className="row Home_Main">
-                        {/* How to use */}
-                        <div className="col-md-6 BTN_Timer23 bg-traslate p-3 border">
-                            <h6 className="fw-bold">How to use the online timer</h6>
-                            <p className='Row_Bottom'></p>
-                            <p>Set the hour, minute, and second for the online countdown timer, and start it. Alternatively, you can set the date and time to count days, hours, minutes, and seconds till (or from) the event. The timer triggered alert will appear, and the pre-selected sound will be played at the set time.</p>
-                            <p>Click the "Reset" button to start the timer from the initial value. Click the "Stop" ("Start") button to stop (start) the timer.</p>
-                            <p>You can add links to online timers with different time settings to your browser's Favorites. Opening such a link will set the timer to the predefined time.</p>
-                            <p>In the holiday list, you can launch a countdown timer for any holiday on the list, or you can create a new timer for your own event or holiday. Make sure to share your timer with your friends.</p>
-                        </div>
-
-                        {/* Holidays */}
-                        <div className="col-md-6 BTN_Timer24 bg-traslate p-3 border">
-                            <h6 className="fw-bold">Holidays</h6>
-                            <p className='Row_Bottom'></p>
-                            <div className="d-flex justify-content-between"><h5>New Year</h5><p>Jan 1, 2026 {'  '} 189 days</p></div>
-                            <div className="d-flex justify-content-between"><h5>Groundhog Day</h5><p>Feb 2, 2026{'  '}221 days</p></div>
-                            <div className="d-flex justify-content-between"><h5>Easter</h5><p>Apr 5, 2026{'  '}283 days</p></div>
-                            <div className="d-flex justify-content-between"><h5>Independence Day</h5><p>Jul 4, 2025{' '}8 days</p></div>
-                            <div className="d-flex justify-content-between"><h5>Christmas</h5><p>Dec 25, 2025{' '}182 days</p></div>
-                        </div>
+        <div className='container-fluid'>
+            {/* Top Display */}
+            <div className="row d-flex justify-content-center align-items-center vh-100 text-center bg-light">
+                <div className="col-12">
+                    <h1 style={{ fontFamily: "'Digital-7 Mono', monospace", fontSize: "60px" }}>
+                        {formatTime(seconds)}
+                    </h1>
+                    <div className="d-flex flex-wrap justify-content-center gap-2 mt-3">
+                        <button className="btn btn-primary" style={{ minWidth: "110px" }} onClick={handleEdit}>Edit</button>
+                        <button className="btn btn-warning text-white" onClick={handleReset}>Reset</button>
+                        <button
+                            className="btn btn-success"
+                            onClick={async () => {
+                                await FetchData();
+                                handleStart();
+                            }}
+                            disabled={running || seconds === 0}
+                        >
+                            Start
+                        </button>
                     </div>
                 </div>
             </div>
-        </>
-    );
-}
 
-export default Timer
+            {/* Predefined + Recent Timers */}
+            <div className="row mb-4">
+                <div className="col-12 col-md-6 p-3 border">
+                    <h6 className="fw-bold">Set the timer for the specified time</h6>
+                    <div className="row">
+                        <div className="col-6">
+                            <p>1 Minute Timer</p>
+                            <p>3 Minute Timer</p>
+                            <p>5 Minute Timer</p>
+                            <p>10 Minute Timer</p>
+                            <p>15 Minute Timer</p>
+                            <p>20 Minute Timer</p>
+                            <p>30 Minute Timer</p>
+                            <p>40 Minute Timer</p>
+                            <p>45 Minute Timer</p>
+                            <p>60 Minute Timer</p>
+                        </div>
+                        <div className="col-6">
+                            <p>10 Second Timer</p>
+                            <p>20 Second Timer</p>
+                            <p>30 Second Timer</p>
+                            <p>45 Second Timer</p>
+                            <p>60 Second Timer</p>
+                            <p>90 Second Timer</p>
+                            <p>1 Hour Timer</p>
+                            <p>2 Hour Timer</p>
+                            <p>4 Hour Timer</p>
+                            <p>8 Hour Timer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div className="col-12 col-md-6 p-3 border">
+                    <h6 className="fw-bold">Recently Used</h6>
+                    <hr />
+                    <div className="fs-5">
+                        {recentTimers.length === 0 ? <p>No timers yet.</p> :
+                            recentTimers.map((time, idx) => (
+                                <div key={idx} style={{ fontFamily: 'monospace' }}>{time}</div>
+                            ))
+                        }
+                    </div>
+                </div>
+            </div>
+
+            {/* How to Use + Holidays */}
+            <div className="row">
+                <div className="col-12 col-md-6 p-3 border">
+                    <h6 className="fw-bold">How to use the online timer</h6>
+                    <p>Set the hour, minute, and second... (trimmed for brevity)</p>
+                    <p>Click the "Reset" button to start again. You can also bookmark timers.</p>
+                </div>
+
+                <div className="col-12 col-md-6 p-3 border">
+                    <h6 className="fw-bold">Holidays</h6>
+                    <div className="d-flex justify-content-between"><h5>New Year</h5><p>Jan 1, 2026</p></div>
+                    <div className="d-flex justify-content-between"><h5>Groundhog Day</h5><p>Feb 2, 2026</p></div>
+                    <div className="d-flex justify-content-between"><h5>Easter</h5><p>Apr 5, 2026</p></div>
+                    <div className="d-flex justify-content-between"><h5>Independence Day</h5><p>Jul 4, 2025</p></div>
+                    <div className="d-flex justify-content-between"><h5>Christmas</h5><p>Dec 25, 2025</p></div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Timer;

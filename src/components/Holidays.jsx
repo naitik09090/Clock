@@ -14,33 +14,33 @@ const Holidays = () => {
                         <p className='Row_Bottom'></p>
                         <div className='col-md-2'></div>
                         <div className="col-md-5">
-                            <Link to="#" className='Country_Data'><p>New Year</p></Link>
-                            <Link to="#" className='Country_Data'><p>Martin Luther King Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Groundhog Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Chinese New Year</p></Link>
-                            <Link to="#" className='Country_Data'><p>Valentine's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Presidents Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>St. Patrick's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>April Fool's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Good Friday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Easter</p></Link>
-                            <Link to="#" className='Country_Data'><p>Easter Monday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Tax Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Mother's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Memorial Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Father's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Juneteenth</p></Link>
-                            <Link to="#" className='Country_Data'><p>Independence Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Labor Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Programmers' Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Columbus Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Halloween</p></Link>
-                            <Link to="#" className='Country_Data'><p>Day of the Dead</p></Link>
-                            <Link to="#" className='Country_Data'><p>Veterans Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Thanksgiving Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Black Friday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Cyber Monday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Christmas</p></Link>
+                            <p>New Year</p>
+                            <p>Martin Luther King Day</p>
+                            <p>Groundhog Day</p>
+                            <p>Chinese New Year</p>
+                            <p>Valentine's Day</p>
+                            <p>Presidents Day</p>
+                            <p>St. Patrick's Day</p>
+                            <p>April Fool's Day</p>
+                            <p>Good Friday</p>
+                            <p>Easter</p>
+                            <p>Easter Monday</p>
+                            <p>Tax Day</p>
+                            <p>Mother's Day</p>
+                            <p>Memorial Day</p>
+                            <p>Father's Day</p>
+                            <p>Juneteenth</p>
+                            <p>Independence Day</p>
+                            <p>Labor Day</p>
+                            <p>Programmers' Day</p>
+                            <p>Columbus Day</p>
+                            <p>Halloween</p>
+                            <p>Day of the Dead</p>
+                            <p>Veterans Day</p>
+                            <p>Thanksgiving Day</p>
+                            <p>Black Friday</p>
+                            <p>Cyber Monday</p>
+                            <p>Christmas</p>
                         </div>
                         <div className="col-md-2">
                             <p>Jan 1, 2026</p>
@@ -109,28 +109,28 @@ const Holidays = () => {
                     <p className='Row_Bottom'></p>
                     <div className='row text-start'>
                         <div className='col-md-2'></div>
-                        <div className="col-md-5 Holidays_Pg2">
-                            <Link to="#" className='Country_Data'><p>New Year</p></Link>
-                            <Link to="#" className='Country_Data'><p>Epiphany</p></Link>
-                            <Link to="#" className='Country_Data'><p>Ash Wednesday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Valentine's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Chinese New Year</p></Link>
-                            <Link to="#" className='Country_Data'><p>Saint David's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Mothering Sunday</p></Link>
-                            <Link to="#" className='Country_Data'><p>St. Patrick's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Palm Sunday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Maundy Thursday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Good Friday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Easter</p></Link>
-                            <Link to="#" className='Country_Data'><p>Easter Monday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Saint George's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Pentecost</p></Link>
-                            <Link to="#" className='Country_Data'><p>Father's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Halloween</p></Link>
-                            <Link to="#" className='Country_Data'><p>Guy Fawkes Night</p></Link>
-                            <Link to="#" className='Country_Data'><p>Remembrance Sunday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Christmas</p></Link>
-                            <Link to="#" className='Country_Data'><p>Boxing Day</p></Link>
+                        <div className="col-md-5 Holidays_Pg2 ">
+                            <p>New Year</p>
+                            <p>Epiphany</p>
+                            <p>Ash Wednesday</p>
+                            <p>Valentine's Day</p>
+                            <p>Chinese New Year</p>
+                            <p>Saint David's Day</p>
+                            <p>Mothering Sunday</p>
+                            <p>St. Patrick's Day</p>
+                            <p>Palm Sunday</p>
+                            <p>Maundy Thursday</p>
+                            <p>Good Friday</p>
+                            <p>Easter</p>
+                            <p>Easter Monday</p>
+                            <p>Saint George's Day</p>
+                            <p>Pentecost</p>
+                            <p>Father's Day</p>
+                            <p>Halloween</p>
+                            <p>Guy Fawkes Night</p>
+                            <p>Remembrance Sunday</p>
+                            <p>Christmas</p>
+                            <p>Boxing Day</p>
                         </div>
                         <div className="col-md-2 Holidays_Pg2">
                             <p>Jan 1, 2026</p>
@@ -189,23 +189,23 @@ const Holidays = () => {
                         <p className='Row_Bottom'></p>
                         <div className="col-md-2"></div>
                         <div className="col-md-5">
-                            <Link to="#" className='Country_Data'><p>New Year</p></Link>
-                            <Link to="#" className='Country_Data'><p>Epiphany</p></Link>
-                            <Link to="#" className='Country_Data'><p>Australia Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Chinese New Year</p></Link>
-                            <Link to="#" className='Country_Data'><p>Valentine's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>St. Patrick's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Harmony Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Good Friday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Easter</p></Link>
-                            <Link to="#" className='Country_Data'><p>Easter Monday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Anzac Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Mother's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Father's Day in Australia</p></Link>
-                            <Link to="#" className='Country_Data'><p>Halloween</p></Link>
-                            <Link to="#" className='Country_Data'><p>Remembrance Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Christmas</p></Link>
-                            <Link to="#" className='Country_Data'><p>Boxing Day</p></Link>
+                            <p>New Year</p>
+                            <p>Epiphany</p>
+                            <p>Australia Day</p>
+                            <p>Chinese New Year</p>
+                            <p>Valentine's Day</p>
+                            <p>St. Patrick's Day</p>
+                            <p>Harmony Day</p>
+                            <p>Good Friday</p>
+                            <p>Easter</p>
+                            <p>Easter Monday</p>
+                            <p>Anzac Day</p>
+                            <p>Mother's Day</p>
+                            <p>Father's Day in Australia</p>
+                            <p>Halloween</p>
+                            <p>Remembrance Day</p>
+                            <p>Christmas</p>
+                            <p>Boxing Day</p>
                         </div>
                         <div className="col-md-2">
                             <p>Jan 1, 2026	</p>
@@ -255,25 +255,25 @@ const Holidays = () => {
                     <div className='row'>
                         <div className='col-md-2'></div>
                         <div className="col-md-5">
-                            <Link to="#" className='Country_Data'><p>New Year</p></Link>
-                            <Link to="#" className='Country_Data'><p>Epiphany</p></Link>
-                            <Link to="#" className='Country_Data'><p>Groundhog Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Chinese New Year</p></Link>
-                            <Link to="#" className='Country_Data'><p>Valentine's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>St. Patrick's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Good Friday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Easter</p></Link>
-                            <Link to="#" className='Country_Data'><p>Easter Monday</p></Link>
-                            <Link to="#" className='Country_Data'><p>Mother's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Victoria Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Father's Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Canada Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Labor Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Thanksgiving Day in Canada</p></Link>
-                            <Link to="#" className='Country_Data'><p>Halloween</p></Link>
-                            <Link to="#" className='Country_Data'><p>Remembrance Day</p></Link>
-                            <Link to="#" className='Country_Data'><p>Christmas</p></Link>
-                            <Link to="#" className='Country_Data'><p>Boxing Day</p></Link>
+                            <p>New Year</p>
+                            <p>Epiphany</p>
+                            <p>Groundhog Day</p>
+                            <p>Chinese New Year</p>
+                            <p>Valentine's Day</p>
+                            <p>St. Patrick's Day</p>
+                            <p>Good Friday</p>
+                            <p>Easter</p>
+                            <p>Easter Monday</p>
+                            <p>Mother's Day</p>
+                            <p>Victoria Day</p>
+                            <p>Father's Day</p>
+                            <p>Canada Day</p>
+                            <p>Labor Day</p>
+                            <p>Thanksgiving Day in Canada</p>
+                            <p>Halloween</p>
+                            <p>Remembrance Day</p>
+                            <p>Christmas</p>
+                            <p>Boxing Day</p>
                         </div>
                         <div className="col-md-2 Holidays_Pg2">
                             <p>Jan 1, 2026</p>

@@ -1,129 +1,267 @@
 body {
-    overflow-x: hidden;
-    margin: 0;
-    font-family: "Lato", sans-serif;
+  overflow-x: hidden;
+  margin: 0;
+  font-family: "Lato", sans-serif;
 }
 
 div.content {
-    margin-left: 200px;
-    padding: 1px 16px;
-    height: 1000px;
+  margin-left: 200px;
+  padding: 1px 16px;
+  height: 1000px;
 }
 
 @media screen and (max-width: 700px) {
-    div.content {
-        margin-left: 0;
-    }
+  div.content {
+    margin-left: 0;
+  }
 }
 
 .setting {
-    height: 25px;
-    width: 25px;
-    background-color: transparent;
-    color: white;
-    position: relative;
-    right: 20px;
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  color: white;
+  position: relative;
+  right: 20px;
 }
 
 .TogglE_Btn {
-    background-color: transparent;
-    color: white;
-    height: 25px;
-    width: 25px;
+  background-color: transparent;
+  color: white;
+  height: 25px;
+  width: 25px;
 }
 
 .navbar {
-    background-color: #555;
-    margin-bottom: 20px;
+  background-color: #555;
+  margin-bottom: 20px;
 }
 
 .timer_Clock_Icon {
-    height: 40px;
-    width: 40px;
-    padding: 5px;
+  height: 40px;
+  width: 40px;
+  padding: 5px;
 }
 
 .BtN_Mood {
-    border: 1px solid transparent !important;
-    background-color: transparent !important;
-    color: white !important;
+  border: 1px solid transparent !important;
+  background-color: transparent !important;
+  color: white !important;
+  position: relative;
+  left: 15px;
 }
 
 .BTn_Sun {
-    height: 25px !important;
-    width: 25px !important;
-    position: relative;
-    bottom: 20px;
-    left: 10px;
+  height: 25px !important;
+  width: 25px !important;
+  position: relative;
+  bottom: 20px;
+  left: 10px;
 }
 
 .BTn_Moon {
-    height: 25px !important;
-    width: 25px !important;
-    position: relative;
-    bottom: 20px;
-    left: 10px;
+  height: 25px !important;
+  width: 25px !important;
+  position: relative;
+  bottom: 20px;
+  left: 10px;
 }
 
 /* Dark Mode */
-.dark-mode {
-    background-color: #222;
-    color: #e0e0e0;
+.nightMode {
+  background-color: #222;
+  color: #e0e0e0;
 }
 
-.dark-mode .navbar {
-    background-color: #0099dd !important;
+.nightMode .navbar {
+  background-color: #0099dd !important;
 }
 
-.dark-mode .sidebar {
-    background-color: #222 !important;
+.nightMode .sidebar {
+  background-color: #222 !important;
 }
 
-.dark-mode .sidebar a {
-    color: #e0e0e0 !important;
+.nightMode .sidebar a {
+  color: #e0e0e0 !important;
 }
 
-.sidebar{
-    padding: 10px;
+.sidebar12 {
+  height: 65px;
+  padding: 10px;
+  z-index: -2;
+  background-color: #e0e0e0;
+  opacity: 0.6;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
+.back-to-top-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 20px;
+  border-radius: 50%;
+  padding: 10px 15px;
+  z-index: 1050;
+  background-color: #f8f9fa;
+}
 
-.back-to-top-btn{
-    background-color: transparent !important;
-    border: none !important;
+@media (max-width: 320px) {
+  .back-to-top-btn {
+    position: fixed;
+    top: 500px;
+  }
+}
+@media (max-width: 768px) {
+  .back-to-top-btn {
     position: relative;
-    top: 800px;
-    left: auto;
-    right: 0;
-    bottom: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
+    bottom: 150px !important;
+  }
 }
 
-.back-to-top-btn:hover{
-    color: #0099dd !important;
+
+.navbar-toggler {
+  margin-bottom: 30px;
 }
 
-.back-to-top-btn:active{
-    color: #0099dd !important;
-}
-.top_To-Bottom{
-    height: 40px;
-    width: 40px;
-}
-.navbar-toggler{
-    margin-bottom: 30px;
-}
-.thrEE_BTn Button{
-    margin:10px;
-}
-.dropdown-item{
-    color: black !important;
-}
-.navbar-brand{
-    font-size: 25px !important;
-    color: white !important;
+.thrEE_BTn Button {
+  margin: 10px;
 }
 
+.dropdown-item {
+  color: black !important;
+}
+
+.navbar-brand {
+  font-size: 25px !important;
+  color: white !important;
+}
+
+.custom-offcanvas {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 300px;
+  height: 100%;
+  background-color: #333;
+  z-index: 1050;
+  transition: right 0.3s ease-in-out;
+  overflow-y: auto;
+}
+
+.custom-offcanvas.show {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+}
+
+/* Toggle switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 42px;
+  height: 22px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  background-color: #ccc;
+  border-radius: 34px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.4s;
+}
+
+input:checked+.slider {
+  background-color: #4caf50;
+}
+
+input:checked+.slider:before {
+  transform: translateX(20px);
+}
+
+/* Color circles */
+.color-options {
+  display: flex;
+  gap: 10px;
+}
+
+.color-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+
+.color-circle.selected {
+  border-color: #fff;
+}
+
+.divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0;
+}
+
+.Setting_icon {
+  color: white;
+  height: 25px;
+  width: 25px;
+}
+
+.CloSe_BTn {
+  color: white;
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  position: relative;
+  left: 160px;
+}
+
+:root {
+  --main-color: #f5c242;
+  /* default fallback */
+}
+
+.navbar {
+  background-color: var(--main-color) !important;
+}
+
+.btn-primary {
+  background-color: var(--main-color) !important;
+  border-color: var(--main-color) !important;
+}

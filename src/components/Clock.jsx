@@ -20,6 +20,31 @@ const Clock = () => {
         return () => clearInterval(interval);
     }, []);
 
+
+    const fetchTimezones = async () => {
+        try {
+            const response = await fetch('https://timeapi.io/api/time/current/zone?timeZone=Europe/Amsterdam');
+            const data = await response.json();
+
+            // Parse time string into a JavaScript Date object
+            const [hours, minutes, seconds] = data.time.split(':').map(Number);
+            const now = new Date();
+            now.setHours(hours, minutes, seconds);
+
+            setTime1(now); // assuming setTime1 is used to show current time
+        } catch (error) {
+            console.error('Error fetching time:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchTimezones();
+
+        const interval = setInterval(fetchTimezones, 10000); // update every 10s
+        return () => clearInterval(interval);
+    }, []);
+
+
     const time = moment(now).tz(zone);
     const time2 = moment(now).tz(zone2);
     const time3 = moment(now).tz(zone3);
@@ -128,22 +153,29 @@ const Clock = () => {
     }, []);
 
     const formatTime = (date) => {
-        return date.toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: !is24Hour,
+        let hours = date.getHours();
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+
+        if (!is24Hour) {
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12 || 12; // Convert 0 to 12
+            return `${hours}:${minutes}:${seconds} ${ampm}`;
+        }
+
+        return `${String(hours).padStart(2, '0')}:${minutes}:${seconds}`;
+    };
+
+
+    const formatDate = (date) => {
+        return date.toLocaleDateString("en-GB", {
+            weekday: "long",
+            year: "numeric",
+            month: "long",
+            day: "numeric",
         });
     };
 
-    const formatDate = (date) => {
-        return date.toLocaleDateString('en-US', {
-            weekday: 'short',
-            month: 'short',
-            day: '2-digit',
-            year: 'numeric',
-        }).toUpperCase();
-    };
 
     // Clock calculations
     const hours1 = time1.getHours() % (is24Hour ? 24 : 12);
@@ -228,16 +260,15 @@ const Clock = () => {
 
                     {/* New York */}
                     <div className='row mb-5'>
-                        <div className='col-md-1'></div>
                         <div
-                            className="col-md-2 d-flex flex-column align-items-center justify-content-between p-5 mb-5 shadow"
-                            style={{ height: '35vh', width: '35vh',margin:'30px' , background: '#111', borderRadius: '50%' }}
+                            className="col-md-3 d-flex flex-column align-items-center justify-content-between p-5 mb-5 shadow"
+                            style={{ height: '37vh', width: '37vh', margin: '30px', background: '#111', borderRadius: '50%' }}
                         >
                             <h6 className="mb-3 text-start txt_New_York">New York</h6>
                             {/* Top: Country Name */}
 
                             {/* Middle: Analog Clock */}
-                            <div className="position-relative clock_analog">
+                            <div className="clock_analog position-relative">
                                 <span className="dot center" />
                                 <span className="hand hour" style={{ transform: `rotate(${hourDeg}deg)` }} />
                                 <span className="hand minute" style={{ transform: `rotate(${minuteDeg}deg)` }} />
@@ -261,8 +292,8 @@ const Clock = () => {
                         {/* London */}
 
                         <div
-                            className="col-md-2 d-flex flex-column align-items-center justify-content-between p-5 mb-5 shadow"
-                            style={{ height: '35vh', width: '35vh',margin:'30px' , background: '#111', borderRadius: '50%' }}
+                            className="col-md-3 d-flex flex-column align-items-center justify-content-between p-5 mb-5 shadow"
+                            style={{ height: '37vh', width: '37vh', margin: '30px', background: '#111', borderRadius: '50%' }}
                         >
                             <h6 className="mb-3 text-start txt_New_York">London, UK</h6>
                             {/* Top: Country Name */}
@@ -292,8 +323,8 @@ const Clock = () => {
                         {/* Tokyo */}
 
                         <div
-                            className="col-md-2 d-flex flex-column align-items-center justify-content-between p-5 mb-5 shadow"
-                            style={{ height: '35vh', width: '35vh',margin:'30px' , background: '#111', borderRadius: '50%' }}
+                            className="col-md-3 d-flex flex-column align-items-center justify-content-between p-5 mb-5 shadow"
+                            style={{ height: '37vh', width: '37vh', margin: '30px', background: '#111', borderRadius: '50%' }}
                         >
                             <h6 className="mb-3 text-start txt_New_York">Tokyo, Japan</h6>
                             {/* Top: Country Name */}
@@ -323,8 +354,8 @@ const Clock = () => {
                         {/* Sydney */}
 
                         <div
-                            className="col-md-2 d-flex flex-column align-items-center justify-content-between p-5 mb-5 shadow"
-                            style={{ height: '35vh', width: '35vh',margin:'30px' , background: '#111', borderRadius: '50%' }}
+                            className="col-md-3 d-flex flex-column align-items-center justify-content-between p-5 mb-5 shadow"
+                            style={{ height: '37vh', width: '37vh', margin: '30px', background: '#111', borderRadius: '50%' }}
                         >
                             <h6 className="mb-3 text-start txt_New_York">Sydney, Australia</h6>
                             {/* Top: Country Name */}
@@ -350,17 +381,15 @@ const Clock = () => {
                                 <p className="mb-0" style={{ fontSize: '12px' }}>{getDate('Australia/Sydney')}</p>
                             </div>
                         </div>
-                        <div className='col-md-1'></div>
                     </div>
 
                     {/* Add more cities manually below the same way */}
 
                     {/* Berlin */}
-                    <div className="row mb-5">
-                        <div className='col-md-1'></div>
+                    <div className="row mb-5 py-3">
                         <div
-                            className="col-md-2 d-flex flex-column align-items-center justify-content-between p-5 mt-5 shadow"
-                            style={{ height: '35vh', width: '35vh',margin:'30px' , background: '#111', borderRadius: '50%' }}
+                            className="col-md-3 d-flex flex-column align-items-center justify-content-between p-5 mt-5 shadow"
+                            style={{ height: '37vh', width: '37vh', margin: '30px', background: '#111', borderRadius: '50%' }}
                         >
                             <h6 className="mb-3 text-start txt_New_York">Berlin, Germany</h6>
                             {/* Top: Country Name */}
@@ -390,8 +419,8 @@ const Clock = () => {
                         {/* Dubai */}
 
                         <div
-                            className="col-md-2 d-flex flex-column align-items-center justify-content-between p-5 mt-5 shadow"
-                            style={{ height: '35vh', width: '35vh',margin:'30px' , background: '#111', borderRadius: '50%' }}
+                            className="col-md-3 d-flex flex-column align-items-center justify-content-between p-5 mt-5 shadow"
+                            style={{ height: '37vh', width: '37vh', margin: '30px', background: '#111', borderRadius: '50%' }}
                         >
                             <h6 className="mb-3 text-start txt_New_York">Dubai, UAE</h6>
                             {/* Top: Country Name */}
@@ -421,8 +450,8 @@ const Clock = () => {
                         {/* Los Angeles */}
 
                         <div
-                            className="col-md-2 d-flex flex-column align-items-center justify-content-between p-5 mt-5 shadow"
-                            style={{ height: '35vh', width: '35vh',margin:'30px' , background: '#111', borderRadius: '50%' }}
+                            className="col-md-3 d-flex flex-column align-items-center justify-content-between p-5 mt-5 shadow"
+                            style={{ height: '37vh', width: '37vh', margin: '30px', background: '#111', borderRadius: '50%' }}
                         >
                             <h6 className="mb-3 text-start txt_New_York">Los Angeles, CA</h6>
                             {/* Top: Country Name */}
@@ -452,8 +481,8 @@ const Clock = () => {
                         {/* New Delhi */}
 
                         <div
-                            className="col-md-2 d-flex flex-column align-items-center justify-content-between p-5 mt-5 shadow"
-                            style={{ height: '35vh', width: '35vh',margin:'30px' , background: '#111', borderRadius: '50%' }}
+                            className="col-md-3 d-flex flex-column align-items-center justify-content-between p-5 mt-5 shadow"
+                            style={{ height: '37vh', width: '37vh', margin: '30px', background: '#111', borderRadius: '50%' }}
                         >
                             <h6 className="mb-3 text-start txt_New_York">New Delhi, India</h6>
                             {/* Top: Country Name */}
@@ -479,7 +508,6 @@ const Clock = () => {
                                 <p className="mb-0" style={{ fontSize: '12px' }}>{getDate('Asia/Kolkata')}</p>
                             </div>
                         </div>
-                        <div className='col-md-1'></div>
                     </div>
 
                 </div>
@@ -565,7 +593,7 @@ const Clock = () => {
                 </div>
             </div>
             <div className='container-fluid'>
-                <div className='row Home_Main mb-5'>
+                <div className='row Home_Main'>
                     <div className='col-md-12 BTN_Timer2 text-start bg-traslate border'>
                         <h1>How to use the online alarm clock</h1>
                         <div className='Row_Bottom'></div>
