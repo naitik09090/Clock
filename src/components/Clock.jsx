@@ -23,30 +23,13 @@ const Clock = () => {
 
     const [time1111, setTime1111] = useState(new Date());
 
-    const fetchTimezones = async () => {
-        try {
-            const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-            const response = await fetch(`https://timeapi.io/api/time/current/zone?timeZone=${encodeURIComponent(timeZone)}`);
-            const data = await response.json();
-
-            const [hours, minutes, seconds] = data.time.split(':').map(Number);
-            const now = new Date();
-            now.setHours(hours, minutes, seconds);
-
-            setTime1111(new Date(now)); // update state with local time from API
-        } catch (error) {
-            console.error('Error fetching time:', error);
-        }
-    };
-
     useEffect(() => {
-        fetchTimezones();
-        const timer = setInterval(() => {
-            setTime1111(new Date());
-        }, 1000); // updates every second
-
-        return () => clearInterval(timer); // cleanup on unmount
+        // Fetch timezone based on IP
+        fetch("https://ipapi.co/json/")
+            .then((res) => res.json())
+            .then((data) => {
+                setTimezone(data.timezone || "UTC");
+            });
     }, []);
 
 
@@ -196,7 +179,7 @@ const Clock = () => {
             <div className="container-fluid" style={{ minHeight: '100vh' }}>
                 <div className="row flex-column justify-content-center align-items-center vh-100">
                     <div className="col-md-12 text-center mb-4">
-                        {clockType === 'watch' ? (
+                        {clockType === "watch" ? (
                             <div className="clock">
                                 <div className="dot center"></div>
                                 <div className="hand hour" style={{ transform: `rotate(${hourDeg1}deg)` }}></div>
@@ -212,8 +195,8 @@ const Clock = () => {
                             </div>
                         ) : (
                             <div>
-                                <h1 style={{ fontFamily: "'Digital-7 Mono', monospace", fontSize: '60px' }}>
-                                    {time1111.toLocaleTimeString()}
+                                <h1 style={{ fontFamily: "'Digital-7 Mono', monospace", fontSize: "60px" }}>
+                                    {time.toLocaleString(DateTime.TIME_WITH_SECONDS)}
                                 </h1>
                             </div>
                         )}
