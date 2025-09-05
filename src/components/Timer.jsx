@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const Timer = () => {
     const [seconds, setSeconds] = useState(0);
@@ -19,6 +19,17 @@ const Timer = () => {
             console.error(err);
         }
     };
+
+    useEffect(() => {
+    fetch("http://localhost:5000/api/timer")
+        .then(res => res.json())
+        .then(data => {
+            const recent = data.map(t => t.time).slice(0, 10);
+            setRecentTimers(recent);
+        })
+        .catch(err => console.error("Fetch error:", err));
+}, []);
+
 
     const handleStart = () => {
         if (!running && seconds > 0) {
@@ -90,67 +101,86 @@ const Timer = () => {
             </div>
 
             {/* Predefined + Recent Timers */}
-            <div className="row mb-4">
-                <div className="col-12 col-md-6 p-3 border">
-                    <h6 className="fw-bold">Set the timer for the specified time</h6>
-                    <div className="row">
-                        <div className="col-6">
-                            <p>1 Minute Timer</p>
-                            <p>3 Minute Timer</p>
-                            <p>5 Minute Timer</p>
-                            <p>10 Minute Timer</p>
-                            <p>15 Minute Timer</p>
-                            <p>20 Minute Timer</p>
-                            <p>30 Minute Timer</p>
-                            <p>40 Minute Timer</p>
-                            <p>45 Minute Timer</p>
-                            <p>60 Minute Timer</p>
+            <div className="container-fluid mt-4">
+                {/* Top Row: Predefined Timers + Recently Used */}
+                <div className="row g-3 Home_Main">
+                    {/* Left: Timer Links */}
+                    <div className="col-12 col-md-6 BTN_Timer23 bg-traslate p-3 border">
+                        <h6 className="fw-bold">Set the timer for the specified time</h6>
+                        <hr />
+                        <div className="row">
+                            <div className="col-6 col-sm-6">
+                                <ul className="list-unstyled">
+                                    <li>1 Minute Timer</li>
+                                    <li>3 Minute Timer</li>
+                                    <li>5 Minute Timer</li>
+                                    <li>10 Minute Timer</li>
+                                    <li>15 Minute Timer</li>
+                                    <li>20 Minute Timer</li>
+                                    <li>30 Minute Timer</li>
+                                    <li>40 Minute Timer</li>
+                                    <li>45 Minute Timer</li>
+                                    <li>60 Minute Timer</li>
+                                </ul>
+                            </div>
+                            <div className="col-6 col-sm-6">
+                                <ul className="list-unstyled">
+                                    <li>10 Second Timer</li>
+                                    <li>20 Second Timer</li>
+                                    <li>30 Second Timer</li>
+                                    <li>45 Second Timer</li>
+                                    <li>60 Second Timer</li>
+                                    <li>90 Second Timer</li>
+                                    <li>1 Hour Timer</li>
+                                    <li>2 Hour Timer</li>
+                                    <li>4 Hour Timer</li>
+                                    <li>8 Hour Timer</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div className="col-6">
-                            <p>10 Second Timer</p>
-                            <p>20 Second Timer</p>
-                            <p>30 Second Timer</p>
-                            <p>45 Second Timer</p>
-                            <p>60 Second Timer</p>
-                            <p>90 Second Timer</p>
-                            <p>1 Hour Timer</p>
-                            <p>2 Hour Timer</p>
-                            <p>4 Hour Timer</p>
-                            <p>8 Hour Timer</p>
+                    </div>
+
+                    {/* Right: Recently Used */}
+                    <div className="col-12 col-md-6 p-3 border">
+                        <h6 className="fw-bold">Recently Used</h6>
+                        <hr />
+                        <div className="fs-5">
+                            {recentTimers.length === 0 ? (
+                                <p>No timers yet.</p>
+                            ) : (
+                                recentTimers.map((time, idx) => (
+                                    <div key={idx} style={{ fontFamily: "monospace" }}>{time}</div>
+                                ))
+                            )}
                         </div>
                     </div>
                 </div>
 
-                <div className="col-12 col-md-6 p-3 border">
-                    <h6 className="fw-bold">Recently Used</h6>
-                    <hr />
-                    <div className="fs-5">
-                        {recentTimers.length === 0 ? <p>No timers yet.</p> :
-                            recentTimers.map((time, idx) => (
-                                <div key={idx} style={{ fontFamily: 'monospace' }}>{time}</div>
-                            ))
-                        }
+                {/* Bottom Row: How to Use + Holidays */}
+                <div className="row g-3 Home_Main mt-3">
+                    {/* Left: How to Use */}
+                    <div className="col-12 col-md-6 BTN_Timer23 bg-traslate p-3 border">
+                        <h6 className="fw-bold">How to use the online timer</h6>
+                        <hr />
+                        <p>Set the hour, minute, and second for the online countdown timer, and start it...</p>
+                        <p>Click the "Reset" button to start the timer from the initial value. Click the "Stop" ("Start") button to stop (start) the timer.</p>
+                        <p>You can add links to online timers with different time settings to your browser's Favorites.</p>
+                        <p>In the holiday list, you can launch a countdown timer for any holiday or create a new one.</p>
+                    </div>
+
+                    {/* Right: Holidays */}
+                    <div className="col-12 col-md-6 p-3 border">
+                        <h6 className="fw-bold">Holidays</h6>
+                        <hr />
+                        <div className="d-flex justify-content-between"><h6>New Year</h6><p>Jan 1, 2026</p></div>
+                        <div className="d-flex justify-content-between"><h6>Groundhog Day</h6><p>Feb 2, 2026</p></div>
+                        <div className="d-flex justify-content-between"><h6>Easter</h6><p>Apr 5, 2026</p></div>
+                        <div className="d-flex justify-content-between"><h6>Independence Day</h6><p>Jul 4, 2025</p></div>
+                        <div className="d-flex justify-content-between"><h6>Christmas</h6><p>Dec 25, 2025</p></div>
                     </div>
                 </div>
             </div>
 
-            {/* How to Use + Holidays */}
-            <div className="row">
-                <div className="col-12 col-md-6 p-3 border">
-                    <h6 className="fw-bold">How to use the online timer</h6>
-                    <p>Set the hour, minute, and second... (trimmed for brevity)</p>
-                    <p>Click the "Reset" button to start again. You can also bookmark timers.</p>
-                </div>
-
-                <div className="col-12 col-md-6 p-3 border">
-                    <h6 className="fw-bold">Holidays</h6>
-                    <div className="d-flex justify-content-between"><h5>New Year</h5><p>Jan 1, 2026</p></div>
-                    <div className="d-flex justify-content-between"><h5>Groundhog Day</h5><p>Feb 2, 2026</p></div>
-                    <div className="d-flex justify-content-between"><h5>Easter</h5><p>Apr 5, 2026</p></div>
-                    <div className="d-flex justify-content-between"><h5>Independence Day</h5><p>Jul 4, 2025</p></div>
-                    <div className="d-flex justify-content-between"><h5>Christmas</h5><p>Dec 25, 2025</p></div>
-                </div>
-            </div>
         </div>
     );
 };

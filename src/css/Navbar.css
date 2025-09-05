@@ -68,7 +68,7 @@ div.content {
 }
 
 /* Dark Mode */
-.nightMode {
+/* .nightMode {
   background-color: #222;
   color: #e0e0e0;
 }
@@ -83,7 +83,7 @@ div.content {
 
 .nightMode .sidebar a {
   color: #e0e0e0 !important;
-}
+} */
 
 .sidebar12 {
   height: 65px;
@@ -110,6 +110,7 @@ div.content {
     top: 500px;
   }
 }
+
 @media (max-width: 768px) {
   .back-to-top-btn {
     position: relative;
@@ -264,4 +265,36 @@ input:checked+.slider:before {
 .btn-primary {
   background-color: var(--main-color) !important;
   border-color: var(--main-color) !important;
+}
+
+/* Fixed navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* Page content (clock, etc.) */
+body {
+  padding-top: 100px;
+  /* navbar ni height jetli rakho */
+}
+
+/* Clock container */
+.clock-container {
+  text-align: center;
+  margin-top: 20px;
+  /* extra spacing niche mate */
+}
+
+/* Global body padding to avoid bottom navbar overlap */
+body {
+  padding-bottom: 70px;
+  /* navbar ni height jetli */
+}
+
+main {
+  padding-bottom: env(safe-area-inset-bottom, 70px);
 }

@@ -28,7 +28,7 @@ const BackToTopButton = () => {
         className="d-flex flex-column justify-content-center align-items-center shadow"
         style={{
           position: "fixed",
-          top: "850px", // make room for bottom navbar
+          top: "87%",
           right: "20px",
           width: "70px",
           height: "60px",

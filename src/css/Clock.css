@@ -1,11 +1,10 @@
-.CArd_4{
-    height: auto;
-    width: auto;
+.ColcK_Data_3 {
+  width: auto;
 }
-.ColcK_Data_3{
-    width: auto;
-}
+
 .analog-clock {
+  height: auto;
+  width: auto;
   position: relative;
   border-radius: 50%;
   background: #111;
@@ -22,11 +21,13 @@
   border-radius: 50%;
   transform-origin: center;
 }
+
 .center {
   width: 10px;
   height: 10px;
   transform: translate(-50%, -50%);
 }
+
 .hand {
   position: absolute;
   bottom: 50%;
@@ -35,28 +36,91 @@
   background: white;
   border-radius: 2px;
 }
+
 .hour {
   width: 4px;
   height: 30%;
 }
+
 .minute {
   width: 3px;
   height: 40%;
 }
+
 .second {
   width: 2px;
   height: 44%;
   background: #00bfff;
 }
-.txt_New_York{
-    position: relative;
-    bottom: 80px;
+
+.txt_New_Yor2 {
+  position: relative;
+  top: 100px;
 }
-.txt_New_Yor2{
-    position: relative;
-    top: 100px;
+
+.clock-card {
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 1 / 1;
+  background: #111;
+  border-radius: 50%;
 }
-.clock_analog{
-    height: 300px !important;
-    width: 90px;
+
+.clock-analog {
+  width: 70%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  margin-top: 10px;
+}
+
+.hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform-origin: bottom center;
+  border-radius: 10px;
+}
+
+.hand.hour {
+  width: 6px;
+  height: 25%;
+  background: #fff;
+}
+
+.hand.minute {
+  width: 4px;
+  height: 35%;
+  background: #ccc;
+}
+
+.hand.second {
+  width: 2px;
+  height: 40%;
+  background: red;
+}
+
+.dot.center {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tick {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  width: 4px;
+  height: 10px;
+  background: #888;
+  transform-origin: center bottom;
+}
+
+.main_ClOck {
+  padding-top: 200px;
+  margin-bottom: 200px;
 }
