@@ -1,152 +1,165 @@
 .timers {
     height: auto;
     width: 1730px !important;
-    font-family: 'Orbitron', sans-serif;
+    font-family: Orbitron, sans-serif;
     letter-spacing: 2px;
+    font-size: 2rem
+}
+
+.BTN_Timer,
+.BTN_Timer32,
+.BTN_Timer_5 {
+    width: 930px !important;
+    margin-bottom: 20px;
     font-size: 2rem;
+    height: auto
 }
 
 .BTN_Timer {
-    height: auto;
-    width: 930px !important;
-    font-size: 2rem;
-    margin-right: 20px;
-    margin-bottom: 20px;
-}
-
-.BTN_Timer32 {
-    height: auto;
-    width: 930px !important;
-    font-size: 2rem;
-    margin-bottom: 20px;
+    margin-right: 20px
 }
 
 .BTN_Timer23 ul {
-    padding-left: 0;
+    padding-left: 0
 }
 
 .BTN_Timer23 li {
-    margin-bottom: 0.5rem;
+    margin-bottom: .5rem
 }
 
 .BTN_Timer24 {
     height: auto;
     width: 920px !important;
     font-size: 2rem;
-    margin-bottom: 20px;
+    margin-bottom: 20px
 }
 
-.BTN_Timer_5 {
-    height: auto;
-    width: 930px !important;
-    font-size: 2rem;
-    margin-bottom: 20px;
-}
-
-.BTN_Timer2 {
-    height: auto;
-    width: auto;
+.BTN_Timer234 {
     letter-spacing: 2px;
     font-size: 2rem;
+    padding-top: 300px
 }
 
 .Set_Alarm {
     font-size: 20px;
-    background-color: rgb(55, 243, 127);
-    color: white;
+    background-color: #37f37f;
+    color: #fff;
     border: none;
     height: 50px;
-    width: 200px;
+    width: 200px
 }
 
 .time_Set {
     font-size: 25px;
     font-weight: 100;
-    height: 50px;
-    width: 200px;
+    width: 200px
 }
 
 .Row_Bottom {
-    border-bottom: 1px solid rgb(61, 61, 61);
+    border-bottom: 1px solid #3d3d3d;
     width: 100%;
-    margin-bottom: 15px;
+    padding-top: 15px
+}
+
+.Btn_timer_1,
+button {
+    border: none;
+    color: #fff
 }
 
 button {
     font-size: 15px !important;
-    background-color: rgb(6, 111, 231);
-    color: white;
+    background-color: #066fe7;
     padding: 10px;
-    border: none;
-    height: 50px;
-    width: 100px;
-    position: relative;
-    top: 20px;
-    margin-right: 10px !important;
+    height: auto;
+    width: auto
+}
+
+.Btn_timer_1 {
+    display: inline-block;
+    padding: 12px 20px;
+    margin: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #1e90ff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: .2s ease-in-out;
+    text-align: center;
+    min-width: 110px
+}
+
+.Set_Alarm,
+.clock-mode,
+.modal-title {
+    font-weight: 700
+}
+
+.Btn_timer_1:hover {
+    background-color: #0d6efd;
+    transform: scale(1.05)
+}
+
+.Btn_timer_1:active {
+    background-color: #0a58ca;
+    transform: scale(.97)
 }
 
 .Home_Main h1 {
     font-weight: 100;
-    margin-bottom: 15px;
+    margin-bottom: 15px
 }
 
 .Home_Main p {
     font-weight: 200;
-    font-size: 15px;
+    font-size: 15px
 }
 
-
-/* Alarm Modal Styling */
 .modal-content {
     border-radius: 6px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, .3)
 }
 
 .modal-header {
-    background-color: #0099dd;
-    color: white;
+    background-color: #09d;
+    color: #fff;
     border-bottom: none;
-    padding: 15px 20px;
-}
-
-.modal-title {
-    font-weight: bold;
+    padding: 15px 20px
 }
 
 .modal-body {
-    padding: 20px;
+    padding: 20px
 }
 
 .modal-footer {
     border-top: none;
     padding: 15px 20px;
-    justify-content: flex-end;
+    justify-content: flex-end
 }
 
 .btn {
     min-width: 80px;
-    border-radius: 4px;
+    border-radius: 4px
 }
 
 .btn-success {
     background-color: #2d8659;
-    border: none;
+    border: none
 }
 
 .btn-secondary {
     background-color: #5a6268;
-    border: none;
+    border: none
 }
 
 .btn-light {
     background-color: #f0f0f0;
-    color: black;
-    border: none;
+    color: #000;
+    border: none
 }
 
 .Set_Alarm {
-    font-weight: bold;
-    border-radius: 4px;
+    border-radius: 4px
 }
 
 .Close_Icon {
@@ -154,32 +167,39 @@ button {
     right: 20px;
     top: 25px;
     cursor: pointer;
-    color: white;
-    font-size: 30px;
+    color: #fff;
+    font-size: 30px
+}
+
+.Dot_Btn,
+.clock {
+    position: relative
 }
 
 .Dot_Btn {
     height: 37px !important;
-    position: relative;
     left: 5px;
     top: -1px;
-    cursor: pointer;
+    cursor: pointer
 }
 
 .clock {
-    position: relative;
     width: 280px;
     height: 280px;
     border-radius: 50%;
     background: #111;
-    margin: 20px auto;
+    margin: 20px auto
+}
+
+.center,
+.hand {
+    background: #fff
 }
 
 .center {
     width: 10px;
     height: 10px;
-    background: white;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
 }
 
 .hand {
@@ -187,33 +207,31 @@ button {
     bottom: 50%;
     left: 50%;
     transform-origin: bottom;
-    background: white;
-    border-radius: 2px;
+    border-radius: 2px
 }
 
 .hour {
     width: 4px;
-    height: 60px;
+    height: 60px
 }
 
 .minute {
     width: 3px;
-    height: 80px;
+    height: 80px
 }
 
 .second {
     width: 2px;
     height: 90px;
-    background: #00bfff;
+    background: #00bfff
 }
 
 .clock-mode {
     cursor: pointer;
     padding: 5px 10px;
-    font-weight: bold;
-    border-bottom: 2px solid transparent;
+    border-bottom: 2px solid transparent
 }
 
 .clock-mode.active {
-    border-bottom: 2px solid white;
+    border-bottom: 2px solid #fff
 }

@@ -1,21 +1,25 @@
+a,
+a:hover {
+    text-decoration: none
+}
+
 a {
-  text-decoration: none;
-  color: transparent !important;
+    color: transparent !important
 }
 
 a:hover {
-  text-decoration: none;
-  color: transparent;
+    color: transparent
 }
 
 .bg-white {
-  background-color: #fff !important;
-}
-.TimER_1_BtN{
-  color: white !important;
-}
-.fs-5 {
-  margin-bottom: 10px;
-  margin-left: 20px;
+    background-color: #fff !important
 }
 
+.TimER_1_BtN {
+    color: #fff !important
+}
+
+.fs-5 {
+    margin-bottom: 10px;
+    margin-left: 20px
+}

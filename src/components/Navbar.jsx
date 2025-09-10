@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useEffect, useState } from "react";
 import { BsSun, BsMoon } from "react-icons/bs";
 import { GrSettingsOption } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { CgClose } from "react-icons/cg";
-import logo from "../assets/logo.png";
+import { GiClockwork } from "react-icons/gi";
+import { MdOutlineAccessTime } from "react-icons/md";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,25 +43,34 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="d-block navbar navbar-expand-sm navbar-dark bg-dark p-3 fixed-top">
+      <nav className="d-block navbar navbar-expand-sm navbar-dark bg-dark p-3 mb-3 fixed-top">
         <div className="container-fluid">
-          <a href="/" className="navbar-brand">
-            <img src={logo} alt="" height={60} width={60} />
-          </a>
+          <div className="container-fluid d-flex justify-content-between align-items-center">
+            {/* Left side: Brand Clock */}
+            <GiClockwork size={40} color="white" />
 
-          {/* Toggle Button */}
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapsibleNavbar"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+            {/* Right side: Toggle Button */}
+            <button
+              className="navbar-toggler border-0"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapsibleNavbar"
+              aria-controls="collapsibleNavbar"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+          </div>
 
           {/* Menu */}
           <div className="collapse navbar-collapse" id="collapsibleNavbar">
             <ul className="navbar-nav ms-auto d-flex align-items-center gap-4">
+              <li className="nav-item">
+                <Link className="nav-link text-white" to="/worldclocks">
+                  WorldClocks
+                </Link>
+              </li>
               <li className="nav-item">
                 <Link className="nav-link text-white" to="/holidays">
                   Holidays
@@ -80,11 +89,6 @@ const Navbar = () => {
                   <li>
                     <Link className="dropdown-item" to="/">
                       Clock
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/clock">
-                      Alarm Clock
                     </Link>
                   </li>
                   <li>
@@ -162,18 +166,6 @@ const Navbar = () => {
                         type="checkbox"
                         checked={showDate}
                         onChange={() => setShowDate(!showDate)}
-                      />
-                      <span className="slider"></span>
-                    </label>
-                  </div>
-
-                  <div className="setting-row">
-                    <span>Night Mode</span>
-                    <label className="switch">
-                      <input
-                        type="checkbox"
-                        checked={nightMode}
-                        onChange={() => setNightMode(!nightMode)}
                       />
                       <span className="slider"></span>
                     </label>

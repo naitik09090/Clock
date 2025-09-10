@@ -1,9 +1,8 @@
-import Home from './Home.jsx'
+import Home from "./Home.jsx";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 const App = () => {
-  return (
-    <Home />
-  )
-}
+  return <Home />;
+};
 
-export default App
+export default App;

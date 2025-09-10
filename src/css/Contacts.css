@@ -1,24 +1,17 @@
-.ContAct_Form{
+.ContAct_Form {
     position: relative;
-    top: 100px;
+    top: 100px
 }
-.ContAct_Form p{
+
+.ContAct_Form p {
     position: relative;
-    right: 300px;
+    right: 300px
 }
-.ContAct_Form label{
+
+.ContAct_Form button,
+.ContAct_Form input,
+.ContAct_Form label,
+.ContAct_Form textarea {
     position: relative;
-    right: 10px;
-}
-.ContAct_Form input{
-    position: relative;
-    right: 10px;
-}
-.ContAct_Form textarea{
-    position: relative;
-    right: 10px;
-}
-.ContAct_Form button{
-    position: relative;
-    right: 10px;
+    right: 10px
 }

@@ -3,7 +3,7 @@ import React from 'react';
 const SettingsSidebar = () => {
   return (
     <div
-      className="offcanvas offcanvas-end text-bg-dark"
+      className="offcanvas offcanvas-end"
       tabIndex="-1"
       id="settingsSidebar"
       aria-labelledby="settingsSidebarLabel"

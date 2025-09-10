@@ -1,197 +1,79 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import moment from "moment-timezone";
-import { Button, Col } from "react-bootstrap";
+import { Button } from "react-bootstrap";
+import FavoriteClocks from "./FavoriteClocks";
 
 const Clock = () => {
-  const [now, setNow] = useState(moment());
-  const [zone, setZone] = useState("America/New_York");
-  const [zone2, setZone2] = useState("Europe/London");
-  const [zone3, setZone3] = useState("Asia/Tokyo");
-  const [zone4, setZone4] = useState("Australia/Sydney");
-  const [zone5, setZone5] = useState("Europe/Berlin");
-  const [zone6, setZone6] = useState("Asia/Dubai");
-  const [zone7, setZone7] = useState("America/Los_Angeles");
-  const [zone8, setZone8] = useState("Asia/Kolkata");
-  const [is24Hour, setIs24Hour] = useState(false);
-
+  const [now, setNow] = useState(moment()),
+    [zone, setZone] = useState("America/New_York"),
+    [is24Hour, setIs24Hour] = useState(!1),
+    [favorites, setFavorites] = useState({}),
+    [time1111, setTime1111] = useState(""),
+    handleFavoriteChange = (e) => {
+      let t = {};
+      e.forEach((e) => {
+        t[e] = !0;
+      }),
+        setFavorites(t);
+    };
   useEffect(() => {
-    const interval = setInterval(() => {
+    let e = setInterval(() => {
       setNow(moment());
-    }, 1000);
-    return () => clearInterval(interval);
+    }, 1e3);
+    return () => clearInterval(e);
   }, []);
-
-  const [time1111, setTime1111] = useState(new Date());
-
   const fetchTimezones = async () => {
     try {
-      const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-
-      const response = await fetch(
-        `https://timeapi.io/api/time/current/zone?timeZone=${encodeURIComponent(
-          timeZone
-        )}`
-      );
-      const data = await response.json();
-
-      const [hours, minutes, seconds] = data.time.split(":").map(Number);
-      const now = new Date();
-      now.setHours(hours, minutes, seconds);
-
-      setTime1111(new Date(now)); // update state with local time from API
-    } catch (error) {
-      console.error("Error fetching time:", error);
+      let e = Intl.DateTimeFormat().resolvedOptions().timeZone,
+        t = await fetch(
+          `https://timeapi.io/api/time/current/zone?timeZone=${encodeURIComponent(
+            e
+          )}`
+        ),
+        o = await t.json(),
+        [i, s, n] = o.time.split(":").map(Number),
+        r = new Date();
+      r.setHours(i, s, n), setTime1111(new Date(r));
+    } catch (m) {
+      console.error("Error fetching time:", m);
     }
   };
-
   useEffect(() => {
     fetchTimezones();
-    const timer = setInterval(() => {
+    let e = setInterval(() => {
       setTime1111(new Date());
-    }, 1000); // updates every second
-
-    return () => clearInterval(timer); // cleanup on unmount
+    }, 1e3);
+    return () => clearInterval(e);
   }, []);
-
-  const time = moment(now).tz(zone);
-  const time2 = moment(now).tz(zone2);
-  const time3 = moment(now).tz(zone3);
-  const time4 = moment(now).tz(zone4);
-  const time5 = moment(now).tz(zone5);
-  const time6 = moment(now).tz(zone6);
-  const time7 = moment(now).tz(zone7);
-  const time8 = moment(now).tz(zone8);
-
-  // Delhi
-
-  const seconds8 = time8.seconds();
-  const minutes8 = time8.minutes();
-  const hours8 = (time8.hours() % 12) + minutes8 / 60;
-
-  const hourDeg8 = hours8 * 30;
-  const minuteDeg8 = minutes8 * 6;
-  const secondDeg8 = seconds8 * 6;
-
-  // Los_Angeles
-
-  const seconds7 = time7.seconds();
-  const minutes7 = time7.minutes();
-  const hours7 = (time7.hours() % 12) + minutes7 / 60;
-
-  const hourDeg7 = hours7 * 30;
-  const minuteDeg7 = minutes7 * 6;
-  const secondDeg7 = seconds7 * 6;
-
-  // Dubai
-
-  const seconds6 = time6.seconds();
-  const minutes6 = time6.minutes();
-  const hours6 = (time6.hours() % 12) + minutes6 / 60;
-
-  const hourDeg6 = hours6 * 30;
-  const minuteDeg6 = minutes6 * 6;
-  const secondDeg6 = seconds6 * 6;
-
-  // Berlin
-
-  const seconds5 = time5.seconds();
-  const minutes5 = time5.minutes();
-  const hours5 = (time5.hours() % 12) + minutes5 / 60;
-
-  const hourDeg5 = hours5 * 30;
-  const minuteDeg5 = minutes5 * 6;
-  const secondDeg5 = seconds5 * 6;
-
-  // sydney
-
-  const seconds4 = time4.seconds();
-  const minutes4 = time4.minutes();
-  const hours4 = (time4.hours() % 12) + minutes4 / 60;
-
-  const hourDeg4 = hours4 * 30;
-  const minuteDeg4 = minutes4 * 6;
-  const secondDeg4 = seconds4 * 6;
-
-  // tokyo
-
-  const seconds3 = time3.seconds();
-  const minutes3 = time3.minutes();
-  const hours3 = (time3.hours() % 12) + minutes3 / 60;
-
-  const hourDeg3 = hours3 * 30;
-  const minuteDeg3 = minutes3 * 6;
-  const secondDeg3 = seconds3 * 6;
-
-  // London
-
-  const seconds2 = time2.seconds();
-  const minutes2 = time2.minutes();
-  const hours2 = (time2.hours() % 12) + minutes2 / 60;
-
-  const hourDeg2 = hours2 * 30;
-  const minuteDeg2 = minutes2 * 6;
-  const secondDeg2 = seconds2 * 6;
-
-  // New York
-
-  const seconds = time.seconds();
-  const minutes = time.minutes();
-  //   const hours = (time.hours() % 12) + minutes / 60;
-
-  //   const hourDeg = hours * 30;
-  //   const minuteDeg = minutes * 6;
-  //   const secondDeg = seconds * 6;
-
-  const getTime = (zone) => moment(now).tz(zone).format("h:mm:ss A");
-  const getDate = (zone) => moment(now).tz(zone).format("dddd, MMM D");
-
-  const [time1, setTime] = useState(new Date());
-  const [clockType, setClockType] = useState("watch");
-
+  const time = moment(now).tz(zone),
+    seconds = time.seconds(),
+    minutes = time.minutes(),
+    [time1, setTime] = useState(new Date()),
+    [clockType, setClockType] = useState("watch");
   useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(interval);
+    let e = setInterval(() => setTime(new Date()), 1e3);
+    return () => clearInterval(e);
   }, []);
-
-  // const formatTime = (date) => {
-  //     let hours = date.getHours();
-  //     const minutes = String(date.getMinutes()).padStart(2, '0');
-  //     const seconds = String(date.getSeconds()).padStart(2, '0');
-
-  //     if (!is24Hour) {
-  //         const ampm = hours >= 12 ? 'PM' : 'AM';
-  //         hours = hours % 12 || 12; // Convert 0 to 12
-  //         return `${hours}:${minutes}:${seconds} ${ampm}`;
-  //     }
-
-  //     return `${String(hours).padStart(2, '0')}:${minutes}:${seconds}`;
-  // };
-
-  const formatDate = (date) => {
-    return date.toLocaleDateString("en-GB", {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    });
-  };
-  const formatTime = (date) => {
-    return date.toLocaleTimeString("en-US", {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: !is24Hour,
-    });
-  };
-
-  // Clock calculations
-  const hours1 = time1.getHours() % (is24Hour ? 24 : 12);
-  const minutes1 = time1.getMinutes();
-  const seconds1 = time1.getSeconds();
-
-  const hourDeg1 = (hours1 + minutes / 60) * 30;
-  const minuteDeg1 = (minutes1 + seconds / 60) * 6;
-  const secondDeg1 = seconds1 * 6;
+  const formatDate = (e) =>
+      e.toLocaleDateString("en-GB", {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }),
+    formatTime = (e) =>
+      e.toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: !is24Hour,
+      }),
+    hours1 = time1.getHours() % (is24Hour ? 24 : 12),
+    minutes1 = time1.getMinutes(),
+    seconds1 = time1.getSeconds(),
+    hourDeg1 = (hours1 + minutes / 60) * 30,
+    minuteDeg1 = (minutes1 + seconds / 60) * 6,
+    secondDeg1 = 6 * seconds1;
   return (
     <div className="container-fluid">
       <div className="container-fluid" style={{ minHeight: "100vh" }}>
@@ -202,7 +84,9 @@ const Clock = () => {
                 <div className="dot center"></div>
                 <div
                   className="hand hour"
-                  style={{ transform: `rotate(${hourDeg1}deg)` }}
+                  style={{
+                    transform: `rotate(${hourDeg1}deg)`,
+                  }}
                 ></div>
                 <div
                   className="hand minute"
@@ -212,15 +96,27 @@ const Clock = () => {
                   className="hand second"
                   style={{ transform: `rotate(${secondDeg1}deg)` }}
                 ></div>
-                {[...Array(12)].map((_, i) => (
-                  <div
-                    className="dot"
-                    key={i}
-                    style={{
-                      transform: `rotate(${i * 30}deg) translateY(-130px)`,
-                    }}
-                  ></div>
-                ))}
+                {[...Array(12)].map((_, i) => {
+                  const number = i === 0 ? 12 : i;
+                  return (
+                    <div
+                      key={i}
+                      style={{
+                        position: "absolute",
+                        transform: `rotate(${
+                          i * 30
+                        }deg) translateY(-125px) rotate(-${i * 30}deg)`,
+                        fontSize: "20px",
+                        fontWeight: "bold",
+                        color: "white",
+                        left: "135px",
+                        top: "125px",
+                      }}
+                    >
+                      {number}
+                    </div>
+                  );
+                })}
               </div>
             ) : (
               <div>
@@ -237,15 +133,15 @@ const Clock = () => {
               {formatDate(time1)}
             </p>
 
-            <div className="d-flex justify-content-center align-items-center gap-3 mb-5">
+            <div className="d-flex justify-content-center align-items-center gap-3 mb-2">
               <Button
-                className={`btn-sm ${clockType === "watch"}`}
+                className={`Btn_timer_1 btn-lg ${clockType === "watch"}`}
                 onClick={() => setClockType("watch")}
               >
                 watch
               </Button>
               <Button
-                className={`btn-sm ${clockType === "digital"}`}
+                className={`Btn_timer_1 btn-lg ${clockType === "digital"}`}
                 onClick={() => setClockType("digital")}
               >
                 Digital
@@ -270,340 +166,10 @@ const Clock = () => {
           </div>
         </div>
       </div>
-      <div className="container-fluid">
-        <div className="container-fluid">
-          <div className="row g-3 text-center">
-            {/* New York */}
-            <div className="col-12 col-sm-6 col-md-3 d-flex flex-column align-items-center shadow p-3">
-              <div
-                className="position-relative"
-                style={{
-                  background: "#111",
-                  borderRadius: "50%",
-                  width: "100%",
-                  aspectRatio: "1 / 1",
-                }}
-              >
-                <span className="dot center" />
-                <span
-                  className="hand hour"
-                  style={{ transform: `rotate(${hourDeg1}deg)` }}
-                />
-                <span
-                  className="hand minute"
-                  style={{ transform: `rotate(${minuteDeg1}deg)` }}
-                />
-                <span
-                  className="hand second"
-                  style={{ transform: `rotate(${secondDeg1}deg)` }}
-                />
-                {[...Array(12)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="dot"
-                    style={{
-                      transform: `rotate(${i * 30}deg) translateY(-45%)`,
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="text-center mt-3 text-black">
-                <h6 className="fw-bold mb-1">New York</h6>
-                <h5 className="mb-0">{getTime("America/New_York")}</h5>
-                <p className="mb-0">{getDate("America/New_York")}</p>
-              </div>
-            </div>
-
-            {/* London */}
-            <div className="col-12 col-sm-6 col-md-3 d-flex flex-column align-items-center shadow p-3">
-              <div
-                className="position-relative"
-                style={{
-                  background: "#111",
-                  borderRadius: "50%",
-                  width: "100%",
-                  aspectRatio: "1 / 1",
-                }}
-              >
-                <span className="dot center" />
-                <span
-                  className="hand hour"
-                  style={{ transform: `rotate(${hourDeg2}deg)` }}
-                />
-                <span
-                  className="hand minute"
-                  style={{ transform: `rotate(${minuteDeg2}deg)` }}
-                />
-                <span
-                  className="hand second"
-                  style={{ transform: `rotate(${secondDeg2}deg)` }}
-                />
-                {[...Array(12)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="dot"
-                    style={{
-                      transform: `rotate(${i * 30}deg) translateY(-45%)`,
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="text-center mt-3 text-black">
-                <h6 className="fw-bold mb-1">London, UK</h6>
-                <h5 className="mb-0">{getTime("Europe/London")}</h5>
-                <p className="mb-0">{getDate("Europe/London")}</p>
-              </div>
-            </div>
-
-            {/* Tokyo */}
-            <div className="col-12 col-sm-6 col-md-3 d-flex flex-column align-items-center shadow p-3">
-              <div
-                className="position-relative"
-                style={{
-                  background: "#111",
-                  borderRadius: "50%",
-                  width: "100%",
-                  aspectRatio: "1 / 1",
-                }}
-              >
-                <span className="dot center" />
-                <span
-                  className="hand hour"
-                  style={{ transform: `rotate(${hourDeg3}deg)` }}
-                />
-                <span
-                  className="hand minute"
-                  style={{ transform: `rotate(${minuteDeg3}deg)` }}
-                />
-                <span
-                  className="hand second"
-                  style={{ transform: `rotate(${secondDeg3}deg)` }}
-                />
-                {[...Array(12)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="dot"
-                    style={{
-                      transform: `rotate(${i * 30}deg) translateY(-45%)`,
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="text-center mt-3 text-black">
-                <h6 className="fw-bold mb-1">Tokyo, Japan</h6>
-                <h5 className="mb-0">{getTime("Asia/Tokyo")}</h5>
-                <p className="mb-0">{getDate("Asia/Tokyo")}</p>
-              </div>
-            </div>
-
-            {/* Sydney */}
-            <div className="col-12 col-sm-6 col-md-3 d-flex flex-column align-items-center shadow p-3">
-              <div
-                className="position-relative"
-                style={{
-                  background: "#111",
-                  borderRadius: "50%",
-                  width: "100%",
-                  aspectRatio: "1 / 1",
-                }}
-              >
-                <span className="dot center" />
-                <span
-                  className="hand hour"
-                  style={{ transform: `rotate(${hourDeg4}deg)` }}
-                />
-                <span
-                  className="hand minute"
-                  style={{ transform: `rotate(${minuteDeg4}deg)` }}
-                />
-                <span
-                  className="hand second"
-                  style={{ transform: `rotate(${secondDeg4}deg)` }}
-                />
-                {[...Array(12)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="dot"
-                    style={{
-                      transform: `rotate(${i * 30}deg) translateY(-45%)`,
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="text-center mt-3 text-black">
-                <h6 className="fw-bold mb-1">Sydney, Australia</h6>
-                <h5 className="mb-0">{getTime("Australia/Sydney")}</h5>
-                <p className="mb-0">{getDate("Australia/Sydney")}</p>
-              </div>
-            </div>
-
-            {/* Berlin */}
-            <div className="col-12 col-sm-6 col-md-3 d-flex flex-column align-items-center shadow p-3">
-              <div
-                className="position-relative"
-                style={{
-                  background: "#111",
-                  borderRadius: "50%",
-                  width: "100%",
-                  aspectRatio: "1 / 1",
-                }}
-              >
-                <span className="dot center" />
-                <span
-                  className="hand hour"
-                  style={{ transform: `rotate(${hourDeg5}deg)` }}
-                />
-                <span
-                  className="hand minute"
-                  style={{ transform: `rotate(${minuteDeg5}deg)` }}
-                />
-                <span
-                  className="hand second"
-                  style={{ transform: `rotate(${secondDeg5}deg)` }}
-                />
-                {[...Array(12)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="dot"
-                    style={{
-                      transform: `rotate(${i * 30}deg) translateY(-45%)`,
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="text-center mt-3 text-black">
-                <h6 className="fw-bold mb-1">Berlin, Germany</h6>
-                <h5 className="mb-0">{getTime("Europe/Berlin")}</h5>
-                <p className="mb-0">{getDate("Europe/Berlin")}</p>
-              </div>
-            </div>
-
-            {/* Dubai */}
-            <div className="col-12 col-sm-6 col-md-3 d-flex flex-column align-items-center shadow p-3">
-              <div
-                className="position-relative"
-                style={{
-                  background: "#111",
-                  borderRadius: "50%",
-                  width: "100%",
-                  aspectRatio: "1 / 1",
-                }}
-              >
-                <span className="dot center" />
-                <span
-                  className="hand hour"
-                  style={{ transform: `rotate(${hourDeg6}deg)` }}
-                />
-                <span
-                  className="hand minute"
-                  style={{ transform: `rotate(${minuteDeg6}deg)` }}
-                />
-                <span
-                  className="hand second"
-                  style={{ transform: `rotate(${secondDeg6}deg)` }}
-                />
-                {[...Array(12)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="dot"
-                    style={{
-                      transform: `rotate(${i * 30}deg) translateY(-45%)`,
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="text-center mt-3 text-black">
-                <h6 className="fw-bold mb-1">Dubai, UAE</h6>
-                <h5 className="mb-0">{getTime("Asia/Dubai")}</h5>
-                <p className="mb-0">{getDate("Asia/Dubai")}</p>
-              </div>
-            </div>
-
-            {/* Los Angeles */}
-            <div className="col-12 col-sm-6 col-md-3 d-flex flex-column align-items-center shadow p-3">
-              <div
-                className="position-relative"
-                style={{
-                  background: "#111",
-                  borderRadius: "50%",
-                  width: "100%",
-                  aspectRatio: "1 / 1",
-                }}
-              >
-                <span className="dot center" />
-                <span
-                  className="hand hour"
-                  style={{ transform: `rotate(${hourDeg7}deg)` }}
-                />
-                <span
-                  className="hand minute"
-                  style={{ transform: `rotate(${minuteDeg7}deg)` }}
-                />
-                <span
-                  className="hand second"
-                  style={{ transform: `rotate(${secondDeg7}deg)` }}
-                />
-                {[...Array(12)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="dot"
-                    style={{
-                      transform: `rotate(${i * 30}deg) translateY(-45%)`,
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="text-center mt-3 text-black">
-                <h6 className="fw-bold mb-1">Los Angeles, CA</h6>
-                <h5 className="mb-0">{getTime("America/Los_Angeles")}</h5>
-                <p className="mb-0">{getDate("America/Los_Angeles")}</p>
-              </div>
-            </div>
-
-            {/* New Delhi */}
-            <div className="col-12 col-sm-6 col-md-3 d-flex flex-column align-items-center shadow p-3">
-              <div
-                className="position-relative"
-                style={{
-                  background: "#111",
-                  borderRadius: "50%",
-                  width: "100%",
-                  aspectRatio: "1 / 1",
-                }}
-              >
-                <span className="dot center" />
-                <span
-                  className="hand hour"
-                  style={{ transform: `rotate(${hourDeg8}deg)` }}
-                />
-                <span
-                  className="hand minute"
-                  style={{ transform: `rotate(${minuteDeg8}deg)` }}
-                />
-                <span
-                  className="hand second"
-                  style={{ transform: `rotate(${secondDeg8}deg)` }}
-                />
-                {[...Array(12)].map((_, i) => (
-                  <div
-                    key={i}
-                    className="dot"
-                    style={{
-                      transform: `rotate(${i * 30}deg) translateY(-45%)`,
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="text-center mt-3 text-black">
-                <h6 className="fw-bold mb-1">New Delhi, India</h6>
-                <h5 className="mb-0">{getTime("Asia/Kolkata")}</h5>
-                <p className="mb-0">{getDate("Asia/Kolkata")}</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div>
+        <FavoriteClocks favorites={favorites} />
       </div>
-      <div className="container-fluid Home_Main2 bg-traslate py-4 mb-4">
+      {/* <div className="container-fluid Home_Main2 bg-traslate py-4 mb-4">
         <div className="row ColcK_Data_3 p-4 border">
           <h5 className="mb-4">Most Popular Time Zones and Cities</h5>
           <Col md={3}>
@@ -685,7 +251,7 @@ const Clock = () => {
       </div>
       <div className="container-fluid">
         <div className="row Home_Main">
-          <div className="col-md-12 BTN_Timer2 text-start bg-traslate border">
+          <div className="col-md-12 BTN_Timer2 text-start bg-translate border">
             <h1>How to use the online alarm clock</h1>
             <div className="Row_Bottom"></div>
             <p>
@@ -714,7 +280,7 @@ const Clock = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

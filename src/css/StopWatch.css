@@ -1,12 +1,14 @@
-.Footer_Bottom{
+.Footer_Bottom {
     width: 120%;
     position: relative;
-    left: 95px;
+    left: 95px
 }
-.BTN_Timer3 p{
-    font-size: 14px !important;
+
+.BTN_Timer3 p {
+    font-size: 14px !important
 }
-.BTN_Timer3{
+
+.BTN_Timer3 {
     width: 1880px !important;
-    margin-bottom: 50px;
+    margin-bottom: 50px
 }
