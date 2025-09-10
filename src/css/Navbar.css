@@ -280,3 +280,8 @@ main {
 .BtN_Mood{
     background-color:  transparent;
 }
+@font-face {
+  font-family: 'YourFont';
+  src: url('/fonts/YourFont.woff2') format('woff2');
+  font-display: swap;
+}

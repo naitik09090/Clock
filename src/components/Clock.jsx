@@ -124,7 +124,6 @@ const Clock = () => {
               </div>
             )}
             <p
-              className="mb-4"
               style={{
                 fontSize: "20px",
                 letterSpacing: "2px",
