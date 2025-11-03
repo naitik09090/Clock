@@ -54,7 +54,21 @@ div.content {
 }
 
 .nightMode .navbar {
-    background-color: #09d !important
+    background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%);
+}
+
+.nightMode .bottom_Nav {
+    background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%);
+}
+
+.nightMode .CArd_4 .card .card-body {
+    background-color: #222 !important;
+    color: white !important;
+}
+
+.nightMode .CArd_4 .card .card-body .text-muted {
+    background-color: #222 !important;
+    color: #aaa !important;
 }
 
 .nightMode .sidebar {
@@ -277,11 +291,20 @@ main {
 .Clock_IcONS:hover {
     background-color: #f0f0f0;
 }
-.BtN_Mood{
-    background-color:  transparent;
+
+.BtN_Mood {
+    background-color: transparent;
 }
+
 @font-face {
-  font-family: 'YourFont';
-  src: url('/fonts/YourFont.woff2') format('woff2');
-  font-display: swap;
+    font-family: 'YourFont';
+    src: url('/fonts/YourFont.woff2') format('woff2');
+    font-display: swap;
+}
+
+
+/* Example CSS for the digital font style */
+.digital-font-active {
+    font-family: 'Digital-Display-Font', monospace;
+    /* Replace with your actual digital font name */
 }

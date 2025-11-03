@@ -15,10 +15,6 @@
     height: auto
 }
 
-.BTN_Timer {
-    margin-right: 20px
-}
-
 .BTN_Timer23 ul {
     padding-left: 0
 }
@@ -58,7 +54,6 @@
 .Row_Bottom {
     border-bottom: 1px solid #3d3d3d;
     width: 100%;
-    padding-top: 15px
 }
 
 .Btn_timer_1,
@@ -107,11 +102,10 @@ button {
 
 .Home_Main h1 {
     font-weight: 100;
-    margin-bottom: 15px
 }
 
 .Home_Main p {
-    font-weight: 200;
+    font-weight: 400;
     font-size: 15px
 }
 

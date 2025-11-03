@@ -116,3 +116,8 @@
     padding-top: 200px;
     margin-bottom: 200px
 }
+
+.CArd_4 .card{
+    box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
+    background-color: transparent;
+}

@@ -33,7 +33,11 @@ const Timer = () => {
   }, []);
 
   const handleStart = () => {
-    if (!running && seconds > 0) {
+    if (!running) {
+      if (seconds === 0) {
+        setSeconds(60);
+      }
+
       setRunning(true);
       intervalRef.current = setInterval(() => {
         setSeconds((prev) => {
@@ -47,6 +51,7 @@ const Timer = () => {
       }, 1000);
     }
   };
+
 
   const formatTime = (secs) => {
     const hrs = String(Math.floor(secs / 3600)).padStart(2, "0");
@@ -104,11 +109,7 @@ const Timer = () => {
             </button>
             <button
               className="btn btn-success"
-              onClick={async () => {
-                await FetchData();
-                handleStart();
-              }}
-              disabled={running || seconds === 0}
+              onClick={handleStart}
             >
               Start
             </button>
@@ -226,7 +227,7 @@ const Timer = () => {
           </div> */}
         {/* </div> */}
       </div>
-    </div>
+    </div >
   );
 };
 

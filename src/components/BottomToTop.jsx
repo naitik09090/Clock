@@ -28,13 +28,13 @@ const BackToTopButton = () => {
         className="d-flex flex-column justify-content-center align-items-center shadow"
         style={{
           position: "fixed",
-          top: "87%",
-          right: "20px",
-          width: "70px",
-          height: "60px",
+          top: "86%",
+          right: "10px",
+          width: "50px",
+          height: "50px",
           borderRadius: "50%",
-          backgroundColor: "#007bff",
-          color: "#fff",
+          backgroundColor: "#1976D2",
+          color: "white",
           zIndex: 1050,
         }}
       >

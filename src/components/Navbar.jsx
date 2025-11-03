@@ -4,33 +4,28 @@ import { GrSettingsOption } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { CgClose } from "react-icons/cg";
 import { GiClockwork } from "react-icons/gi";
-import { MdOutlineAccessTime } from "react-icons/md";
 
-const Navbar = () => {
+
+
+const Navbar = ({ is24Hour, setIs24Hour, digitalFont, setDigitalFont, showDate, setShowDate, setTime}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [digitalFont, setDigitalFont] = useState(true);
-  const [is12Hour, setIs12Hour] = useState(true);
-  const [showDate, setShowDate] = useState(true);
   const [nightMode, setNightMode] = useState(false);
   const [selectedColor, setSelectedColor] = useState("#1976d2");
 
   const toggleSidebar = () => setIsOpen(!isOpen);
   const closeSidebar = () => setIsOpen(false);
 
-  const applySettings = () => {
-    // Apply theme to document
-    document.body.style.backgroundColor = nightMode ? "#000000" : "#ffffff";
-    document.body.style.color = nightMode ? "#ffffff" : "#000000";
-    document.documentElement.style.setProperty("--main-color", selectedColor);
-    closeSidebar();
-  };
-
   useEffect(() => {
     // Init color
     document.documentElement.style.setProperty("--main-color", selectedColor);
-  }, []);
+  }, [selectedColor]);
 
   const colors = ["#f5c242", "#e53935", "#ff9800", "#4caf50", "#1976d2"];
+
+  useEffect(() => {
+    const timer = setInterval(() => setTime(new Date()), 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   // Add/remove class on body
   useEffect(() => {
@@ -47,7 +42,9 @@ const Navbar = () => {
         <div className="container-fluid">
           <div className="container-fluid d-flex justify-content-between align-items-center">
             {/* Left side: Brand Clock */}
-            <GiClockwork size={40} color="white" />
+            <Link to="/">
+              <GiClockwork size={40} color="white" />
+            </Link>
 
             {/* Right side: Toggle Button */}
             <button
@@ -117,15 +114,15 @@ const Navbar = () => {
                 </button>
               </li>
 
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <GrSettingsOption
                   className="Setting_icon text-center justify-content-center cursor-pointer"
                   onClick={toggleSidebar}
                 />
-              </li>
+              </li> */}
 
               {/* Sidebar Panel */}
-              <div className={`custom-offcanvas ${isOpen ? "show" : ""}`}>
+              {/* <div className={`custom-offcanvas ${isOpen ? "show" : ""}`}>
                 <div className="offcanvas-header p-3">
                   <h5 className="text-white m-0">Settings</h5>
                   <CgClose
@@ -140,7 +137,7 @@ const Navbar = () => {
                     <label className="switch">
                       <input
                         type="checkbox"
-                        checked={digitalFont}
+                        checked={!digitalFont}
                         onChange={() => setDigitalFont(!digitalFont)}
                       />
                       <span className="slider"></span>
@@ -152,19 +149,20 @@ const Navbar = () => {
                     <label className="switch">
                       <input
                         type="checkbox"
-                        checked={is12Hour}
-                        onChange={() => setIs12Hour(!is12Hour)}
+                        checked={is24Hour}
+                        onChange={() => setIs24Hour(is24Hour)}
                       />
                       <span className="slider"></span>
                     </label>
                   </div>
+
 
                   <div className="setting-row">
                     <span>Show Date</span>
                     <label className="switch">
                       <input
                         type="checkbox"
-                        checked={showDate}
+                        checked={!showDate}
                         onChange={() => setShowDate(!showDate)}
                       />
                       <span className="slider"></span>
@@ -177,9 +175,8 @@ const Navbar = () => {
                       {colors.map((color, index) => (
                         <div
                           key={index}
-                          className={`color-circle ${
-                            selectedColor === color ? "selected" : ""
-                          }`}
+                          className={`color-circle ${selectedColor === color ? "selected" : ""
+                            }`}
                           style={{ backgroundColor: color }}
                           onClick={() => {
                             setSelectedColor(color);
@@ -192,15 +189,9 @@ const Navbar = () => {
                       ))}
                     </div>
                   </div>
-
-                  <button
-                    className="btn btn-primary w-100 mt-4"
-                    onClick={applySettings}
-                  >
-                    OK
-                  </button>
                 </div>
-              </div>
+              </div> */}
+
             </ul>
           </div>
         </div>

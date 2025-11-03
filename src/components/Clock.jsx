@@ -5,23 +5,29 @@ import FavoriteClocks from "./FavoriteClocks";
 
 const Clock = () => {
   const [now, setNow] = useState(moment()),
-    [zone, setZone] = useState("America/New_York"),
-    [is24Hour, setIs24Hour] = useState(!1),
+    [zone, setZone] = useState("delhi/india"),
+    [is24Hour, setIs24Hour] = useState(false),
     [favorites, setFavorites] = useState({}),
-    [time1111, setTime1111] = useState(""),
-    handleFavoriteChange = (e) => {
-      let t = {};
-      e.forEach((e) => {
-        t[e] = !0;
-      }),
-        setFavorites(t);
-    };
+    [showDate, setShowDate] = useState(true),
+    [time1, setTime] = useState(new Date()),
+    [digitalFont, setDigitalFont] = useState(true);
+
+
+  const handleFavoriteChange = (e) => {
+    let t = {};
+    e.forEach((e) => {
+      t[e] = !0;
+    }),
+      setFavorites(t);
+  };
+
   useEffect(() => {
     let e = setInterval(() => {
       setNow(moment());
     }, 1e3);
     return () => clearInterval(e);
   }, []);
+
   const fetchTimezones = async () => {
     try {
       let e = Intl.DateTimeFormat().resolvedOptions().timeZone,
@@ -38,6 +44,7 @@ const Clock = () => {
       console.error("Error fetching time:", m);
     }
   };
+
   useEffect(() => {
     fetchTimezones();
     let e = setInterval(() => {
@@ -48,36 +55,51 @@ const Clock = () => {
   const time = moment(now).tz(zone),
     seconds = time.seconds(),
     minutes = time.minutes(),
-    [time1, setTime] = useState(new Date()),
     [clockType, setClockType] = useState("watch");
+
   useEffect(() => {
     let e = setInterval(() => setTime(new Date()), 1e3);
     return () => clearInterval(e);
   }, []);
+  const formatTime = (time) => {
+    let hours = time.getHours();
+    const minutes = time.getMinutes();
+    const seconds = time.getSeconds();
+
+    if (!is24Hour) {
+      // 12-hour format
+      const ampm = hours >= 12 ? "PM" : "AM";
+      hours = hours % 12 || 12;
+      return `${hours.toString().padStart(2, "0")}:${minutes
+        .toString()
+        .padStart(2, "0")}:${seconds
+          .toString()
+          .padStart(2, "0")} ${ampm}`;
+    }
+
+    // 24-hour format
+    return `${hours.toString().padStart(2, "0")}:${minutes
+      .toString()
+      .padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
+  };
   const formatDate = (e) =>
-      e.toLocaleDateString("en-GB", {
-        weekday: "long",
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-      }),
-    formatTime = (e) =>
-      e.toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-        second: "2-digit",
-        hour12: !is24Hour,
-      }),
-    hours1 = time1.getHours() % (is24Hour ? 24 : 12),
-    minutes1 = time1.getMinutes(),
-    seconds1 = time1.getSeconds(),
+    e.toLocaleDateString("en-GB", {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    });
+  const getTime = (zone) => moment(now).tz(zone).format('h:mm:ss A');
+  const getDate = (zone) => moment(now).tz(zone).format('dddd, MMM D');
+
+  const hours1 = time1.getHours() % (is24Hour ? 24 : 12),
     hourDeg1 = (hours1 + minutes / 60) * 30,
-    minuteDeg1 = (minutes1 + seconds / 60) * 6,
-    secondDeg1 = 6 * seconds1;
+    minuteDeg1 = (minutes + seconds / 60) * 6,
+    secondDeg1 = 6 * seconds;
   return (
     <div className="container-fluid">
-      <div className="container-fluid" style={{ minHeight: "100vh" }}>
-        <div className="row flex-column justify-content-center align-items-center vh-100">
+      <div className="container-fluid">
+        <div className="row flex-column justify-content-center align-items-center">
           <div className="col-md-12 text-center mb-4">
             {clockType === "watch" ? (
               <div className="clock">
@@ -103,9 +125,8 @@ const Clock = () => {
                       key={i}
                       style={{
                         position: "absolute",
-                        transform: `rotate(${
-                          i * 30
-                        }deg) translateY(-125px) rotate(-${i * 30}deg)`,
+                        transform: `rotate(${i * 30
+                          }deg) translateY(-125px) rotate(-${i * 30}deg)`,
                         fontSize: "20px",
                         fontWeight: "bold",
                         color: "white",
@@ -120,17 +141,24 @@ const Clock = () => {
               </div>
             ) : (
               <div>
-                <h1 style={{ fontSize: "60px" }}>{formatTime(time1)}</h1>
+                <h1
+                  style={{ fontSize: "60px" }}
+                  className={digitalFont ? "digital-font-active" : ""} // 👈 Applies class when TRUE
+                >
+                  {formatTime(time1)}
+                </h1>
               </div>
             )}
-            <p
-              style={{
-                fontSize: "20px",
-                letterSpacing: "2px",
-              }}
-            >
-              {formatDate(time1)}
-            </p>
+            {showDate && (
+              <p
+                style={{
+                  fontSize: "20px",
+                  letterSpacing: "2px",
+                }}
+              >
+                {formatDate(time1)}
+              </p>
+            )}
 
             <div className="d-flex justify-content-center align-items-center gap-3 mb-2">
               <Button
@@ -150,13 +178,13 @@ const Clock = () => {
             {/* 12H/24H Toggle */}
             <div className="d-flex justify-content-center align-items-center gap-2">
               <span
-                onClick={() => setIs24Hour(false)}
+                onClick={() => setIs24Hour(false)} // Sets 12H mode
                 className={`clock-mode ${!is24Hour ? "active" : ""}`}
               >
                 12H
               </span>
               <span
-                onClick={() => setIs24Hour(true)}
+                onClick={() => setIs24Hour(true)} // Sets 24H mode
                 className={`clock-mode ${is24Hour ? "active" : ""}`}
               >
                 24H
@@ -165,6 +193,104 @@ const Clock = () => {
           </div>
         </div>
       </div>
+
+
+      <div className="container-fluid py-4">
+        <div className="row CArd_4 justify-content-center text-center">
+
+          {/* New York */}
+          <div className="col-md-3 mb-4">
+            <div className="card">
+              <div className="card-body">
+                <h6>New York</h6>
+                <h5>{getTime('America/New_York')}</h5>
+                <p className="text-muted">{getDate('America/New_York')}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* London */}
+          <div className="col-md-3 mb-4">
+            <div className="card">
+              <div className="card-body">
+                <h6>London, UK</h6>
+                <h5>{getTime('Europe/London')}</h5>
+                <p className="text-muted">{getDate('Europe/London')}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Tokyo */}
+          <div className="col-md-3 mb-4">
+            <div className="card">
+              <div className="card-body">
+                <h6>Tokyo, Japan</h6>
+                <h5>{getTime('Asia/Tokyo')}</h5>
+                <p className="text-muted">{getDate('Asia/Tokyo')}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Sydney */}
+          <div className="col-md-3 mb-4">
+            <div className="card">
+              <div className="card-body">
+                <h6>Sydney, Australia</h6>
+                <h5>{getTime('Australia/Sydney')}</h5>
+                <p className="text-muted">{getDate('Australia/Sydney')}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Add more cities manually below the same way */}
+
+          {/* Berlin */}
+          <div className="col-md-3 mb-4">
+            <div className="card">
+              <div className="card-body">
+                <h6>Berlin, Germany</h6>
+                <h5>{getTime('Europe/Berlin')}</h5>
+                <p className="text-muted">{getDate('Europe/Berlin')}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Dubai */}
+          <div className="col-md-3 mb-4">
+            <div className="card">
+              <div className="card-body">
+                <h6>Dubai, UAE</h6>
+                <h5>{getTime('Asia/Dubai')}</h5>
+                <p className="text-muted">{getDate('Asia/Dubai')}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Los Angeles */}
+          <div className="col-md-3 mb-4">
+            <div className="card">
+              <div className="card-body">
+                <h6>Los Angeles, CA</h6>
+                <h5>{getTime('America/Los_Angeles')}</h5>
+                <p className="text-muted">{getDate('America/Los_Angeles')}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* New Delhi */}
+          <div className="col-md-3 mb-4">
+            <div className="card">
+              <div className="card-body">
+                <h6>New Delhi, India</h6>
+                <h5>{getTime('Asia/Kolkata')}</h5>
+                <p className="text-muted">{getDate('Asia/Kolkata')}</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
       <div>
         <FavoriteClocks favorites={favorites} />
       </div>
@@ -280,7 +406,7 @@ const Clock = () => {
           </div>
         </div>
       </div> */}
-    </div>
+    </div >
   );
 };
 
