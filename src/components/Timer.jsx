@@ -101,6 +101,7 @@ const Timer = () => {
               className="btn btn-primary"
               style={{ minWidth: "110px" }}
               onClick={handleEdit}
+              disabled={running}
             >
               Edit
             </button>
