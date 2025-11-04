@@ -108,8 +108,9 @@ const Timer = () => {
               Reset
             </button>
             <button
-              className="btn btn-success"
+              className="start-button"
               onClick={handleStart}
+              disabled={running}
             >
               Start
             </button>

@@ -46,14 +46,16 @@ const StopWatch = () => {
         <div className="col-md-12 text-center d-flex justify-content-center align-items-center">
           <div className="mt-3">
             <button
-              className="btn btn-warning me-2 px-4"
+              className="btn btn-warning me-4 p-2 px-4"
               onClick={resetStopwatch}
+              style={{ minWidth: "110px" }}
             >
               Reset
             </button>
             <button
-              className={`btn px-4 ${isRunning ? "btn-danger" : "btn-success"}`}
+              className={`btn px-4 ${isRunning ? "btn-danger" : "btn-success"} p-2`}
               onClick={isRunning ? stopStopwatch : startStopwatch}
+              style={{ minWidth: "110px" }}
             >
               {isRunning ? "Stop" : "Start"}
             </button>

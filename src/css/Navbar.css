@@ -11,6 +11,7 @@ body {
     margin: 0;
     font-family: Lato, sans-serif;
     padding-top: 100px;
+    background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(255, 255, 255, 0.83) 0%, rgba(144, 144, 145, 0.91) 100%);
     padding-bottom: 70px
 }
 
@@ -32,7 +33,7 @@ div.content {
 }
 
 .navbar {
-    background-color: #555;
+    background-color: #555 !important;
     margin-bottom: 20px
 }
 
@@ -49,12 +50,12 @@ div.content {
 }
 
 .nightMode {
-    background-color: #222;
+    background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%);
     color: #e0e0e0
 }
 
 .nightMode .navbar {
-    background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(12, 12, 168, 0.83) 0%, rgba(5, 209, 250, 0.91) 100%);
 }
 
 .nightMode .bottom_Nav {
@@ -62,12 +63,12 @@ div.content {
 }
 
 .nightMode .CArd_4 .card .card-body {
-    background-color: #222 !important;
+    background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%);
     color: white !important;
 }
 
 .nightMode .CArd_4 .card .card-body .text-muted {
-    background-color: #222 !important;
+    background-color: transparent;
     color: #aaa !important;
 }
 
@@ -305,6 +306,7 @@ main {
 
 /* Example CSS for the digital font style */
 .digital-font-active {
+    padding-top: 130px;
     font-family: 'Digital-Display-Font', monospace;
     /* Replace with your actual digital font name */
 }

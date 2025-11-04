@@ -13,13 +13,13 @@ const Clock = () => {
     [digitalFont, setDigitalFont] = useState(true);
 
 
-  const handleFavoriteChange = (e) => {
-    let t = {};
-    e.forEach((e) => {
-      t[e] = !0;
-    }),
-      setFavorites(t);
-  };
+  // const handleFavoriteChange = (e) => {
+  //   let t = {};
+  //   e.forEach((e) => {
+  //     t[e] = !0;
+  //   }),
+  //     setFavorites(t);
+  // };
 
   useEffect(() => {
     let e = setInterval(() => {
@@ -48,7 +48,7 @@ const Clock = () => {
   useEffect(() => {
     fetchTimezones();
     let e = setInterval(() => {
-      setTime1111(new Date());
+      setTime(new Date());
     }, 1e3);
     return () => clearInterval(e);
   }, []);
@@ -56,6 +56,11 @@ const Clock = () => {
     seconds = time.seconds(),
     minutes = time.minutes(),
     [clockType, setClockType] = useState("watch");
+  console.log(setZone);
+  console.log(setShowDate);
+  console.log(setDigitalFont);
+  console.log(setFavorites);
+
 
   useEffect(() => {
     let e = setInterval(() => setTime(new Date()), 1e3);
@@ -93,9 +98,9 @@ const Clock = () => {
   const getDate = (zone) => moment(now).tz(zone).format('dddd, MMM D');
 
   const hours1 = time1.getHours() % (is24Hour ? 24 : 12),
-    hourDeg1 = (hours1 + minutes / 60) * 30,
-    minuteDeg1 = (minutes + seconds / 60) * 6,
-    secondDeg1 = 6 * seconds;
+        hourDeg1 = (hours1 + minutes / 60) * 30,
+        minuteDeg1 = (minutes + seconds / 60) * 6,
+        secondDeg1 = 6 * seconds;
   return (
     <div className="container-fluid">
       <div className="container-fluid">
