@@ -53,7 +53,7 @@ const StopWatch = () => {
               Reset
             </button>
             <button
-              className={`btn px-4 ${isRunning ? "btn-danger" : "btn-success"} p-2`}
+              className={`btn px-4 ${isRunning ? "btn-danger" : "btn-success"}`}
               onClick={isRunning ? stopStopwatch : startStopwatch}
               style={{ minWidth: "110px" }}
             >
