@@ -28,8 +28,8 @@ const BackToTopButton = () => {
         className="d-flex flex-column justify-content-center align-items-center shadow"
         style={{
           position: "fixed",
-          bottom: "7%",
-          right: "1%",
+          bottom: "8%",
+          right: "2%",
           width: "50px",
           height: "50px",
           borderRadius: "50%",

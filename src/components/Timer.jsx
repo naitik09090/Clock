@@ -192,8 +192,6 @@ const Timer = () => {
           </ul>
         )}
       </div>
-
-
     </div>
   );
 };

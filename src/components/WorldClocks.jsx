@@ -148,7 +148,7 @@ const WorldClocks = ({ onFavoriteChange = () => { } }) => {
     : cities;
 
   return (
-    <div className="container-fluid">
+    <div className="container">
       <div className="row g-3 text-center">
         {Cities.map((city) => (
           <div
@@ -162,7 +162,7 @@ const WorldClocks = ({ onFavoriteChange = () => { } }) => {
                 background: "#111",
                 borderRadius: "50%",
                 width: "90%", // 🔹 responsive width
-                maxWidth: "220px", // 🔹 limit for big screen
+                maxWidth: "200px", // 🔹 limit for big screen
                 aspectRatio: "1 / 1", // 🔹 always perfect circle
                 position: "relative",
               }}
@@ -228,7 +228,7 @@ const WorldClocks = ({ onFavoriteChange = () => { } }) => {
                     style={{
                       position: "absolute",
                       transform: `rotate(${i * 30
-                        }deg) translateY(calc(-50% - 220%)) rotate(-${i * 30
+                        }deg) translateY(calc(-50% - 200%)) rotate(-${i * 30
                         }deg)`,
                       fontSize: "clamp(20px, 9.5vw, 22px)", // 🔹 responsive font-size
                       fontWeight: "bold",

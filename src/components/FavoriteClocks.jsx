@@ -102,7 +102,7 @@ const FavoriteClocksView = () => {
                     background: "#111",
                     borderRadius: "50%",
                     width: "90%", // 🔹 responsive width
-                    maxWidth: "220px", // 🔹 limit for big screen
+                    maxWidth: "200px", // 🔹 limit for big screen
                     aspectRatio: "1 / 1", // 🔹 always perfect circle
                     position: "relative",
                   }}
@@ -175,10 +175,10 @@ const FavoriteClocksView = () => {
                           position: "absolute",
                           transform: `rotate(${
                             i * 30
-                          }deg) translateY(calc(-50% - 220%)) rotate(-${
+                          }deg) translateY(calc(-50% - 200%)) rotate(-${
                             i * 30
                           }deg)`,
-                          fontSize: "clamp(20px, 9.5vw, 22px)", // 🔹 responsive font-size
+                          fontSize: "clamp(20px, 9.5vw, 21px)", // 🔹 responsive font-size
                           fontWeight: "bold",
                           color: "white",
                         }}

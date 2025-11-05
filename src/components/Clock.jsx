@@ -102,8 +102,8 @@ const Clock = () => {
         minuteDeg1 = (minutes + seconds / 60) * 6,
         secondDeg1 = 6 * seconds;
   return (
-    <div className="container-fluid">
-      <div className="container-fluid">
+    <>
+      <div className="container">
         <div className="row flex-column justify-content-center align-items-center">
           <div className="col-md-12 text-center mb-1">
             {clockType === "watch" ? (
@@ -201,7 +201,7 @@ const Clock = () => {
       </div>
 
 
-      <div className="container-fluid py-4">
+      <div className="container py-4">
         <div className="row CArd_4 justify-content-center text-center">
 
           {/* New York */}
@@ -297,7 +297,7 @@ const Clock = () => {
         </div>
       </div>
 
-      <div>
+      <div className="container">
         <FavoriteClocks favorites={favorites} />
       </div>
       {/* <div className="container-fluid Home_Main2 bg-traslate py-4 mb-4">
@@ -412,7 +412,7 @@ const Clock = () => {
           </div>
         </div>
       </div> */}
-    </div >
+    </>
   );
 };
 
