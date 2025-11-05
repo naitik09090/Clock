@@ -252,7 +252,7 @@ input:checked+.slider:before {
 }
 
 :root {
-    --main-color: #f5c242
+    --main-color: #212529;
 }
 
 .navbar {
