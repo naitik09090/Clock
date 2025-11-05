@@ -1,39 +1,39 @@
 import { useEffect, useState } from "react";
 import { BsSun, BsMoon } from "react-icons/bs";
-import { GrSettingsOption } from "react-icons/gr";
+// import { GrSettingsOption } from "react-icons/gr";
 import { Link } from "react-router-dom";
-import { CgClose } from "react-icons/cg";
+// import { CgClose } from "react-icons/cg";
 import { GiClockwork } from "react-icons/gi";
 
 
 
-const Navbar = ({ is24Hour, setIs24Hour, digitalFont, setDigitalFont, showDate, setShowDate, setTime}) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [nightMode, setNightMode] = useState(false);
-  const [selectedColor, setSelectedColor] = useState("#1976d2");
+const Navbar = ({ setTime }) => {
+  const [nightMode, setNightMode] = useState(() => {
+    const savedMode = localStorage.getItem("nightMode");
+    return savedMode ? JSON.parse(savedMode) : false;
+  });
+  // const [selectedColor, setSelectedColor] = useState("#1976d2");
 
-  const toggleSidebar = () => setIsOpen(!isOpen);
-  const closeSidebar = () => setIsOpen(false);
+  // useEffect(() => {
+  //   document.documentElement.style.setProperty("--main-color", selectedColor);
+  // }, [selectedColor]);
 
-  useEffect(() => {
-    // Init color
-    document.documentElement.style.setProperty("--main-color", selectedColor);
-  }, [selectedColor]);
-
-  const colors = ["#f5c242", "#e53935", "#ff9800", "#4caf50", "#1976d2"];
+  // const colors = ["#f5c242", "#e53935", "#ff9800", "#4caf50", "#1976d2"];
 
   useEffect(() => {
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
 
-  // Add/remove class on body
+
   useEffect(() => {
     document.body.className = nightMode ? "nightMode" : "";
+
+    localStorage.setItem("nightMode", JSON.stringify(nightMode));
   }, [nightMode]);
 
   const toggleDarkMode = () => {
-    setNightMode(!nightMode);
+    setNightMode(prevMode => !prevMode);
   };
 
   return (

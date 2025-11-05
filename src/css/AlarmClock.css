@@ -33,7 +33,6 @@
 .BTN_Timer234 {
     letter-spacing: 2px;
     font-size: 2rem;
-    padding-top: 200px
 }
 
 .Set_Alarm {
@@ -81,7 +80,8 @@ button {
     cursor: pointer;
     transition: .2s ease-in-out;
     text-align: center;
-    min-width: 110px
+    min-width: 110px;
+    /* background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(12, 12, 168, 0.83) 0%, rgba(5, 209, 250, .91) 100%); */
 }
 
 .Set_Alarm,

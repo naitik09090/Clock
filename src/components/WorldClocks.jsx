@@ -106,7 +106,7 @@ const getDate = (e) =>
     year: "numeric",
   }).format(new Date());
 
-const WorldClocks = ({ onFavoriteChange = () => {} }) => {
+const WorldClocks = ({ onFavoriteChange = () => { } }) => {
   const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
   const [favorites, setFavorites] = useState({});
   const [cityTimes, setCityTimes] = useState({});
@@ -124,6 +124,7 @@ const WorldClocks = ({ onFavoriteChange = () => {} }) => {
       let i = Object.keys(r)
         .filter((t) => r[t])
         .map((t) => parseInt(t));
+      console.log(setShowFavoritesOnly);
       return onFavoriteChange(i), r;
     });
   };
@@ -226,11 +227,9 @@ const WorldClocks = ({ onFavoriteChange = () => {} }) => {
                     key={i}
                     style={{
                       position: "absolute",
-                      transform: `rotate(${
-                        i * 30
-                      }deg) translateY(calc(-50% - 220%)) rotate(-${
-                        i * 30
-                      }deg)`,
+                      transform: `rotate(${i * 30
+                        }deg) translateY(calc(-50% - 220%)) rotate(-${i * 30
+                        }deg)`,
                       fontSize: "clamp(20px, 9.5vw, 22px)", // 🔹 responsive font-size
                       fontWeight: "bold",
                       color: "white",
@@ -262,11 +261,11 @@ const WorldClocks = ({ onFavoriteChange = () => {} }) => {
               <h6>
                 {cityTimes[city.id]
                   ? `${String(cityTimes[city.id].h).padStart(2, "0")}:${String(
-                      cityTimes[city.id].m
-                    ).padStart(2, "0")}:${String(cityTimes[city.id].s).padStart(
-                      2,
-                      "0"
-                    )} ${cityTimes[city.id].dayPeriod}`
+                    cityTimes[city.id].m
+                  ).padStart(2, "0")}:${String(cityTimes[city.id].s).padStart(
+                    2,
+                    "0"
+                  )} ${cityTimes[city.id].dayPeriod}`
                   : "--:--:--"}
               </h6>
               <span>{getDate(city.timezone)}</span>

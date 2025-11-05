@@ -39,7 +39,7 @@ const Clock = () => {
         o = await t.json(),
         [i, s, n] = o.time.split(":").map(Number),
         r = new Date();
-      r.setHours(i, s, n), setTime1111(new Date(r));
+      r.setHours(i, s, n), setTime(new Date(r));
     } catch (m) {
       console.error("Error fetching time:", m);
     }
@@ -105,7 +105,7 @@ const Clock = () => {
     <div className="container-fluid">
       <div className="container-fluid">
         <div className="row flex-column justify-content-center align-items-center">
-          <div className="col-md-12 text-center mb-4">
+          <div className="col-md-12 text-center mb-1">
             {clockType === "watch" ? (
               <div className="clock">
                 <div className="dot center"></div>
@@ -157,15 +157,16 @@ const Clock = () => {
             {showDate && (
               <p
                 style={{
-                  fontSize: "20px",
+                  fontSize: "19px",
                   letterSpacing: "2px",
+                  fontWeight: "500",
                 }}
               >
                 {formatDate(time1)}
               </p>
             )}
 
-            <div className="d-flex justify-content-center align-items-center gap-3 mb-2">
+            <div className="d-flex justify-content-center align-items-center gap-2">
               <Button
                 className={`Btn_timer_1 btn-lg ${clockType === "watch"}`}
                 onClick={() => setClockType("watch")}

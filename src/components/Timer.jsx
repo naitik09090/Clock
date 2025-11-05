@@ -6,30 +6,34 @@ const Timer = () => {
   const [recentTimers, setRecentTimers] = useState([]);
   const intervalRef = useRef(null);
 
-  const FetchData = async () => {
-    try {
-      const res = await fetch(
-        "https://worldtimeapi.org/api/timezone/Asia/Kolkata"
-      );
-      const data = await res.json();
-      const now = new Date(data.datetime);
-      const target = new Date("2025-07-28T16:00:00+05:30");
+  // ✅ Load saved timers from localStorage on mount
+  useEffect(() => {
+    const stored = JSON.parse(localStorage.getItem("recentTimers")) || [];
+    setRecentTimers(stored);
+  }, []);
 
-      const diffInSeconds = Math.floor((target - now) / 1000);
-      setSeconds(diffInSeconds > 0 ? diffInSeconds : 0);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  // ✅ Save timers to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("recentTimers", JSON.stringify(recentTimers));
+  }, [recentTimers]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/timer")
-      .then((res) => res.json())
-      .then((data) => {
-        const recent = data.map((t) => t.time).slice(0, 10);
-        setRecentTimers(recent);
-      })
-      .catch((err) => console.error("Fetch error:", err));
+    const FetchData = async () => {
+      try {
+        const res = await fetch(
+          "https://worldtimeapi.org/api/timezone/Asia/Kolkata"
+        );
+        const data = await res.json();
+        const now = new Date(data.datetime);
+        const target = new Date("2025-07-28T16:00:00+05:30");
+
+        const diffInSeconds = Math.floor((target - now) / 1000);
+        setSeconds(diffInSeconds > 0 ? diffInSeconds : 0);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    FetchData();
   }, []);
 
   const handleStart = () => {
@@ -52,7 +56,6 @@ const Timer = () => {
     }
   };
 
-
   const formatTime = (secs) => {
     const hrs = String(Math.floor(secs / 3600)).padStart(2, "0");
     const min = String(Math.floor((secs % 3600) / 60)).padStart(2, "0");
@@ -67,7 +70,7 @@ const Timer = () => {
       const formatted = formatTime(seconds);
       setRecentTimers((prev) => {
         const updated = [formatted, ...prev.filter((t) => t !== formatted)];
-        return updated.slice(0, 10);
+        return updated.slice(0, 100);
       });
     }
     setSeconds(0);
@@ -81,8 +84,33 @@ const Timer = () => {
     }
   };
 
+  // ✅ Edit saved record
+  const handleEditRecord = (index) => {
+    const input = prompt("Edit this timer (hh:mm:ss or seconds):", recentTimers[index]);
+    if (!input) return;
+
+    let newValue = input;
+    if (!isNaN(parseInt(input))) {
+      // convert seconds to formatted time
+      newValue = formatTime(parseInt(input));
+    }
+
+    setRecentTimers((prev) => {
+      const updated = [...prev];
+      updated[index] = newValue;
+      return updated;
+    });
+  };
+
+  // ✅ Delete saved record
+  const handleDeleteRecord = (index) => {
+    if (window.confirm("Delete this timer record?")) {
+      setRecentTimers((prev) => prev.filter((_, i) => i !== index));
+    }
+  };
+
   return (
-    <div className="container-fluid">
+    <div className="container">
       {/* Top Display */}
       <div className="row d-flex justify-content-center align-items-center text-center mb-5 py-5">
         <div className="col-md-12 BTN_Timer234 d-flex justify-content-center align-items-center text-center">
@@ -105,11 +133,15 @@ const Timer = () => {
             >
               Edit
             </button>
-            <button className="btn btn-warning" onClick={handleReset}>
+            <button
+              className="btn btn-warning"
+              value={recentTimers}
+              onClick={handleReset}
+            >
               Reset
             </button>
             <button
-              className="start-button"
+              className="start-button btn btn-success"
               onClick={handleStart}
               disabled={running}
             >
@@ -119,117 +151,50 @@ const Timer = () => {
         </div>
       </div>
 
-      {/* Predefined + Recent Timers */}
-      <div className="container-fluid mt-4">
-        {/* Top Row: Predefined Timers + Recently Used */}
-        {/* <div className="row g-3 Home_Main"> */}
-        {/* Left: Timer Links */}
-        {/* <div className="col-12 col-md-6 BTN_Timer23 bg-traslate p-3 border">
-            <h6 className="fw-bold">Set the timer for the specified time</h6>
-            <hr />
-            <div className="row">
-              <div className="col-6 col-sm-6">
-                <ul className="list-unstyled">
-                  <li>1 Minute Timer</li>
-                  <li>3 Minute Timer</li>
-                  <li>5 Minute Timer</li>
-                  <li>10 Minute Timer</li>
-                  <li>15 Minute Timer</li>
-                  <li>20 Minute Timer</li>
-                  <li>30 Minute Timer</li>
-                  <li>40 Minute Timer</li>
-                  <li>45 Minute Timer</li>
-                  <li>60 Minute Timer</li>
-                </ul>
-              </div>
-              <div className="col-6 col-sm-6">
-                <ul className="list-unstyled">
-                  <li>10 Second Timer</li>
-                  <li>20 Second Timer</li>
-                  <li>30 Second Timer</li>
-                  <li>45 Second Timer</li>
-                  <li>60 Second Timer</li>
-                  <li>90 Second Timer</li>
-                  <li>1 Hour Timer</li>
-                  <li>2 Hour Timer</li>
-                  <li>4 Hour Timer</li>
-                  <li>8 Hour Timer</li>
-                </ul>
-              </div>
-            </div>
-          </div> */}
-
-        {/* Right: Recently Used */}
-        {/* <div className="col-12 col-md-6 p-3 border">
-            <h6 className="fw-bold">Recently Used</h6>
-            <hr />
-            <div className="fs-5">
-              {recentTimers.length === 0 ? (
-                <p>No timers yet.</p>
-              ) : (
-                recentTimers.map((time, idx) => (
-                  <div key={idx} style={{ fontFamily: "monospace" }}>
-                    {time}
-                  </div>
-                ))
-              )}
-            </div>
-          </div> */}
-        {/* </div> */}
-
-        {/* Bottom Row: How to Use + Holidays */}
-        {/* <div className="row g-3 Home_Main mt-3"> */}
-        {/* Left: How to Use */}
-        {/* <div className="col-12 col-md-6 BTN_Timer23 bg-traslate p-3 border">
-            <h6 className="fw-bold">How to use the online timer</h6>
-            <hr />
-            <p>
-              Set the hour, minute, and second for the online countdown timer,
-              and start it...
-            </p>
-            <p>
-              Click the "Reset" button to start the timer from the initial
-              value. Click the "Stop" ("Start") button to stop (start) the
-              timer.
-            </p>
-            <p>
-              You can add links to online timers with different time settings to
-              your browser's Favorites.
-            </p>
-            <p>
-              In the holiday list, you can launch a countdown timer for any
-              holiday or create a new one.
-            </p>
-          </div> */}
-
-        {/* Right: Holidays */}
-        {/* <div className="col-12 col-md-6 p-3 border">
-            <h6 className="fw-bold">Holidays</h6>
-            <hr />
-            <div className="d-flex justify-content-between">
-              <h6>New Year</h6>
-              <p>Jan 1, 2026</p>
-            </div>
-            <div className="d-flex justify-content-between">
-              <h6>Groundhog Day</h6>
-              <p>Feb 2, 2026</p>
-            </div>
-            <div className="d-flex justify-content-between">
-              <h6>Easter</h6>
-              <p>Apr 5, 2026</p>
-            </div>
-            <div className="d-flex justify-content-between">
-              <h6>Independence Day</h6>
-              <p>Jul 4, 2025</p>
-            </div>
-            <div className="d-flex justify-content-between">
-              <h6>Christmas</h6>
-              <p>Dec 25, 2025</p>
-            </div>
-          </div> */}
-        {/* </div> */}
+      {/* ✅ Recently Used Timers List with Edit/Delete */}
+      <div className="p-3 border rounded">
+        <h6 className="fw-bold">Recently Used Timers</h6>
+        <hr />
+        {recentTimers.length === 0 ? (
+          <p>No timers yet.</p>
+        ) : (
+          <ul
+            className="list-unstyled"
+            style={{
+              maxHeight: "405px",  // limit the visible height
+              overflowY: "auto",   // add vertical scrollbar
+              paddingRight: "5px", // optional: avoid scrollbar overlap
+            }}
+          >
+            {recentTimers.map((time, idx) => (
+              <li
+                key={idx}
+                className="d-flex justify-content-between align-items-center mb-2"
+                style={{ fontFamily: "monospace" }}
+              >
+                <span>{time}</span>
+                <div className="d-flex gap-2">
+                  <button
+                    className="btn btn-sm btn-outline-secondary"
+                    onClick={() => handleEditRecord(idx)}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    className="btn btn-sm btn-outline-danger"
+                    onClick={() => handleDeleteRecord(idx)}
+                  >
+                    Delete
+                  </button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-    </div >
+
+
+    </div>
   );
 };
 

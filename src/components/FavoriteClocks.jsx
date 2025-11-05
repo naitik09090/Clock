@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { cities } from "./WorldClocks";
+import { cities } from "./WorldClocks.jsx";
 import { FaStar } from "react-icons/fa";
 
 const getCityTime = (e) => {

@@ -24,7 +24,6 @@ function App() {
     <>
       <Router>
         <Navbar />
-        <BackToTopButton />
         <Routes>
           <Route path="/" element={<Clock />} />
           <Route path="/timer" element={<Timer />} />
@@ -33,6 +32,7 @@ function App() {
           <Route path="/worldclocks" element={<WorldClocks />} />
           {/* <Route path="/login" element={<Login />} /> */}
         </Routes>
+        <BackToTopButton />
         <SideNavbar />
       </Router>
       {/* <Nav /> */}

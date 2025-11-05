@@ -11,7 +11,7 @@ body {
     margin: 0;
     font-family: Lato, sans-serif;
     padding-top: 100px;
-    background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(255, 255, 255, 0.83) 0%, rgba(144, 144, 145, 0.91) 100%);
+    background-color: white;
     padding-bottom: 70px
 }
 
@@ -55,7 +55,10 @@ div.content {
 }
 
 .nightMode .navbar {
-    background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(12, 12, 168, 0.83) 0%, rgba(5, 209, 250, 0.91) 100%);
+    background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(12, 12, 168, 0.83) 0%, rgba(5, 209, 250, .91) 100%);
+}
+.nightMode .Btn_timer_1 {
+    background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(12, 12, 168, 0.83) 0%, rgba(5, 209, 250, .91) 100%);
 }
 
 .nightMode .bottom_Nav {
@@ -85,8 +88,7 @@ div.content {
     padding: 10px;
     z-index: -2;
     background-color: #e0e0e0;
-    opacity: .6;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .5)
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .back-to-top-btn {
@@ -96,7 +98,7 @@ div.content {
     border-radius: 50%;
     padding: 10px 15px;
     z-index: 1050;
-    background-color: #f8f9fa
+    background-color: #f8f9fa;
 }
 
 @media (max-width:320px) {
