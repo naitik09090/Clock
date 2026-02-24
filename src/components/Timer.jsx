@@ -207,7 +207,6 @@ const Timer = () => {
               fontFamily: "'Digital-7 Mono', monospace",
               fontSize: "60px",
               cursor: !running ? "pointer" : "default",
-              textShadow: "0 0 10px rgba(0, 212, 255, 0.4)"
             }}
             onClick={!running ? handleEdit : undefined}
             title={!running ? "Click to set time" : ""}
