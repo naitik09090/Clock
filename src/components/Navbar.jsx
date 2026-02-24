@@ -131,8 +131,6 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      {/* Spacer to prevent content from jumping behind fixed navbar */}
-      <div style={{ height: "80px" }}></div>
     </>
   );
 };

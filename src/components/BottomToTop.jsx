@@ -28,7 +28,7 @@ const BackToTopButton = () => {
         aria-label="Back to top"
         style={{
           position: "fixed",
-          bottom: "40px",
+          bottom: "80px",
           right: "25px",
           width: "55px",
           height: "55px",

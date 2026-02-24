@@ -10,7 +10,7 @@ body {
     overflow-x: hidden;
     margin: 0;
     font-family: Lato, sans-serif;
-    padding-top: 100px;
+    padding-top: 80px;
     background-color: white;
     padding-bottom: 70px
 }
@@ -50,19 +50,20 @@ div.content {
 }
 
 .nightMode {
-    background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%);
     color: #e0e0e0
 }
 
 .nightMode .navbar {
-    background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(12, 12, 168, 0.83) 0%, rgba(5, 209, 250, .91) 100%);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(12, 12, 168, 0.83) 0%, rgba(5, 209, 250, .91) 100%);
 }
+
 .nightMode .Btn_timer_1 {
-    background: linear-gradient(90deg,rgba(2, 0, 36, 1) 0%, rgba(12, 12, 168, 0.83) 0%, rgba(5, 209, 250, .91) 100%);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(12, 12, 168, 0.83) 0%, rgba(5, 209, 250, .91) 100%);
 }
 
 .nightMode .bottom_Nav {
-    background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%);
+    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%);
 }
 
 .nightMode .CArd_4 .card .card-body {
@@ -70,7 +71,7 @@ div.content {
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10.7px);
     -webkit-backdrop-filter: blur(10.7px);
-    color:white;
+    color: white;
     border: 1px solid rgba(255, 255, 255, 0.20);
 }
 
