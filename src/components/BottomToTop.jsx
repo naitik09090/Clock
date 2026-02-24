@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
 import { GiHeavyTimer } from "react-icons/gi";
 
 const BackToTopButton = () => {
@@ -23,7 +23,7 @@ const BackToTopButton = () => {
 
   return (
     visible && (
-      <button
+      <Button
         onClick={scrollToTop}
         className="d-flex flex-column justify-content-center align-items-center shadow"
         style={{
@@ -33,13 +33,13 @@ const BackToTopButton = () => {
           width: "50px",
           height: "50px",
           borderRadius: "50%",
-          background:"linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%)",
+          background: "linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%)",
           color: "white",
           zIndex: 1050,
         }}
       >
         <GiHeavyTimer size={22} />
-      </button>
+      </Button>
     )
   );
 };
