@@ -8,34 +8,38 @@ import "./css/Contacts.css";
 import "./css/Holidays.css";
 import Navbar from "./components/Navbar.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Timer from "./components/Timer.jsx";
-import StopWatch from "./components/StopWatch.jsx";
-import Clock from "./components/Clock.jsx";
+import React, { Suspense, lazy } from "react";
 import BackToTopButton from "./components/BottomToTop.jsx";
-import Holidays from "./components/Holidays.jsx";
 import SideNavbar from "./components/SideNavbar.jsx";
-import WorldClocks from "./components/WorldClocks.jsx"
 import "./css/login.css";
-// import SettingsSidebar from './components/SettingsSidebar.jsx';
-// import Nav from '../src/components/Nav.jsx'
+
+// Lazy load components to reduce initial bundle size (Reduce unused JavaScript)
+const Timer = lazy(() => import("./components/Timer.jsx"));
+const StopWatch = lazy(() => import("./components/StopWatch.jsx"));
+const Clock = lazy(() => import("./components/Clock.jsx"));
+const Holidays = lazy(() => import("./components/Holidays.jsx"));
+const WorldClocks = lazy(() => import("./components/WorldClocks.jsx"));
 
 function App() {
   return (
     <>
       <Router>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Clock />} />
-          <Route path="/timer" element={<Timer />} />
-          <Route path="/stopwatch" element={<StopWatch />} />
-          <Route path="/holidays" element={<Holidays />} />
-          <Route path="/worldclocks" element={<WorldClocks />} />
-          {/* <Route path="/login" element={<Login />} /> */}
-        </Routes>
+        <main>
+          <Suspense fallback={<div className="container text-center py-5"><div className="spinner-border text-primary" role="status"><span className="visually-hidden">Loading...</span></div></div>}>
+            <Routes>
+              <Route path="/" element={<Clock />} />
+              <Route path="/timer" element={<Timer />} />
+              <Route path="/stopwatch" element={<StopWatch />} />
+              <Route path="/holidays" element={<Holidays />} />
+              <Route path="/worldclocks" element={<WorldClocks />} />
+              {/* <Route path="/login" element={<Login />} /> */}
+            </Routes>
+          </Suspense>
+        </main>
         <BackToTopButton />
         <SideNavbar />
       </Router>
-      {/* <Nav /> */}
     </>
   );
 }

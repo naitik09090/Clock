@@ -7,7 +7,7 @@ import { GiClockwork } from "react-icons/gi";
 
 
 
-const Navbar = ({ setTime }) => {
+const Navbar = () => {
   const [nightMode, setNightMode] = useState(() => {
     const savedMode = localStorage.getItem("nightMode");
     return savedMode ? JSON.parse(savedMode) : false;
@@ -19,11 +19,6 @@ const Navbar = ({ setTime }) => {
   // }, [selectedColor]);
 
   // const colors = ["#f5c242", "#e53935", "#ff9800", "#4caf50", "#1976d2"];
-
-  useEffect(() => {
-    const timer = setInterval(() => setTime(new Date()), 1000);
-    return () => clearInterval(timer);
-  }, []);
 
 
   useEffect(() => {
@@ -42,7 +37,7 @@ const Navbar = ({ setTime }) => {
         <div className="container-fluid">
           <div className="container-fluid d-flex justify-content-between align-items-center">
             {/* Left side: Brand Clock */}
-            <Link to="/">
+            <Link to="/" aria-label="Home">
               <GiClockwork size={40} color="white" />
             </Link>
 
