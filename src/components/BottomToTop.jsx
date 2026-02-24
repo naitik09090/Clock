@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Button from "react-bootstrap/Button";
 import { GiHeavyTimer } from "react-icons/gi";
 
 const BackToTopButton = () => {
@@ -23,23 +22,43 @@ const BackToTopButton = () => {
 
   return (
     visible && (
-      <Button
+      <button
         onClick={scrollToTop}
-        className="d-flex flex-column justify-content-center align-items-center shadow"
+        className="back-to-top shadow-lg"
+        aria-label="Back to top"
         style={{
           position: "fixed",
-          bottom: "8%",
-          right: "2%",
-          width: "50px",
-          height: "50px",
+          bottom: "40px",
+          right: "25px",
+          width: "55px",
+          height: "55px",
           borderRadius: "50%",
-          background: "linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%)",
+          background: "linear-gradient(135deg, #1a1a1a 0%, #333333 100%)",
           color: "white",
           zIndex: 1050,
+          border: "2px solid rgba(255, 255, 255, 0.1)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          cursor: "pointer",
+          padding: "0",
+          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          boxShadow: "0 8px 32px rgba(0, 0, 0, 0.4)",
+          outline: "none",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "translateY(-5px) scale(1.1)";
+          e.currentTarget.style.background = "linear-gradient(135deg, #333333 0%, #444444 100%)";
+          e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.3)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "translateY(0) scale(1)";
+          e.currentTarget.style.background = "linear-gradient(135deg, #1a1a1a 0%, #333333 100%)";
+          e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.1)";
         }}
       >
-        <GiHeavyTimer size={22} />
-      </Button>
+        <GiHeavyTimer size={28} />
+      </button>
     )
   );
 };

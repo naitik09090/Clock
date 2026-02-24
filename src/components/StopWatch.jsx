@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import "../css/StopWatch.css";
 
 const STORAGE_KEY_TIME = "stopwatch_time";
 const STORAGE_KEY_RUNNING = "stopwatch_isRunning";

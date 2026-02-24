@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import "../css/Clock.css";
+import "../css/AlarmClock.css";
 import Button from "react-bootstrap/Button";
 import FavoriteClocks from "./FavoriteClocks";
 

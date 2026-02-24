@@ -1,17 +1,9 @@
 import "./App.css";
-import "./css/Navbar.css";
-import "./css/AlarmClock.css";
-import "./css/Timer.css";
-import "./css/StopWatch.css";
-import "./css/Clock.css";
-import "./css/Contacts.css";
-import "./css/Holidays.css";
 import Navbar from "./components/Navbar.jsx";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { Suspense, lazy } from "react";
 import BackToTopButton from "./components/BottomToTop.jsx";
 import SideNavbar from "./components/SideNavbar.jsx";
-import "./css/login.css";
 
 // Lazy load components to reduce initial bundle size (Reduce unused JavaScript)
 const Timer = lazy(() => import("./components/Timer.jsx"));

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
+import "../css/Clock.css";
 
 export const cities = [
   {

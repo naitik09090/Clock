@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import "../css/Timer.css";
 
 const STORAGE_KEY_SECONDS = "timer_seconds";
 const STORAGE_KEY_RUNNING = "timer_isRunning";

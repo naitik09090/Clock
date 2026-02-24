@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { cities } from "./WorldClocks.jsx";
 import { FaStar } from "react-icons/fa";
+import "../css/Clock.css";
 
 const getCityTime = (e) => {
   let n = new Date(),
@@ -128,9 +129,8 @@ const FavoriteClocksView = () => {
                       background: "white",
                       top: "25%",
                       transformOrigin: "bottom center",
-                      transform: `rotate(${
-                        cityTimes[city.id]?.hourDeg || 0
-                      }deg)`,
+                      transform: `rotate(${cityTimes[city.id]?.hourDeg || 0
+                        }deg)`,
                       borderRadius: "10px",
                     }}
                   />
@@ -143,9 +143,8 @@ const FavoriteClocksView = () => {
                       background: "lightgray",
                       top: "15%",
                       transformOrigin: "bottom center",
-                      transform: `rotate(${
-                        cityTimes[city.id]?.minuteDeg || 0
-                      }deg)`,
+                      transform: `rotate(${cityTimes[city.id]?.minuteDeg || 0
+                        }deg)`,
                       borderRadius: "10px",
                     }}
                   />
@@ -158,9 +157,8 @@ const FavoriteClocksView = () => {
                       background: "red",
                       top: "10%",
                       transformOrigin: "bottom center",
-                      transform: `rotate(${
-                        cityTimes[city.id]?.secondDeg || 0
-                      }deg)`,
+                      transform: `rotate(${cityTimes[city.id]?.secondDeg || 0
+                        }deg)`,
                       borderRadius: "10px",
                     }}
                   />
@@ -173,11 +171,9 @@ const FavoriteClocksView = () => {
                         key={i}
                         style={{
                           position: "absolute",
-                          transform: `rotate(${
-                            i * 30
-                          }deg) translateY(calc(-50% - 200%)) rotate(-${
-                            i * 30
-                          }deg)`,
+                          transform: `rotate(${i * 30
+                            }deg) translateY(calc(-50% - 200%)) rotate(-${i * 30
+                            }deg)`,
                           fontSize: "clamp(20px, 9.5vw, 21px)", // 🔹 responsive font-size
                           fontWeight: "bold",
                           color: "white",
@@ -209,14 +205,13 @@ const FavoriteClocksView = () => {
                   <h5 className="mb-0">
                     {cityTimes[city.id]
                       ? `${String(cityTimes[city.id].h).padStart(
-                          2,
-                          "0"
-                        )}:${String(cityTimes[city.id].m).padStart(
-                          2,
-                          "0"
-                        )}:${String(cityTimes[city.id].s).padStart(2, "0")} ${
-                          cityTimes[city.id].dayPeriod
-                        }`
+                        2,
+                        "0"
+                      )}:${String(cityTimes[city.id].m).padStart(
+                        2,
+                        "0"
+                      )}:${String(cityTimes[city.id].s).padStart(2, "0")} ${cityTimes[city.id].dayPeriod
+                      }`
                       : "--:--:--"}
                   </h5>
 

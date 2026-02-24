@@ -1,29 +1,17 @@
 import { useEffect, useState } from "react";
 import { BsSun, BsMoon } from "react-icons/bs";
-// import { GrSettingsOption } from "react-icons/gr";
 import { Link } from "react-router-dom";
-// import { CgClose } from "react-icons/cg";
 import { GiClockwork } from "react-icons/gi";
-
-
+import "../css/Navbar.css";
 
 const Navbar = () => {
   const [nightMode, setNightMode] = useState(() => {
     const savedMode = localStorage.getItem("nightMode");
     return savedMode ? JSON.parse(savedMode) : false;
   });
-  // const [selectedColor, setSelectedColor] = useState("#1976d2");
-
-  // useEffect(() => {
-  //   document.documentElement.style.setProperty("--main-color", selectedColor);
-  // }, [selectedColor]);
-
-  // const colors = ["#f5c242", "#e53935", "#ff9800", "#4caf50", "#1976d2"];
-
 
   useEffect(() => {
     document.body.className = nightMode ? "nightMode" : "";
-
     localStorage.setItem("nightMode", JSON.stringify(nightMode));
   }, [nightMode]);
 
@@ -31,19 +19,50 @@ const Navbar = () => {
     setNightMode(prevMode => !prevMode);
   };
 
+  // Function to close the mobile menu
+  const closeMenu = () => {
+    const navbarCollapse = document.getElementById("collapsibleNavbar");
+    if (navbarCollapse && navbarCollapse.classList.contains("show")) {
+      const toggleButton = document.querySelector(".navbar-toggler");
+      if (toggleButton) toggleButton.click();
+    }
+  };
+
+  // Add event listener to close menu when clicking outside
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      const navbar = document.querySelector(".navbar");
+      const navbarCollapse = document.getElementById("collapsibleNavbar");
+
+      // If menu is open and click is outside the navbar
+      if (
+        navbarCollapse &&
+        navbarCollapse.classList.contains("show") &&
+        navbar &&
+        !navbar.contains(event.target)
+      ) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+    return () => document.removeEventListener("mousedown", handleOutsideClick);
+  }, []);
+
   return (
     <>
-      <nav className="d-block navbar navbar-expand-sm navbar-dark bg-dark p-3 mb-3 fixed-top">
+      <nav className="navbar navbar-expand-sm navbar-dark bg-dark p-3 mb-3 fixed-top shadow-sm">
         <div className="container-fluid">
-          <div className="container-fluid d-flex justify-content-between align-items-center">
-            {/* Left side: Brand Clock */}
-            <Link to="/" aria-label="Home">
-              <GiClockwork size={40} color="white" />
-            </Link>
+          {/* Left side: Brand Logo */}
+          <Link to="/" aria-label="Home" onClick={closeMenu} className="navbar-brand d-flex align-items-center">
+            <GiClockwork size={35} color="white" className="me-2" />
+          </Link>
 
-            {/* Right side: Toggle Button */}
+          {/* Mobile Toggle & Theme Toggle Together on Mobile */}
+          <div className="d-flex align-items-center gap-2">
+
             <button
-              className="navbar-toggler border-0"
+              className="navbar-toggler border-0 shadow-none"
               type="button"
               data-bs-toggle="collapse"
               data-bs-target="#collapsibleNavbar"
@@ -55,142 +74,65 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* Menu */}
+          {/* Menu Items */}
           <div className="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul className="navbar-nav ms-auto d-flex align-items-center gap-4">
+            <ul className="navbar-nav ms-auto d-flex align-items-center gap-3 mt-3 mt-sm-0">
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/worldclocks">
-                  WorldClocks
+                <Link className="nav-link text-white nav-hover-effect" to="/worldclocks" onClick={closeMenu}>
+                  World Clocks
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white" to="/holidays">
+                <Link className="nav-link text-white nav-hover-effect" to="/holidays" onClick={closeMenu}>
                   Holidays
                 </Link>
               </li>
               <li className="nav-item dropdown">
                 <Link
-                  className="nav-link dropdown-toggle text-white"
+                  className="nav-link dropdown-toggle text-white nav-hover-effect"
                   to="#"
+                  id="toolsDropdown"
                   role="button"
                   data-bs-toggle="dropdown"
+                  aria-expanded="false"
                 >
                   Tools
                 </Link>
-                <ul className="dropdown-menu">
+                <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-end shadow-lg border-0" aria-labelledby="toolsDropdown">
                   <li>
-                    <Link className="dropdown-item" to="/">
+                    <Link className="dropdown-item py-2" to="/" onClick={closeMenu}>
                       Clock
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/timer">
+                    <Link className="dropdown-item py-2" to="/timer" onClick={closeMenu}>
                       Timer
                     </Link>
                   </li>
                   <li>
-                    <Link className="dropdown-item" to="/stopwatch">
+                    <Link className="dropdown-item py-2" to="/stopwatch" onClick={closeMenu}>
                       Stopwatch
                     </Link>
                   </li>
                 </ul>
               </li>
-              <li className="nav-item">
-                <button
-                  className="BtN_Mood d-flex align-items-center"
-                  onClick={() => toggleDarkMode()}
-                  title="Toggle theme"
-                >
-                  {nightMode ? (
-                    <BsSun className="BTn_Sun" />
-                  ) : (
-                    <BsMoon className="BTn_Moon" />
-                  )}
-                </button>
-              </li>
-
-              {/* <li className="nav-item">
-                <GrSettingsOption
-                  className="Setting_icon text-center justify-content-center cursor-pointer"
-                  onClick={toggleSidebar}
-                />
-              </li> */}
-
-              {/* Sidebar Panel */}
-              {/* <div className={`custom-offcanvas ${isOpen ? "show" : ""}`}>
-                <div className="offcanvas-header p-3">
-                  <h5 className="text-white m-0">Settings</h5>
-                  <CgClose
-                    className="CloSe_BTn cursor-pointer"
-                    onClick={closeSidebar}
-                  />
-                </div>
-                <hr className="divider" />
-                <div className="text-white p-3">
-                  <div className="setting-row">
-                    <span>Digital Font</span>
-                    <label className="switch">
-                      <input
-                        type="checkbox"
-                        checked={!digitalFont}
-                        onChange={() => setDigitalFont(!digitalFont)}
-                      />
-                      <span className="slider"></span>
-                    </label>
-                  </div>
-
-                  <div className="setting-row">
-                    <span>12 hours (am/pm)</span>
-                    <label className="switch">
-                      <input
-                        type="checkbox"
-                        checked={is24Hour}
-                        onChange={() => setIs24Hour(is24Hour)}
-                      />
-                      <span className="slider"></span>
-                    </label>
-                  </div>
-
-
-                  <div className="setting-row">
-                    <span>Show Date</span>
-                    <label className="switch">
-                      <input
-                        type="checkbox"
-                        checked={!showDate}
-                        onChange={() => setShowDate(!showDate)}
-                      />
-                      <span className="slider"></span>
-                    </label>
-                  </div>
-
-                  <div className="mt-3">
-                    <p className="mb-1">Colors</p>
-                    <div className="color-options">
-                      {colors.map((color, index) => (
-                        <div
-                          key={index}
-                          className={`color-circle ${selectedColor === color ? "selected" : ""
-                            }`}
-                          style={{ backgroundColor: color }}
-                          onClick={() => {
-                            setSelectedColor(color);
-                            document.documentElement.style.setProperty(
-                              "--main-color",
-                              color
-                            );
-                          }}
-                        ></div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div> */}
-
+              <button
+                className="BtN_Mood d-flex align-items-center"
+                onClick={() => toggleDarkMode()}
+                title="Toggle theme"
+              >
+                {nightMode ? (
+                  <BsSun className="BTn_Sun" />
+                ) : (
+                  <BsMoon className="BTn_Moon" />
+                )}
+              </button>
             </ul>
           </div>
         </div>
       </nav>
+      {/* Spacer to prevent content from jumping behind fixed navbar */}
+      <div style={{ height: "80px" }}></div>
     </>
   );
 };
