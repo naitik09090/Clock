@@ -1,64 +1,89 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+
+const STORAGE_KEY_TIME = "stopwatch_time";
+const STORAGE_KEY_RUNNING = "stopwatch_isRunning";
+const STORAGE_KEY_START_AT = "stopwatch_startedAt";  // epoch ms when we last pressed Start
+const STORAGE_KEY_RECORDS = "stopwatchRecords";
 
 const StopWatch = () => {
-  const [time, setTime] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
-  const [records, setRecords] = useState([]);
-  const intervalRef = useRef(null);
-
-  // ✅ Load saved records from localStorage on first render
-  useEffect(() => {
+  // ── Initialise from localStorage ─────────────────────────────────────────
+  const initTime = () => {
     try {
-      const saved = localStorage.getItem("stopwatchRecords");
-      if (saved) {
-        setRecords(JSON.parse(saved));
-      }
-    } catch (err) {
-      console.error("Failed to load records:", err);
-    }
-  }, []);
+      const savedTime = Number(localStorage.getItem(STORAGE_KEY_TIME)) || 0;
+      const wasRunning = localStorage.getItem(STORAGE_KEY_RUNNING) === "true";
+      const startedAt = Number(localStorage.getItem(STORAGE_KEY_START_AT)) || 0;
 
-  // ✅ Save to localStorage whenever records change
+      if (wasRunning && startedAt) {
+        // Compute how many ms elapsed since the tab was closed/hidden
+        const elapsed = Date.now() - startedAt;
+        return savedTime + elapsed;
+      }
+      return savedTime;
+    } catch {
+      return 0;
+    }
+  };
+
+  const initRunning = () => {
+    try {
+      return localStorage.getItem(STORAGE_KEY_RUNNING) === "true";
+    } catch {
+      return false;
+    }
+  };
+
+  const initRecords = () => {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY_RECORDS);
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const [time, setTime] = useState(initTime);
+  const [isRunning, setIsRunning] = useState(initRunning);
+  const [records, setRecords] = useState(initRecords);
+
+  // Keep a ref so our interval always reads the latest time without stale closure
+  const timeRef = useRef(time);
+  useEffect(() => { timeRef.current = time; }, [time]);
+
+  // ── Persist time + running state ─────────────────────────────────────────
   useEffect(() => {
-    localStorage.setItem("stopwatchRecords", JSON.stringify(records));
+    localStorage.setItem(STORAGE_KEY_TIME, time);
+  }, [time]);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_RUNNING, isRunning);
+    if (isRunning) {
+      // Record the wall-clock moment we started so we can catch up after refresh
+      localStorage.setItem(STORAGE_KEY_START_AT, Date.now());
+    } else {
+      localStorage.removeItem(STORAGE_KEY_START_AT);
+    }
+  }, [isRunning]);
+
+  // ── Persist records ───────────────────────────────────────────────────────
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY_RECORDS, JSON.stringify(records));
   }, [records]);
 
-  const startStopwatch = () => {
-    if (!isRunning) {
-      setIsRunning(true);
-      intervalRef.current = setInterval(() => {
+  // ── Tick interval ─────────────────────────────────────────────────────────
+  useEffect(() => {
+    let interval;
+    if (isRunning) {
+      // Stamp the start-at every time the interval fires so that on refresh
+      // we always have a very recent timestamp to diff against
+      interval = setInterval(() => {
         setTime((prev) => prev + 10);
+        localStorage.setItem(STORAGE_KEY_START_AT, Date.now());
       }, 10);
     }
-  };
+    return () => clearInterval(interval);
+  }, [isRunning]);
 
-  const stopStopwatch = () => {
-    setIsRunning(false);
-    clearInterval(intervalRef.current);
-
-    // ✅ Add record only if stopwatch ran
-    if (time > 0) {
-      const newRecord = {
-        id: Date.now(),
-        time,
-        date: new Date().toLocaleDateString("en-GB", {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-        }) + " " + new Date().toLocaleTimeString(),
-      };
-      setRecords((prev) => [...prev, newRecord]);
-    }
-  };
-
-  const resetStopwatch = () => {
-    setIsRunning(false);
-    clearInterval(intervalRef.current);
-    setTime(0);
-    setRecords([]);
-    localStorage.removeItem("stopwatchRecords");
-  };
-
+  // ── Format ────────────────────────────────────────────────────────────────
   const formatTime = (ms) => {
     const minutes = String(Math.floor(ms / 60000)).padStart(2, "0");
     const seconds = String(Math.floor((ms % 60000) / 1000)).padStart(2, "0");
@@ -66,6 +91,33 @@ const StopWatch = () => {
     return `${minutes}:${seconds}.${milliseconds}`;
   };
 
+  // ── Controls ──────────────────────────────────────────────────────────────
+  const startStopwatch = () => setIsRunning(true);
+
+  const stopStopwatch = () => {
+    setIsRunning(false);
+    const newRecord = {
+      id: Date.now(),
+      time: timeRef.current,
+      date: new Date().toLocaleString(),
+    };
+    setRecords((prev) => [...prev, newRecord]);
+  };
+
+  const resetStopwatch = () => {
+    setIsRunning(false);
+    setTime(0);
+    localStorage.setItem(STORAGE_KEY_TIME, 0);
+    localStorage.removeItem(STORAGE_KEY_START_AT);
+    localStorage.setItem(STORAGE_KEY_RUNNING, "false");
+  };
+
+  const clearRecords = () => {
+    setRecords([]);
+    localStorage.removeItem(STORAGE_KEY_RECORDS);
+  };
+
+  // ── Render ────────────────────────────────────────────────────────────────
   return (
     <div className="container">
       <div className="row d-flex justify-content-center align-items-center bg-translate mb-5 py-5">
@@ -100,7 +152,15 @@ const StopWatch = () => {
 
       {/* Record List */}
       <div className="p-3 border rounded">
-        <h6 className="fw-bold">Stop Records</h6>
+        <div className="d-flex justify-content-between align-items-center">
+          <h6 className="fw-bold mb-0">Stop Records</h6>
+          <button
+            className="btn btn-sm btn-outline-danger"
+            onClick={clearRecords}
+          >
+            Reset Records
+          </button>
+        </div>
         <hr />
         <div
           style={{
@@ -110,7 +170,7 @@ const StopWatch = () => {
           }}
         >
           {records.length === 0 ? (
-            <p>No records yet.</p>
+            <p className="text-muted mb-0">No records yet.</p>
           ) : (
             records.map((record, index) => (
               <div
