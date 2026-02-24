@@ -111,6 +111,28 @@ const Timer = () => {
     return `${hrs}:${min}:${sec}`;
   };
 
+  const parseTime = (input) => {
+    if (!input) return null;
+    const parts = input.split(':').map(p => parseInt(p.trim()));
+
+    if (parts.some(p => isNaN(p))) {
+      // Maybe it was just a number of seconds
+      const raw = parseInt(input);
+      return !isNaN(raw) ? raw : null;
+    }
+
+    if (parts.length === 3) {
+      // hh:mm:ss
+      return parts[0] * 3600 + parts[1] * 60 + parts[2];
+    } else if (parts.length === 2) {
+      // mm:ss
+      return parts[0] * 60 + parts[1];
+    } else if (parts.length === 1) {
+      return parts[0];
+    }
+    return null;
+  };
+
   // ── Controls ──────────────────────────────────────────────────────────────
   const handleStart = () => {
     if (!running) {
@@ -126,7 +148,7 @@ const Timer = () => {
       const formatted = formatTime(secondsRef.current);
       setRecentTimers((prev) => {
         const updated = [formatted, ...prev.filter((t) => t !== formatted)];
-        return updated.slice(0, 100);
+        return updated.slice(0, 50); // limit to 50
       });
     }
     setSeconds(0);
@@ -136,25 +158,36 @@ const Timer = () => {
   };
 
   const handleEdit = () => {
-    const input = prompt("Enter timer in seconds:", "60");
-    const num = parseInt(input);
-    if (!isNaN(num) && num >= 0) {
-      setSeconds(num);
+    const input = prompt("Enter timer (e.g. 01:30:00 or 90):", formatTime(seconds));
+    if (input === null) return;
+    const secs = parseTime(input);
+    if (secs !== null && secs >= 0) {
+      setSeconds(secs);
+    } else {
+      alert("Invalid format. Use hh:mm:ss or total seconds.");
+    }
+  };
+
+  const handleApplyRecord = (timeStr) => {
+    if (running) return;
+    const secs = parseTime(timeStr);
+    if (secs !== null) {
+      setSeconds(secs);
     }
   };
 
   const handleEditRecord = (index) => {
-    const input = prompt("Edit this timer (hh:mm:ss or seconds):", recentTimers[index]);
-    if (!input) return;
-    let newValue = input;
-    if (!isNaN(parseInt(input))) {
-      newValue = formatTime(parseInt(input));
+    const input = prompt("Edit this timer (hh:mm:ss):", recentTimers[index]);
+    if (input === null) return;
+    const secs = parseTime(input);
+    if (secs !== null) {
+      const newValue = formatTime(secs);
+      setRecentTimers((prev) => {
+        const updated = [...prev];
+        updated[index] = newValue;
+        return updated;
+      });
     }
-    setRecentTimers((prev) => {
-      const updated = [...prev];
-      updated[index] = newValue;
-      return updated;
-    });
   };
 
   const handleDeleteRecord = (index) => {
@@ -172,70 +205,86 @@ const Timer = () => {
           <span
             style={{
               fontFamily: "'Digital-7 Mono', monospace",
-              fontSize: "50px",
+              fontSize: "60px",
+              cursor: !running ? "pointer" : "default",
+              color: "#00d4ff",
+              textShadow: "0 0 10px rgba(0, 212, 255, 0.4)"
             }}
+            onClick={!running ? handleEdit : undefined}
+            title={!running ? "Click to set time" : ""}
           >
             {formatTime(seconds)}
           </span>
         </div>
         <div className="col-md-12 d-flex justify-content-center align-items-center text-center">
-          <div className="d-flex flex-wrap justify-content-center gap-2 mt-3">
+          <div className="d-flex flex-wrap justify-content-center gap-3 mt-4">
             <button
-              className="btn btn-primary"
-              style={{ minWidth: "110px" }}
+              className="btn btn-outline-info px-4 border-2"
               onClick={handleEdit}
               disabled={running}
             >
-              Edit
+              Set Time
             </button>
             <button
-              className="btn btn-warning"
+              className="btn btn-outline-warning px-4 border-2"
               onClick={handleReset}
             >
               Reset
             </button>
             <button
-              className="start-button btn btn-success"
-              onClick={handleStart}
-              disabled={running}
+              className={`btn px-5 border-2 fw-bold ${running ? "btn-danger" : "btn-success"}`}
+              onClick={running ? () => setRunning(false) : handleStart}
             >
-              Start
+              {running ? "Pause" : "Start"}
             </button>
           </div>
         </div>
       </div>
 
       {/* ✅ Recently Used Timers List with Edit/Delete */}
-      <div className="p-3 border rounded">
-        <h6 className="fw-bold">Recently Used Timers</h6>
-        <hr />
+      <div className="p-4 border rounded bg-dark border-secondary shadow">
+        <div className="d-flex justify-content-between align-items-center mb-3">
+          <h6 className="fw-bold text-white mb-0">Recently Used Timers</h6>
+          <small className="text-muted">Click a timer to apply it</small>
+        </div>
+        <hr className="border-secondary" />
         {recentTimers.length === 0 ? (
-          <p>No timers yet.</p>
+          <p className="text-muted text-center py-3">No recent timers.</p>
         ) : (
           <ul
-            className="list-unstyled"
+            className="list-unstyled mb-0"
             style={{
-              maxHeight: "405px",
+              maxHeight: "300px",
               overflowY: "auto",
-              paddingRight: "5px",
+              paddingRight: "8px",
             }}
           >
             {recentTimers.map((time, idx) => (
               <li
                 key={idx}
-                className="d-flex justify-content-between align-items-center mb-2"
-                style={{ fontFamily: "monospace" }}
+                className="d-flex justify-content-between align-items-center p-2 mb-2 rounded record-item"
+                style={{
+                  background: "rgba(255,255,255,0.05)",
+                  transition: "background 0.2s"
+                }}
               >
-                <span>{time}</span>
+                <span
+                  className="text-white-50 flex-grow-1 cursor-pointer"
+                  style={{ fontFamily: "monospace", fontSize: "1.1rem" }}
+                  onClick={() => handleApplyRecord(time)}
+                  title="Apply this timer"
+                >
+                  {time}
+                </span>
                 <div className="d-flex gap-2">
                   <button
-                    className="btn btn-sm btn-outline-secondary"
+                    className="btn btn-sm btn-link text-info p-0 text-decoration-none"
                     onClick={() => handleEditRecord(idx)}
                   >
                     Edit
                   </button>
                   <button
-                    className="btn btn-sm btn-outline-danger"
+                    className="btn btn-sm btn-link text-danger p-0 text-decoration-none"
                     onClick={() => handleDeleteRecord(idx)}
                   >
                     Delete

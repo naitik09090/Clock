@@ -39,3 +39,12 @@ a:hover {
     cursor: not-allowed;
     opacity: 0.6;
 }
+
+.record-item:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+    cursor: pointer;
+}
+
+.record-item span:hover {
+    color: #00d4ff !important;
+}
