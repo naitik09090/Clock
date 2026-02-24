@@ -207,7 +207,6 @@ const Timer = () => {
               fontFamily: "'Digital-7 Mono', monospace",
               fontSize: "60px",
               cursor: !running ? "pointer" : "default",
-              color: "#00d4ff",
               textShadow: "0 0 10px rgba(0, 212, 255, 0.4)"
             }}
             onClick={!running ? handleEdit : undefined}
@@ -242,9 +241,9 @@ const Timer = () => {
       </div>
 
       {/* ✅ Recently Used Timers List with Edit/Delete */}
-      <div className="p-4 border rounded bg-dark border-secondary shadow">
+      <div className="p-4 border rounded border-secondary shadow">
         <div className="d-flex justify-content-between align-items-center mb-3">
-          <h6 className="fw-bold text-white mb-0">Recently Used Timers</h6>
+          <h6 className="fw-bold mb-0">Recently Used Timers</h6>
           <small className="text-muted">Click a timer to apply it</small>
         </div>
         <hr className="border-secondary" />
@@ -263,13 +262,9 @@ const Timer = () => {
               <li
                 key={idx}
                 className="d-flex justify-content-between align-items-center p-2 mb-2 rounded record-item"
-                style={{
-                  background: "rgba(255,255,255,0.05)",
-                  transition: "background 0.2s"
-                }}
               >
                 <span
-                  className="text-white-50 flex-grow-1 cursor-pointer"
+                  className="flex-grow-1 cursor-pointer"
                   style={{ fontFamily: "monospace", fontSize: "1.1rem" }}
                   onClick={() => handleApplyRecord(time)}
                   title="Apply this timer"

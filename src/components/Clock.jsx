@@ -3,77 +3,96 @@ import "../css/Clock.css";
 import "../css/AlarmClock.css";
 import Button from "react-bootstrap/Button";
 import FavoriteClocks from "./FavoriteClocks";
+import { cities } from "./WorldClocks";
 
 const Clock = () => {
   const [is24Hour, setIs24Hour] = useState(false);
   const [favorites] = useState({});
   const [showDate] = useState(true);
-  const [time1, setTime] = useState(new Date());
+  const [currentTime, setCurrentTime] = useState(new Date());
   const [digitalFont] = useState(true);
   const [clockType, setClockType] = useState("watch");
+  const [selectedCity, setSelectedCity] = useState(null); // State to track selected city
 
   useEffect(() => {
-    const interval = setInterval(() => setTime(new Date()), 1000);
+    const interval = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(interval);
   }, []);
 
-  // Format functions
-  const formatTime = (date) =>
-    date.toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: !is24Hour,
+  // Format functions helper
+  const formatDateOptions = (tz) => ({
+    timeZone: tz || undefined,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: !is24Hour,
+  });
+
+  const getFormattedTime = (date, tz) => {
+    return date.toLocaleTimeString([], formatDateOptions(tz));
+  };
+
+  const getFormattedDate = (date, tz) => {
+    return date.toLocaleDateString([], {
+      timeZone: tz || undefined,
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+  };
+
+  // Helper to get hand angles for a specific timezone
+  const getHandAngles = (date, tz) => {
+    const timeString = date.toLocaleTimeString('en-US', {
+      timeZone: tz || undefined,
+      hour12: false,
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit'
     });
 
-  const formatDate = (date) => date.toLocaleDateString();
+    const [h, m, s] = timeString.split(':').map(Number);
 
-  const getTime = (tz) =>
-    new Date().toLocaleTimeString([], {
-      timeZone: tz,
-      hour: "2-digit",
-      minute: "2-digit",
-      second: "2-digit",
-      hour12: !is24Hour,
-    });
+    return {
+      hourDeg: (h % 12) * 30 + m * 0.5,
+      minuteDeg: m * 6,
+      secondDeg: s * 6
+    };
+  };
 
-  const getDate = (tz) =>
-    new Date().toLocaleDateString([], { timeZone: tz });
-
-  // Calculate clock hand angles
-  const hourDeg1 = (time1.getHours() % 12) * 30 + time1.getMinutes() * 0.5;
-  const minuteDeg1 = time1.getMinutes() * 6;
-  const secondDeg1 = time1.getSeconds() * 6;
+  const { hourDeg, minuteDeg, secondDeg } = getHandAngles(currentTime, selectedCity?.timezone);
 
   return (
     <>
       <div className="container">
         <div className="row flex-column justify-content-center align-items-center">
           <div className="col-md-12 text-center mb-1">
+            {/* Display Selected City Name */}
             {clockType === "watch" ? (
-              <div className="clock">
+              <div className="clock mb-4">
                 <div className="dot center"></div>
                 <div
                   className="hand hour"
-                  style={{ transform: `rotate(${hourDeg1}deg)` }}
+                  style={{ transform: `rotate(${hourDeg}deg)` }}
                 ></div>
                 <div
                   className="hand minute"
-                  style={{ transform: `rotate(${minuteDeg1}deg)` }}
+                  style={{ transform: `rotate(${minuteDeg}deg)` }}
                 ></div>
                 <div
                   className="hand second"
-                  style={{ transform: `rotate(${secondDeg1}deg)` }}
+                  style={{ transform: `rotate(${secondDeg}deg)`, backgroundColor: "red" }}
                 ></div>
 
                 {[...Array(12)].map((_, i) => {
-                  const number = i === 0 ? 12 : i;
+                  const num = i + 1;
                   return (
                     <div
                       key={i}
                       style={{
                         position: "absolute",
-                        transform: `rotate(${i * 30}deg) translateY(-125px) rotate(-${i * 30}deg)`,
+                        transform: `rotate(${num * 30}deg) translateY(-125px) rotate(-${num * 30}deg)`,
                         fontSize: "20px",
                         fontWeight: "bold",
                         color: "white",
@@ -81,7 +100,7 @@ const Clock = () => {
                         top: "125px",
                       }}
                     >
-                      {number}
+                      {num}
                     </div>
                   );
                 })}
@@ -89,13 +108,25 @@ const Clock = () => {
             ) : (
               <div>
                 <h1
-                  style={{ fontSize: "60px" }}
+                  style={{ fontSize: "70px" }}
                   className={digitalFont ? "digital-font-active" : ""}
                 >
-                  {formatTime(time1)}
+                  {getFormattedTime(currentTime, selectedCity?.timezone)}
                 </h1>
               </div>
             )}
+            <h2 className="fw-bold" style={{ color: selectedCity ? "" : "inherit" }}>
+              {selectedCity ? selectedCity.name : ""}
+              {/* {selectedCity && (
+                <button
+                  className="btn btn-sm btn-outline-secondary ms-3"
+                  onClick={() => setSelectedCity(null)}
+                  style={{ borderRadius: "20px", fontSize: "12px" }}
+                >
+                  Reset to Local
+                </button>
+              )} */}
+            </h2>
 
             {showDate && (
               <p
@@ -105,37 +136,39 @@ const Clock = () => {
                   fontWeight: "500",
                 }}
               >
-                {formatDate(time1)}
+                {getFormattedDate(currentTime, selectedCity?.timezone)}
               </p>
             )}
 
-            <div className="mb-3">
+            <div className="mb-4">
               <Button
-                variant="dark"
-                className={`mx-2 ${clockType === "watch" ? "active" : ""}`}
+                variant={clockType === "watch" ? "primary" : "dark"}
+                className="mx-2 px-4 shadow-sm"
                 onClick={() => setClockType("watch")}
               >
-                Watch
+                Analog
               </Button>
               <Button
-                variant="dark"
-                className={`mx-2 ${clockType === "digital" ? "active" : ""}`}
+                variant={clockType === "digital" ? "primary" : "dark"}
+                className="mx-2 px-4 shadow-sm"
                 onClick={() => setClockType("digital")}
               >
                 Digital
               </Button>
             </div>
 
-            <div className="d-flex justify-content-center align-items-center gap-2">
+            <div className="d-flex justify-content-center align-items-center gap-3 mb-5">
               <span
                 onClick={() => setIs24Hour(false)}
-                className={`clock-mode ${!is24Hour ? "active" : ""}`}
+                className={`clock-mode px-3 py-1 rounded-pill ${!is24Hour ? "" : ""}`}
+                style={{ cursor: "pointer", transition: "all 0.3s" }}
               >
                 12H
               </span>
               <span
                 onClick={() => setIs24Hour(true)}
-                className={`clock-mode ${is24Hour ? "active" : ""}`}
+                className={`clock-mode px-3 py-1 rounded-pill ${is24Hour ? "" : ""}`}
+                style={{ cursor: "pointer", transition: "all 0.3s" }}
               >
                 24H
               </span>
@@ -145,23 +178,24 @@ const Clock = () => {
       </div>
 
       <div className="container py-4">
+        <h4 className="text-center mb-4 fw-bold">Select a City to sync with Main Clock</h4>
         <div className="row CArd_4 justify-content-center text-center">
-          {[
-            { name: "New York", tz: "America/New_York" },
-            { name: "London, UK", tz: "Europe/London" },
-            { name: "Tokyo, Japan", tz: "Asia/Tokyo" },
-            { name: "Sydney, Australia", tz: "Australia/Sydney" },
-            { name: "Berlin, Germany", tz: "Europe/Berlin" },
-            { name: "Dubai, UAE", tz: "Asia/Dubai" },
-            { name: "Los Angeles, CA", tz: "America/Los_Angeles" },
-            { name: "New Delhi, India", tz: "Asia/Kolkata" },
-          ].map((city) => (
-            <div key={city.tz} className="col-md-3 mb-4">
-              <div className="card">
-                <div className="card-body">
-                  <h6>{city.name}</h6>
-                  <h5>{getTime(city.tz)}</h5>
-                  <p className="text-muted">{getDate(city.tz)}</p>
+          {cities.map((city) => (
+            <div
+              key={city.id}
+              className="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"
+              onClick={() => {
+                setSelectedCity(city);
+                window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll up to see the main clock
+              }}
+              style={{ cursor: "pointer" }}
+            >
+              <div className={`card shadow-sm h-100 border-0 clock-card-hover ${selectedCity?.id === city.id ? "border border-primary border-3" : ""}`}
+                style={{ transition: "transform 0.2s" }}>
+                <div className="card-body d-flex flex-column justify-content-center py-4">
+                  <h6 className="fw-bold">{city.name}</h6>
+                  <h5 className="mb-1" style={{ fontFamily: "monospace" }}>{getFormattedTime(currentTime, city.timezone)}</h5>
+                  <p className="text-muted mb-0 small">{getFormattedDate(currentTime, city.timezone).split(',').slice(1).join(',')}</p>
                 </div>
               </div>
             </div>
@@ -169,7 +203,7 @@ const Clock = () => {
         </div>
       </div>
 
-      <div className="container">
+      <div className="container mt-5">
         <FavoriteClocks favorites={favorites} />
       </div>
     </>
