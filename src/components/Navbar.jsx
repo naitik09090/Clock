@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { BsSun, BsMoon } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { GiClockwork } from "react-icons/gi";
 import "../css/Navbar.css";
 
@@ -77,15 +77,24 @@ const Navbar = () => {
           {/* Menu Items */}
           <div className="collapse navbar-collapse" id="collapsibleNavbar">
             <ul className="navbar-nav ms-auto d-flex align-items-center gap-3 mt-3 mt-sm-0">
+              <Link to="/about" className="nav-link text-white nav-hover-effect" onClick={closeMenu}>About Us</Link>
+              <Link to="/privacy" className="nav-link text-white nav-hover-effect" onClick={closeMenu}>Privacy Policy</Link>
+              <Link to="/terms" className="nav-link text-white nav-hover-effect" onClick={closeMenu}>Terms & Conditions</Link>
+              <Link to="/contact" className="nav-link text-white nav-hover-effect" onClick={closeMenu}>Contact</Link>
               <li className="nav-item">
-                <Link className="nav-link text-white nav-hover-effect" to="/worldclocks" onClick={closeMenu}>
+                <NavLink className="nav-link text-white nav-hover-effect" to="/worldclocks" onClick={closeMenu}>
                   World Clocks
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link text-white nav-hover-effect" to="/holidays" onClick={closeMenu}>
+                <NavLink className="nav-link text-white nav-hover-effect" to="/holidays" onClick={closeMenu}>
                   Holidays
-                </Link>
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link text-white nav-hover-effect" to="/blog" onClick={closeMenu}>
+                  Blogs
+                </NavLink>
               </li>
               <li className="nav-item dropdown">
                 <Link

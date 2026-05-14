@@ -9,10 +9,11 @@
 body {
     overflow-x: hidden;
     margin: 0;
-    font-family: Lato, sans-serif;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
     padding-top: 80px;
     background-color: white;
-    padding-bottom: 70px
+    padding-bottom: 70px;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 div.content {
@@ -33,8 +34,9 @@ div.content {
 }
 
 .navbar {
-    background-color: #555 !important;
-    margin-bottom: 20px
+    background-color: #1a1c22 !important;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .timer_Clock_Icon {
@@ -45,55 +47,53 @@ div.content {
 
 .BTn_Moon,
 .BTn_Sun {
-    height: 25px !important;
-    width: 25px !important
+    height: 22px !important;
+    width: 22px !important;
+    transition: all 0.4s ease;
 }
 
+.BTn_Sun { color: #ffcc00; }
+.BTn_Moon { color: #ffd700; opacity: 0.8; }
+
 .nightMode {
-    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%);
+    background: #0d0e12;
     color: #e0e0e0
 }
 
 .nightMode .navbar {
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(12, 12, 168, 0.83) 0%, rgba(5, 209, 250, .91) 100%);
-}
-
-.nightMode .Btn_timer_1 {
-    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(12, 12, 168, 0.83) 0%, rgba(5, 209, 250, .91) 100%);
-}
-
-.nightMode .bottom_Nav {
-    background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgba(35, 38, 38, 1) 73%, rgba(0, 0, 0, 1) 100%);
-}
-
-.nightMode .CArd_4 .card .card-body {
-    border-radius: 10px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10.7px);
-    -webkit-backdrop-filter: blur(10.7px);
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.20);
-}
-
-.nightMode .CArd_4 .card .card-body .text-muted {
-    background-color: transparent;
-    color: #aaa !important;
+    background: #0d0e12 !important;
 }
 
 .nightMode .sidebar {
     background-color: #222 !important
 }
 
-.nightMode .sidebar a {
-    color: #e0e0e0 !important
+/* Dropdown Styling */
+.navbar .dropdown-menu {
+    border-radius: 16px;
+    padding: 12px;
+    background-color: #1a1c22 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4) !important;
+    margin-top: 10px !important;
 }
 
-.sidebar12 {
-    height: 65px;
-    padding: 10px;
-    z-index: -2;
-    background-color: #e0e0e0;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+.navbar .dropdown-item {
+    color: #ffffff !important;
+    padding: 0.8rem 1.5rem;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    border-radius: 10px;
+    font-weight: 500;
+}
+
+.navbar .dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    color: #0d6efd !important;
+    transform: translateX(6px);
+}
+
+.nightMode .sidebar a {
+    color: #e0e0e0 !important
 }
 
 .back-to-top-btn {
@@ -106,179 +106,50 @@ div.content {
     background-color: #f8f9fa;
 }
 
-@media (max-width:320px) {
-    .back-to-top-btn {
-        position: fixed;
-        top: 500px
-    }
-}
-
-@media (max-width:768px) {
-    .back-to-top-btn {
-        position: relative;
-        bottom: 150px !important
-    }
-}
-
-.custom-offcanvas,
-.overlay {
-    position: fixed;
-    height: 100%;
-    top: 0
-}
-
-.thrEE_BTn Button {
-    margin: 10px
-}
-
-.dropdown-item {
-    color: #000 !important
-}
-
 .navbar-brand {
     font-size: 25px !important;
     color: #fff !important
 }
 
-.custom-offcanvas {
-    right: -300px;
-    width: 300px;
-    background-color: #202529;
-    z-index: 1050;
-    transition: right .3s ease-in-out;
-    overflow-y: auto
+.nav-link.active {
+    color: #0d6efd !important;
+    font-weight: 700;
 }
 
-.custom-offcanvas.show,
-.slider {
-    right: 0
-}
-
-.overlay {
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, .5);
-    z-index: 1040
-}
-
-.setting-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 15px 0
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
+/* Premium Theme Toggle Button */
+.BtN_Mood {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    outline: none;
+    cursor: pointer;
     width: 42px;
-    height: 22px
-}
-
-.slider,
-.slider:before {
-    position: absolute;
-    transition: .4s
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0
-}
-
-.slider {
-    cursor: pointer;
-    background-color: #ccc;
-    border-radius: 34px;
-    top: 0;
-    left: 0;
-    bottom: 0
-}
-
-.btn-primary,
-.navbar {
-    background-color: var(--main-color) !important
-}
-
-.slider:before {
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 3px;
-    bottom: 3px;
-    background-color: #fff;
-    border-radius: 50%
-}
-
-input:checked+.slider {
-    background-color: #4caf50
-}
-
-input:checked+.slider:before {
-    transform: translateX(20px)
-}
-
-.color-options {
+    height: 42px;
+    border-radius: 12px;
     display: flex;
-    gap: 10px
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.color-circle {
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 2px solid transparent
+.BtN_Mood:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1) rotate(8deg);
+    border-color: rgba(255, 255, 255, 0.2);
 }
 
-.color-circle.selected {
-    border-color: #fff
+.BtN_Mood:active {
+    transform: scale(0.95);
 }
 
-.divider {
-    border-top: 1px solid rgba(255, 255, 255, .1);
-    margin: 0
+.nightMode .BtN_Mood {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.05);
 }
 
-.Setting_icon {
-    color: #fff;
-    height: 25px;
-    width: 25px
-}
-
-.CloSe_BTn {
-    color: #fff;
-    height: 20px;
-    width: 20px;
-    cursor: pointer;
-    position: relative;
-    left: 160px
-}
-
-:root {
-    --main-color: #212529;
-}
-
-.navbar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000
-}
-
-.btn-primary {
-    border-color: var(--main-color) !important
-}
-
-.clock-container {
-    text-align: center;
-    margin-top: 20px
-}
-
-main {
-    padding-bottom: env(safe-area-inset-bottom, 70px)
+.nightMode .BtN_Mood:hover {
+    background: rgba(13, 110, 253, 0.2);
+    border-color: #0d6efd;
+    color: #0d6efd;
 }
 
 .Clock_IcONS {
@@ -300,20 +171,35 @@ main {
     background-color: #f0f0f0;
 }
 
-.BtN_Mood {
-    background-color: transparent;
+.nav-hover-effect {
+    position: relative;
+    padding-bottom: 5px;
 }
 
-@font-face {
-    font-family: 'YourFont';
-    src: url('/fonts/YourFont.woff2') format('woff2');
-    font-display: swap;
+.nav-hover-effect::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 50%;
+    background-color: #0d6efd;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
 }
 
+.nav-hover-effect:hover::after {
+    width: 100%;
+}
 
-/* Example CSS for the digital font style */
-.digital-font-active {
-    padding-top: 130px;
-    font-family: 'Digital-Display-Font', monospace;
-    /* Replace with your actual digital font name */
+.nav-link.active::after {
+    width: 100%;
+    background-color: #0d6efd;
+}
+
+@media (max-width:320px) {
+    .back-to-top-btn {
+        position: fixed;
+        top: 500px
+    }
 }

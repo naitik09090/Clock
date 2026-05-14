@@ -173,14 +173,14 @@ const WorldClocks = ({ onFavoriteChange = () => { } }) => {
                 </div>
               </div>
 
-              <div className="city-info">
-                <h5 className="fw-bold mb-1">{city.name}</h5>
-                <h6 className="mb-1" style={{ letterSpacing: "1px", fontFamily: "monospace" }}>
+              <div className="city-info mt-3">
+                <h5 className="city-name">{city.name}</h5>
+                <h6 className="city-time">
                   {cityTimes[city.id]
                     ? `${String(cityTimes[city.id].h).padStart(2, '0')}:${String(cityTimes[city.id].m).padStart(2, '0')}:${String(cityTimes[city.id].s).padStart(2, '0')} ${cityTimes[city.id].dayPeriod}`
                     : "--:--:--"}
                 </h6>
-                <small className="text-muted d-block">{getDateString(city.timezone)}</small>
+                <small className="city-date">{getDateString(city.timezone)}</small>
               </div>
             </div>
           </div>

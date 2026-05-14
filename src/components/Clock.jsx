@@ -71,7 +71,6 @@ const Clock = () => {
             {/* Display Selected City Name */}
             {clockType === "watch" ? (
               <div className="clock mb-4">
-                <div className="dot center"></div>
                 <div
                   className="hand hour"
                   style={{ transform: `rotate(${hourDeg}deg)` }}
@@ -193,9 +192,9 @@ const Clock = () => {
               <div className={`card shadow-sm h-100 border-0 clock-card-hover ${selectedCity?.id === city.id ? "border border-primary border-3" : ""}`}
                 style={{ transition: "transform 0.2s" }}>
                 <div className="card-body d-flex flex-column justify-content-center py-4">
-                  <h6 className="fw-bold">{city.name}</h6>
-                  <h5 className="mb-1" style={{ fontFamily: "monospace" }}>{getFormattedTime(currentTime, city.timezone)}</h5>
-                  <p className="text-muted mb-0 small">{getFormattedDate(currentTime, city.timezone).split(',').slice(1).join(',')}</p>
+                  <h6 className="city-name m-0" style={{ fontSize: '1.1rem' }}>{city.name}</h6>
+                  <h5 className="city-time my-2" style={{ fontFamily: "monospace", fontSize: '1rem' }}>{getFormattedTime(currentTime, city.timezone)}</h5>
+                  <p className="city-date m-0">{getFormattedDate(currentTime, city.timezone).split(',').slice(1).join(',')}</p>
                 </div>
               </div>
             </div>

@@ -142,7 +142,7 @@ const StopWatch = () => {
             Reset
           </button>
           <button
-            className={`btn px-4 ${isRunning ? "btn-danger" : "btn-success"}`}
+            className={`btn p-2 px-4 ${isRunning ? "btn-danger" : "btn-success"}`}
             onClick={isRunning ? stopStopwatch : startStopwatch}
             style={{ minWidth: "110px" }}
           >
@@ -164,6 +164,7 @@ const StopWatch = () => {
         </div>
         <hr />
         <div
+          className="hide-scrollbar"
           style={{
             maxHeight: "360px",
             overflowY: "auto",

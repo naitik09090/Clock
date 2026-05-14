@@ -161,13 +161,13 @@ const FavoriteClocksView = () => {
 
                   {/* City Info */}
                   <div className="city-info">
-                    <h5 className="fw-bold mb-1" style={{ letterSpacing: "0.5px" }}>{city.name}</h5>
-                    <h6 className="mb-1 fw-bold" style={{ letterSpacing: "1px", fontFamily: "monospace", fontSize: "1.1rem" }}>
+                    <h5 className="city-name mb-1" style={{ letterSpacing: "0.5px" }}>{city.name}</h5>
+                    <h6 className="city-time mb-1 fw-bold" style={{ letterSpacing: "1px", fontFamily: "monospace", fontSize: "1.1rem" }}>
                       {cityTimes[city.id]
                         ? `${String(cityTimes[city.id].h).padStart(2, '0')}:${String(cityTimes[city.id].m).padStart(2, '0')}:${String(cityTimes[city.id].s).padStart(2, '0')} ${cityTimes[city.id].dayPeriod}`
                         : "--:--:--"}
                     </h6>
-                    <small className="text-muted d-block mt-1">{getDateString(city.timezone)}</small>
+                    <small className="city-date d-block mt-1">{getDateString(city.timezone)}</small>
                   </div>
                 </div>
               </div>

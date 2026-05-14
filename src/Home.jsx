@@ -11,6 +11,12 @@ const StopWatch = lazy(() => import("./components/StopWatch.jsx"));
 const Clock = lazy(() => import("./components/Clock.jsx"));
 const Holidays = lazy(() => import("./components/Holidays.jsx"));
 const WorldClocks = lazy(() => import("./components/WorldClocks.jsx"));
+const Blog = lazy(() => import("./components/Blog.jsx"));
+const BlogDetail = lazy(() => import("./components/BlogDetail.jsx"));
+const About = lazy(() => import("./components/About.jsx"));
+const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy.jsx"));
+const Terms = lazy(() => import("./components/Terms.jsx"));
+const Contact = lazy(() => import("./components/Contact.jsx"));
 
 function App() {
   return (
@@ -25,6 +31,12 @@ function App() {
               <Route path="/stopwatch" element={<StopWatch />} />
               <Route path="/holidays" element={<Holidays />} />
               <Route path="/worldclocks" element={<WorldClocks />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:id" element={<BlogDetail />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<Terms />} />
+              <Route path="/contact" element={<Contact />} />
               {/* <Route path="/login" element={<Login />} /> */}
             </Routes>
           </Suspense>

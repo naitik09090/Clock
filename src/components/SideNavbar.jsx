@@ -4,6 +4,7 @@ import { BsSun, BsMoon } from "react-icons/bs";
 import { IoTimerOutline } from "react-icons/io5";
 import { RxStopwatch } from "react-icons/rx";
 import { WiTime9 } from "react-icons/wi";
+import { BsJournalText } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
 
 const SideNavbar = () => {
@@ -44,6 +45,17 @@ const SideNavbar = () => {
         >
           <RxStopwatch size={22} className="text-white" />
           <small className="fw-bold text-white">Stopwatch</small>
+        </NavLink>
+
+        <NavLink
+          to="/blog"
+          className={({ isActive }) =>
+            `d-flex flex-column align-items-center text-decoration-none px-2 ${isActive ? "text-primary" : "text-dark"
+            }`
+          }
+        >
+          <BsJournalText size={22} className="text-white" />
+          <small className="fw-bold text-white">Blogs</small>
         </NavLink>
       </nav>
     </>

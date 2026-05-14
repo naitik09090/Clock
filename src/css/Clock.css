@@ -1,123 +1,87 @@
-.center,
-.dot.center {
-    transform: translate(-50%, -50%)
+/* World Clock Premium Styling */
+.clock-card-hover {
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    background: #ffffff !important;
+    border-radius: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.06) !important;
+    padding: 2rem !important;
 }
 
-.ColcK_Data_3 {
-    width: auto
+.clock-card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1) !important;
+    border-color: #0d6efd !important;
 }
 
-.analog-clock {
-    height: auto;
-    width: auto;
-    position: relative;
-    border-radius: 50%;
-    background: #111;
-    margin: 0 auto
+.city-name {
+    font-size: 1.25rem !important;
+    font-weight: 850 !important;
+    color: #1a1c22 !important;
+    margin-bottom: 8px !important;
+    display: block;
 }
 
-.center {
-    width: 10px;
-    height: 10px
+.city-time {
+    font-size: 1.15rem !important;
+    color: #1a1a1a !important;
+    font-weight: 700 !important;
+    font-family: 'Space Mono', monospace !important;
+    letter-spacing: 1px !important;
+    margin-bottom: 8px !important;
+    display: block;
 }
 
-.hand {
-    transform-origin: bottom;
-    background: #fff
+.city-date {
+    font-size: 0.85rem !important;
+    color: #64748b !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    display: block;
 }
 
-.hour {
-    width: 4px;
-    height: 30%
+/* Night Mode Overrides */
+.nightMode .clock-card-hover {
+    background: #1a1c22 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3) !important;
 }
 
-.minute {
-    width: 3px;
-    height: 40%
+.nightMode .city-name {
+    color: #ffffff !important;
 }
 
-.second {
-    width: 2px;
-    height: 44%;
-    background: #00bfff
+.nightMode .city-time {
+    color: #38bdf8 !important;
+    /* Vivid Cyan */
+    text-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
 }
 
-.txt_New_Yor2 {
-    position: relative;
-    top: 100px
+.nightMode .city-date {
+    color: #ffffff !important;
+    /* Brighter Grey for better visibility */
 }
 
-.clock-card {
-    width: 100%;
-    max-width: 260px;
-    aspect-ratio: 1/1;
-    background: #111;
-    border-radius: 50%
+/* Ensure global headers on WorldClocks page are visible */
+.nightMode h1,
+.nightMode h2,
+.nightMode h3,
+.nightMode h4,
+.nightMode h5,
+.nightMode h6,
+.nightMode .container h2 {
+    color: #ffffff !important;
 }
 
-.clock-analog {
-    width: 70%;
-    aspect-ratio: 1/1;
-    position: relative;
-    margin-top: 10px
+/* Clock Face Improvements */
+.clock-face {
+    background: #111 !important;
+    border: 4px solid rgba(255, 255, 255, 0.05) !important;
+    transition: all 0.3s ease;
 }
 
-.dot.center,
-.hand,
-.tick {
-    position: absolute
-}
-
-.hand {
-    bottom: 50%;
-    left: 50%;
-    transform-origin: bottom center;
-    border-radius: 10px
-}
-
-.hand.hour {
-    width: 6px;
-    height: 25%;
-    background: #fff
-}
-
-.hand.minute {
-    width: 4px;
-    height: 35%;
-    background: #ccc
-}
-
-.hand.second {
-    width: 2px;
-    height: 40%;
-    background: red
-}
-
-.dot.center {
-    width: 12px;
-    height: 12px;
-    background: #fff;
-    border-radius: 50%;
-    z-index: 5;
-    left: 51%;
-    top: 50%
-}
-
-.tick {
-    top: 10%;
-    left: 50%;
-    width: 4px;
-    height: 10px;
-    background: #888;
-    transform-origin: center bottom
-}
-
-.main_ClOck {
-    padding-top: 200px;
-    margin-bottom: 200px
-}
-
-.CArd_4 .card{
-    box-shadow: 1px 1px 10px rgba(0,0,0,0.2);
-    background-color: transparent;
+.nightMode .clock-face {
+    background: #000000 !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 0 30px rgba(56, 189, 248, 0.1) !important;
 }

@@ -243,14 +243,14 @@ const Timer = () => {
       <div className="p-4 border rounded border-secondary shadow">
         <div className="d-flex justify-content-between align-items-center mb-3">
           <h6 className="fw-bold mb-0">Recently Used Timers</h6>
-          <small className="text-muted">Click a timer to apply it</small>
+          <small>Click a timer to apply it</small>
         </div>
         <hr className="border-secondary" />
         {recentTimers.length === 0 ? (
           <p className="text-muted text-center py-3">No recent timers.</p>
         ) : (
           <ul
-            className="list-unstyled mb-0"
+            className="list-unstyled mb-0 hide-scrollbar"
             style={{
               maxHeight: "300px",
               overflowY: "auto",
@@ -272,13 +272,13 @@ const Timer = () => {
                 </span>
                 <div className="d-flex gap-2">
                   <button
-                    className="btn btn-sm btn-link text-info p-0 text-decoration-none"
+                    className="btn btn-md border-2 p-2 border-info text-info p-0 text-decoration-none"
                     onClick={() => handleEditRecord(idx)}
                   >
                     Edit
                   </button>
                   <button
-                    className="btn btn-sm btn-link text-danger p-0 text-decoration-none"
+                    className="btn btn-md border-2 p-2 border-danger text-danger p-0 text-decoration-none"
                     onClick={() => handleDeleteRecord(idx)}
                   >
                     Delete
