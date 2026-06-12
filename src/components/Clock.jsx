@@ -16,6 +16,14 @@ const Clock = () => {
 
   useEffect(() => {
     const interval = setInterval(() => setCurrentTime(new Date()), 1000);
+    
+    // Dynamic SEO
+    document.title = "Online Digital Clock - Accurate Local & Global Time | whatsthetime.me";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', "View the most accurate online digital and analog clock. Sync with any major city in the world and track time with precision.");
+    }
+
     return () => clearInterval(interval);
   }, []);
 
@@ -65,7 +73,7 @@ const Clock = () => {
 
   return (
     <>
-      <div className="container">
+      <div className="container pt-4">
         <div className="row flex-column justify-content-center align-items-center">
           <div className="col-md-12 text-center mb-1">
             {/* Display Selected City Name */}
@@ -83,6 +91,7 @@ const Clock = () => {
                   className="hand second"
                   style={{ transform: `rotate(${secondDeg}deg)`, backgroundColor: "red" }}
                 ></div>
+                <div className="center"></div>
 
                 {[...Array(12)].map((_, i) => {
                   const num = i + 1;
@@ -95,8 +104,8 @@ const Clock = () => {
                         fontSize: "20px",
                         fontWeight: "bold",
                         color: "white",
-                        left: "135px",
-                        top: "125px",
+                        left: "140px",
+                        top: "135px",
                       }}
                     >
                       {num}

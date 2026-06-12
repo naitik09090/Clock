@@ -100,6 +100,14 @@ const Timer = () => {
         });
       }, 1000);
     }
+
+    // Dynamic SEO
+    document.title = "Online Countdown Timer - Precise & Reliable | whatsthetime.me";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', "Use our online countdown timer for productivity, cooking, or workouts. Set custom times, save recent timers, and stay on track.");
+    }
+
     return () => clearInterval(intervalRef.current);
   }, [running]);
 

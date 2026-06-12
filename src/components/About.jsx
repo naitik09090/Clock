@@ -3,7 +3,7 @@ import '../css/Pages.css';
 
 const About = () => {
   useEffect(() => {
-    document.title = "About Us - The Ultimate Guide to World Clocks & Productivity Tools";
+    document.title = "About Us - The Ultimate Guide to World Clocks & Productivity Tools | whatsthetime.me";
   }, []);
 
   return (

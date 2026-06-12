@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 150" width="700" height="150">
+  <style>
+    .brand-text { font-family: 'Orbitron', system-ui, -apple-system, sans-serif; font-size: 52px; font-weight: 700; fill: #FFFFFF; }
+    .orbit-ring { fill: none; stroke: #FFFFFF; stroke-width: 1.5; opacity: 0.2; }
+    .celestial { fill: #FFFFFF; }
+    .center-sun { fill: #fbbf24; filter: blur(1px); }
+  </style>
+  <g transform="translate(60, 75)">
+    <!-- Solar System / Orbiting concept -->
+    <circle cx="0" cy="0" r="40" class="orbit-ring" />
+    <circle cx="0" cy="0" r="28" class="orbit-ring" />
+    <circle cx="0" cy="0" r="12" class="center-sun" />
+    <circle cx="40" cy="0" r="6" class="celestial" />
+    <circle cx="-20" cy="-20" r="4" class="celestial" />
+    <circle cx="0" cy="0" r="3" fill="#000" />
+  </g>
+  <text x="140" y="94" class="brand-text">What's The Time</text>
+</svg>

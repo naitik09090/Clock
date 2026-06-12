@@ -81,6 +81,14 @@ const StopWatch = () => {
         localStorage.setItem(STORAGE_KEY_START_AT, Date.now());
       }, 10);
     }
+
+    // Dynamic SEO
+    document.title = "Online Stopwatch - Precise Time Tracking | whatsthetime.me";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', "Accurate online stopwatch with lap tracking. Perfect for sports, workouts, or any activity requiring precise timing.");
+    }
+
     return () => clearInterval(interval);
   }, [isRunning]);
 

@@ -10,10 +10,16 @@ body {
     overflow-x: hidden;
     margin: 0;
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    padding-top: 80px;
+    padding-top: 85px;
     background-color: white;
     padding-bottom: 70px;
     transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+@media (max-width: 576px) {
+    body {
+        padding-top: 80px;
+    }
 }
 
 div.content {
@@ -34,9 +40,68 @@ div.content {
 }
 
 .navbar {
-    background-color: #1a1c22 !important;
-    margin-bottom: 20px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background-color: rgba(26, 28, 34, 0.95) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.3s ease;
+}
+
+.nightMode .navbar {
+    background-color: rgba(13, 14, 18, 0.95) !important;
+}
+
+.navbar-logo {
+    height: 55px;
+    width: auto;
+    display: block;
+    max-width: 240px;
+}
+
+@media (max-width: 576px) {
+    .navbar-logo {
+        height: 44px !important;
+        max-width: 180px !important;
+    }
+
+    .navbar>.container-fluid {
+        flex-wrap: wrap !important;
+    }
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        background-color: rgba(26, 28, 34, 0.98);
+        margin-top: 12px;
+        padding: 20px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        max-height: calc(100vh - 130px);
+        overflow-y: auto;
+        width: 100%;
+        transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .navbar-nav .nav-link {
+        padding: 9px 0;
+        font-size: 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .navbar-nav .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    .navbar-nav .dropdown-menu {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        box-shadow: none !important;
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        padding-left: 15px;
+        border-radius: 12px;
+    }
 }
 
 .timer_Clock_Icon {
@@ -52,8 +117,14 @@ div.content {
     transition: all 0.4s ease;
 }
 
-.BTn_Sun { color: #ffcc00; }
-.BTn_Moon { color: #ffd700; opacity: 0.8; }
+.BTn_Sun {
+    color: #ffcc00;
+}
+
+.BTn_Moon {
+    color: #ffd700;
+    opacity: 0.8;
+}
 
 .nightMode {
     background: #0d0e12;
@@ -84,12 +155,18 @@ div.content {
     transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
     border-radius: 10px;
     font-weight: 500;
+    cursor: pointer !important;
 }
 
 .navbar .dropdown-item:hover {
     background-color: rgba(255, 255, 255, 0.05) !important;
     color: #0d6efd !important;
     transform: translateX(6px);
+}
+
+.navbar .dropdown-item.active {
+    background-color: rgba(13, 110, 253, 0.15) !important;
+    color: #0d6efd !important;
 }
 
 .nightMode .sidebar a {
@@ -108,7 +185,17 @@ div.content {
 
 .navbar-brand {
     font-size: 25px !important;
-    color: #fff !important
+    color: #fff !important;
+    margin-right: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+}
+
+@media (max-width: 576px) {
+    .navbar-brand {
+        margin-right: 10px !important;
+        padding: 0 !important;
+    }
 }
 
 .nav-link.active {
@@ -129,6 +216,14 @@ div.content {
     align-items: center;
     justify-content: center;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@media (max-width: 576px) {
+    .BtN_Mood {
+        width: 36px !important;
+        height: 36px !important;
+        border-radius: 10px !important;
+    }
 }
 
 .BtN_Mood:hover {
@@ -171,12 +266,18 @@ div.content {
     background-color: #f0f0f0;
 }
 
+.navbar-brand,
+.navbar-nav .nav-link {
+    cursor: pointer !important;
+}
+
 .nav-hover-effect {
     position: relative;
     padding-bottom: 5px;
+    cursor: pointer !important;
 }
 
-.nav-hover-effect::after {
+.nav-hover-effect::before {
     content: '';
     position: absolute;
     width: 0;
@@ -188,11 +289,11 @@ div.content {
     transform: translateX(-50%);
 }
 
-.nav-hover-effect:hover::after {
+.nav-hover-effect:hover::before {
     width: 100%;
 }
 
-.nav-link.active::after {
+.nav-link.active::before {
     width: 100%;
     background-color: #0d6efd;
 }

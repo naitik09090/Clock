@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 // import { TfiAlarmClock } from "react-icons/tfi";
 import { BsSun, BsMoon } from "react-icons/bs";
 import { IoTimerOutline } from "react-icons/io5";

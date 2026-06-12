@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 150" width="700" height="150">
+  <defs>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="2" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+  <style>
+    .brand-text {
+      font-family: 'Orbitron', system-ui, -apple-system, sans-serif;
+      font-size: 52px;
+      font-weight: 700;
+      fill: #FFFFFF;
+      letter-spacing: 2px;
+    }
+    .icon-main {
+      fill: none;
+      stroke: #FFFFFF;
+      stroke-width: 5;
+      stroke-linecap: round;
+    }
+    .icon-accent {
+      fill: none;
+      stroke: #38bdf8;
+      stroke-width: 5;
+      stroke-linecap: round;
+      filter: url(#glow);
+    }
+  </style>
+
+  <!-- Premium Clock Icon -->
+  <g transform="translate(60, 75)">
+    <!-- Minimalist ring segments -->
+    <path d="M -40 0 A 40 40 0 1 1 0 40" class="icon-main" opacity="0.3" />
+    <path d="M 0 -40 A 40 40 0 0 1 40 0" class="icon-main" />
+    
+    <!-- Hour and Minute hands -->
+    <line x1="0" y1="0" x2="0" y2="-20" class="icon-main" />
+    <line x1="0" y1="0" x2="20" y2="0" class="icon-main" />
+    
+    <!-- Stylized second hand pulse -->
+    <circle cx="28" cy="-28" r="4" fill="#38bdf8" filter="url(#glow)" />
+    
+    <!-- Center Dot -->
+    <circle cx="0" cy="0" r="3" fill="#FFFFFF" />
+  </g>
+
+  <!-- Text -->
+  <text x="135" y="75" class="brand-text" dominant-baseline="central">What's The Time</text>
+</svg>

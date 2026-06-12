@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import "../css/Clock.css";
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const cities = [
   { id: 1, name: "New York", timezone: "America/New_York" },
   { id: 2, name: "London, UK", timezone: "Europe/London" },
@@ -71,6 +72,13 @@ const WorldClocks = ({ onFavoriteChange = () => { } }) => {
   useEffect(() => {
     const saved = JSON.parse(localStorage.getItem("favorites")) || {};
     setFavorites(saved);
+
+    // Dynamic SEO
+    document.title = "World Clock - Check Current Time in Any City | whatsthetime.me";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', "Check the current local time, date, and time zone for major cities worldwide. Stay in sync with global teams and events.");
+    }
   }, []);
 
   const toggleFavorite = (id) => {

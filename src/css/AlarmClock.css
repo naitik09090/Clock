@@ -178,22 +178,32 @@ button {
 }
 
 .clock {
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
-    background: #111;
-    margin: 20px auto
+    background: radial-gradient(circle, #222 0%, #111 100%);
+    margin: 20px auto;
+    border: 8px solid #333;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5), 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .center,
 .hand {
-    background: #fff
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
 }
 
 .center {
-    width: 10px;
-    height: 10px;
-    transform: translate(-50%, -50%)
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 12px;
+    background: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    border: 2px solid #333;
 }
 
 .hand {
@@ -201,23 +211,31 @@ button {
     bottom: 50%;
     left: 50%;
     transform-origin: bottom;
-    border-radius: 2px
+    border-radius: 4px;
+    transition: transform 0.5s cubic-bezier(0.4, 2.08, 0.55, 0.44); /* Smooth bounce effect */
 }
 
 .hour {
-    width: 4px;
-    height: 60px
+    width: 6px;
+    height: 70px;
+    margin-left: -3px;
+    background: #eee;
 }
 
 .minute {
-    width: 3px;
-    height: 80px
+    width: 4px;
+    height: 100px;
+    margin-left: -2px;
+    background: #ddd;
 }
 
 .second {
     width: 2px;
-    height: 90px;
-    background: #00bfff
+    height: 110px;
+    margin-left: -1px;
+    background: #ff3b3b;
+    box-shadow: 0 0 10px rgba(255, 59, 59, 0.5);
+    z-index: 8;
 }
 
 .clock-mode {

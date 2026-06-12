@@ -3,13 +3,22 @@ import { Link } from 'react-router-dom'
 import "../css/Holidays.css";
 
 const Holidays = () => {
+    React.useEffect(() => {
+        document.title = "Global Holidays 2026 - Major Dates & Celebrations | whatsthetime.me";
+        const metaDesc = document.querySelector('meta[name="description"]');
+        if (metaDesc) {
+            metaDesc.setAttribute('content', "Explore upcoming holidays in India, USA, Australia, and Canada. Stay informed about national, religious, and cultural celebrations with our holiday tracker.");
+        }
+    }, []);
+
     return (
         <>
-            <div className="container">
+            <div className="container pt-4">
 
                 {/* Top Row: Predefined Timers + Recently Used */}
                 <div className="row Home_Main">
-                    <div className="col-md-6 col-sm-12 bg-traslate p-3 mb-3 bg-traslate border">
+                    <div className="col-md-6 col-sm-12 mb-3">
+                        <div className="p-3 bg-traslate border h-100">
                         <div className="row">
                             <h4 className='H_Fonts text-center'>Holidays in Bharat</h4>
                             <p className='Row_Bottom bg-traslate border'></p>
@@ -158,8 +167,10 @@ const Holidays = () => {
                                 </div>
                             </div>
                         </div>
+                        </div>
                     </div>
-                    <div className="col-md-6 col-sm-12 bg-traslate p-3 mb-3 bg-traslate border">
+                    <div className="col-md-6 col-sm-12 mb-3">
+                        <div className="p-3 bg-traslate border h-100">
                         <div className="row">
                             <h4 className='H_Fonts text-center'>Holidays in the United States</h4>
                             <p className='Row_Bottom bg-traslate border'></p>
@@ -224,14 +235,16 @@ const Holidays = () => {
                                 </div>
                             </div>
                         </div>
+                        </div>
                     </div>
                 </div >
             </div >
-            <div className="container">
+            <div className="container pt-4">
 
                 <div className="row Home_Main text-start mb-5 py-3">
                     {/* Left: Timer Links */}
-                    <div className="col-md-6 bg-traslate p-3 bg-traslate border">
+                    <div className="col-md-6 mb-3">
+                        <div className="p-3 bg-traslate border h-100">
                         <div className="row">
                             <h4 className='H_Fonts p-2 text-center'>Holidays in Australia</h4>
                             <p className='Row_Bottom bg-traslate border'></p>
@@ -276,10 +289,12 @@ const Holidays = () => {
                                 </div>
                             </div>
                         </div>
+                        </div>
                     </div>
 
                     {/* Right: Recently Used */}
-                    <div className="col-md-6 bg-traslate p-3 bg-traslate border">
+                    <div className="col-md-6 mb-3">
+                        <div className="p-3 bg-traslate border h-100">
                         <div className="row">
                             <h4 className="H_Fonts p-2 text-center">Holidays in Canada</h4>
                             <p className='Row_Bottom bg-traslate border'></p>
@@ -327,6 +342,7 @@ const Holidays = () => {
                                     <p>Dec 26, 2026</p>
                                 </div>
                             </div>
+                        </div>
                         </div>
                     </div>
                 </div>
